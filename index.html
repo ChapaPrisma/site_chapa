@@ -30,6 +30,7 @@
   --fm:Inter,system-ui,sans-serif;  /* rótulos: caixa alta espaçada */
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;font:400 17px/1.6 var(--fb);color:var(--navy);background:var(--paper);-webkit-font-smoothing:antialiased}
@@ -161,6 +162,14 @@ nav .btn:hover{box-shadow:none}
 .fav{flex:none;border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);width:40px;height:40px;font-size:1.05rem;line-height:1;cursor:pointer;color:var(--navy)}
 .fav[aria-pressed=true]{background:var(--orange);border-color:var(--orange)}
 .empty{padding:24px;background:#fff;color:var(--ink2)}
+/* proposta apontada por um quadrado das frentes; cartão que abre a carta-programa */
+.props li.hit{outline:2px solid var(--navy);outline-offset:-2px}
+.props li[data-c]{cursor:pointer}
+/* chamada para a carta-programa, no fim das propostas */
+.carta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 40px;margin-top:48px;padding:28px 28px 30px;background:var(--navy);color:var(--ink-neg)}
+.carta h3{margin:0 0 6px;font-size:1.35rem}
+.carta p{margin:0;max-width:52ch;color:rgba(248,245,240,.82)}
+.carta .hint{color:rgba(248,245,240,.72)}
 .found{margin:-10px 0 14px;font-size:.92rem;color:var(--ink2)}
 .found:empty{display:none}
 .lk{background:none;border:0;padding:0;font:inherit;color:var(--navy);text-decoration:underline;cursor:pointer}
@@ -267,6 +276,47 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 .foot-meta{display:flex;flex-direction:column;gap:4px;text-align:right}
 @media(max-width:700px){.foot-meta{text-align:left}}
 
+/* carta-programa aberta: o site vira um índice ao lado do PDF */
+body.cv-open{overflow:hidden}
+body.cv-open>header.top,body.cv-open>main,body.cv-open>footer,body.cv-open>.pill,body.cv-open>a.sr{display:none!important}
+.cv{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:300px minmax(0,1fr);background:var(--paper2)}
+.cv[hidden]{display:none}
+.cv-side{position:relative;z-index:2;display:flex;flex-direction:column;min-height:0;background:var(--navy);color:var(--ink-neg)}
+.cv-top{padding:14px 16px}
+.cv-exit{display:inline-flex;align-items:center;gap:9px;padding:9px 14px 9px 13px;border:1.5px solid rgba(248,245,240,.5);border-radius:var(--r);background:none;color:var(--ink-neg);font:600 .92rem var(--fb);cursor:pointer}
+.cv-exit::before{content:"";width:7px;height:7px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(45deg)}
+.cv-exit:hover{background:rgba(248,245,240,.1)}
+.cv-exit:focus-visible,.cv-list button:focus-visible{outline-color:var(--yellow)}
+.cv-tt{padding:8px 20px 16px;font:300 1.5rem/1.15 var(--fh);letter-spacing:-.01em}
+.cv-tog{display:none}
+.cv-tog::before{transform:rotate(-45deg);margin-top:-4px}
+.cv-list{flex:1;min-height:0;overflow-y:auto;list-style:none;margin:0;padding:6px 0 12px;border-top:1px solid rgba(248,245,240,.16)}
+.cv-list button{display:block;width:100%;padding:12px 20px 12px 17px;border:0;border-left:3px solid transparent;background:none;text-align:left;font:500 .98rem/1.35 var(--fb);color:rgba(248,245,240,.82);cursor:pointer}
+.cv-list button.n2{padding-left:34px;font-size:.92rem}
+.cv-list button:hover{background:rgba(248,245,240,.07);color:var(--ink-neg)}
+.cv-list button[aria-current]{border-left-color:var(--orange);background:rgba(248,245,240,.09);color:var(--ink-neg);font-weight:600}
+.cv-list button:focus-visible{outline-offset:-3px}
+.cv-dl{padding:14px 20px;border-top:1px solid rgba(248,245,240,.16);font-size:.9rem}
+.cv-dl a{color:var(--yellow)}
+.cv-doc{position:relative;overflow-y:auto;padding:24px 24px 64px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){.cv-doc{scroll-behavior:auto}}
+.cv-page{position:relative;max-width:880px;margin:0 auto 16px;background:#fff}
+.cv-page canvas{display:block;width:100%;height:100%}
+/* marca onde o tópico começa: fica por cima da página, o PDF não é alterado */
+.cv-mark{position:absolute;height:3px;background:var(--orange);pointer-events:none}
+.cv-mark::before{content:"";position:absolute;right:100%;top:-12px;margin-right:6px;width:11px;height:14px;background:var(--orange);clip-path:polygon(0 0,100% 50%,0 100%)}
+.cv-status{max-width:880px;margin:48px auto;text-align:center;color:var(--ink2)}
+@media(max-width:820px){
+  .cv{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+  .cv-side{flex-direction:row;flex-wrap:wrap;align-items:center}
+  .cv-top{flex:none;padding:10px 12px}
+  .cv-tt{flex:1;min-width:0;padding:0;font-size:1.05rem;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cv-tog{display:inline-flex;margin-right:12px}
+  .cv-list,.cv-dl{display:none}
+  .cv-side.open .cv-list{display:block;position:absolute;top:100%;left:0;right:0;max-height:70vh;background:var(--navy);box-shadow:0 14px 24px rgba(0,0,0,.3)}
+  .cv-doc{padding:10px 8px 48px}
+}
+
 /* dev bar */
 .dev{flex-basis:100%;font-size:.84rem;color:rgba(248,245,240,.6)}
 .dev label{margin:0;font-weight:400;display:inline-flex;gap:8px;align-items:center;cursor:pointer}
@@ -337,6 +387,11 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
         <div class="ppanel" id="grid" role="tabpanel" tabindex="-1" aria-label="Propostas da área escolhida"></div>
         <div class="empty" id="empty" hidden>Nenhuma proposta com esse termo. <button class="lk" id="clr" type="button">Limpar a busca</button> ou <a href="#ideias">contar sua ideia</a>.</div>
       </div>
+    </div>
+    <div class="carta" id="cartaCta">
+      <div><h3>Quer ver os detalhes?</h3><p>Aqui as propostas estão resumidas. A carta-programa explica cada uma por inteiro.</p></div>
+      <a class="btn orange" id="cartaBtn" href="#carta" hidden>Abrir a carta-programa</a>
+      <p class="hint" id="cartaSoon">A carta-programa será publicada aqui. <span class="pend"><span class="tag">[CONFIRMAR: PDF da carta-programa]</span></span></p>
     </div>
   </div>
 </section>
@@ -430,8 +485,28 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 <footer><div class="wrap"><a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, voltar ao início"><svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg><span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span></a><div class="foot-meta"><span>Chapa para a gestão 2027 do Grêmio Politécnico</span><span>Protótipo: nome e identidade visual provisórios. <span class="pend"><span class="tag">[CONFIRMAR: identificação exigida em material de campanha]</span></span></span></div><div class="dev"><label><input type="checkbox" id="tp" checked> Destacar pendências</label></div></div></footer>
 
 <a class="pill" id="pill" href="#ideias"></a>
+<!-- Carta-programa aberta: índice de tópicos à esquerda (com o botão de sair no canto) e o PDF à direita -->
+<div class="cv" id="cv" hidden role="dialog" aria-modal="true" aria-label="Carta-programa">
+  <div class="cv-side" id="cvSide">
+    <div class="cv-top"><button class="cv-exit" id="cvExit" type="button">Sair</button></div>
+    <div class="cv-tt">Carta-programa</div>
+    <button class="cv-exit cv-tog" id="cvTog" type="button" aria-expanded="false" aria-controls="cvList">Tópicos</button>
+    <ol class="cv-list" id="cvList"></ol>
+    <div class="cv-dl"><a id="cvDl" href="#" download>Baixar o PDF</a></div>
+  </div>
+  <div class="cv-doc" id="cvDoc" tabindex="0"><p class="cv-status" id="cvStatus" role="status"></p></div>
+</div>
 
 <script>
+// ===== MAPAS — rever sempre que as propostas ou a carta-programa mudarem =====
+// 1) CARTA: o PDF da carta-programa e o índice de tópicos.
+//    Quando o PDF chegar: salve o arquivo ao lado do index.html, preencha `url` e liste os tópicos:
+//    {id, t: nome no índice, pag: página do PDF, busca: texto do título como está no PDF, n2:1 se for subtópico}
+// 2) Em P (abaixo): campo c:"id-do-tópico" na área (vale para todas as propostas dela) ou numa proposta específica.
+// 3) SQ (mais abaixo): cada quadrado das frentes → área e títulos das propostas que tratam dela.
+// O console do navegador avisa quando um título ou tópico citado nesses mapas deixa de existir.
+const CARTA={url:null,topicos:[]};
+
 // Propostas conforme o documento "Propostas Prisma — resumo": 6 áreas, 27 propostas. lp = longo prazo.
 const P=[
 {id:"imagem",n:"0",g:"Imagem",b:[
@@ -475,7 +550,9 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 // prioridades marcadas ficam guardadas só no navegador de quem visita
 const store={get(){try{return JSON.parse(localStorage.getItem("prisma-fav"))||[]}catch(e){return[]}},set(v){try{localStorage.setItem("prisma-fav",JSON.stringify(v))}catch(e){}}};
 const ids=new Set(P.flatMap(a=>a.b).map(x=>x.id));
-const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro=P[0].id, termo="", antes=null;
+const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro=P[0].id, termo="", antes=null, marca=null;
+// tópico da carta-programa que trata da proposta (o da proposta vale mais que o da área)
+const topico=(a,x)=>{const id=x.c||a.c;return CARTA.url&&id&&CARTA.topicos.some(t=>t.id===id)?id:null};
 // destaca o termo buscado
 const hl=s=>{if(!termo)return fmt(s);const i=s.toLowerCase().indexOf(termo);return i<0?esc(s):esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+termo.length))+"</mark>"+hl(s.slice(i+termo.length))};
 
@@ -487,11 +564,13 @@ function renderCards(){
     if((filtro!=="Todas"&&a.id!==filtro)||!items.length)return;
     n++;tot+=items.length;
     h+='<div class="pgroup" data-a="'+a.id+'" id="p-'+a.id+'"><div class="ph"><span class="tri" aria-hidden="true"></span><div><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></div></div>'+
-      '<ul class="props">'+items.map(x=>'<li><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+'</div>'+
-      '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>').join("")+'</ul></div>';
+      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(marca&&marca.has(x.id)?' class="hit"':'')+(c?' data-c="'+c+'"':'')+'><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-programa</a>':'')+'</div>'+
+      '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>'}).join("")+'</ul></div>';
   });
   $("#grid").innerHTML=h;
   $$("#grid .fav").forEach(b=>b.onclick=()=>{const id=b.dataset.id;fav.has(id)?fav.delete(id):fav.add(id);const on=fav.has(id);b.setAttribute("aria-pressed",on);b.textContent=on?"★":"☆";updFav()});
+  // o cartão inteiro abre a carta-programa no tópico da proposta (menos a estrela e os links)
+  $$("#grid li[data-c]").forEach(li=>li.onclick=e=>{if(!e.target.closest("a,button"))location.hash="#carta/"+li.dataset.c});
   $("#empty").hidden=n>0;
   $("#found").textContent=termo&&tot?tot+(tot>1?" propostas":" proposta")+" com “"+termo+"”":"";
 }
@@ -499,13 +578,13 @@ function renderCards(){
 $("#ptabs").innerHTML=P.map(a=>'<button class="ptab" role="tab" type="button" data-f="'+a.id+'" data-a="'+a.id+'"><span class="tri" aria-hidden="true"></span><span class="nm">'+esc(a.g)+'</span><span class="ct">'+a.b.length+'</span></button>').join("")+
   '<button class="ptab all" role="tab" type="button" data-f="Todas"><span class="nm">Todas as propostas</span><span class="ct">'+ids.size+'</span></button>';
 const setChip=f=>{filtro=f;$$(".ptab").forEach(x=>{const on=x.dataset.f===f;x.setAttribute("aria-selected",on);x.tabIndex=on?0:-1})};
-const pick=(b,foc)=>{termo="";antes=null;$("#q").value="";setChip(b.dataset.f);renderCards();if(foc)b.focus();
+const pick=(b,foc)=>{termo="";antes=null;marca=null;$("#q").value="";setChip(b.dataset.f);renderCards();if(foc)b.focus();
   const t=$("#ptabs");if(t.scrollWidth>t.clientWidth)t.scrollLeft=b.offsetLeft-20;
   const v=$(".pview");if(v.getBoundingClientRect().top<0)v.scrollIntoView()};
 $$(".ptab").forEach((b,i,all)=>{b.onclick=()=>pick(b);
   b.onkeydown=e=>{const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];if(!d)return;e.preventDefault();pick(all[(i+d+all.length)%all.length],true)}});
 // a busca olha todas as áreas; ao limpar, volta para a área em que a pessoa estava
-$("#q").oninput=e=>{termo=e.target.value.trim().toLowerCase();if(termo&&antes===null){antes=filtro;setChip("Todas")}else if(!termo&&antes!==null){setChip(antes);antes=null}renderCards()};
+$("#q").oninput=e=>{marca=null;termo=e.target.value.trim().toLowerCase();if(termo&&antes===null){antes=filtro;setChip("Todas")}else if(!termo&&antes!==null){setChip(antes);antes=null}renderCards()};
 $("#clr").onclick=()=>{const q=$("#q");q.value="";q.oninput({target:q});q.focus()};
 
 function updFav(){
@@ -516,16 +595,30 @@ function updFav(){
   $("#marcadas").textContent=n?"Você marcou como prioridade: "+names.join(", ")+".":"";
 }
 
-// quadrados: cada frente da equipe aponta para a área de propostas correspondente (null = sem proposta no resumo)
-const SQ=[["Triedro","n","negocios"],["Copiadora","n","negocios"],["Escritório Piloto","n","negocios"],
-["Acadêmico","s","servicos"],["Sociocultural","s",null],["Extensão","s","servicos"],["Expansão","s",null],["Eventos","s","memoria"],
-["Tecnologia","a","apoio"],["Espaços do Grêmio","a","apoio"],["Comunicação","a","imagem"],["Representantes discentes","r",null]];
+// quadrados: cada frente da equipe → área de propostas e títulos das propostas que tratam dela.
+// null = nenhuma proposta trata da frente (aparece "detalhes em breve"). Rever quando as propostas mudarem.
+const SQ=[
+["Triedro","n","negocios",["Triedro sem fila","Triedro mais conhecido e confortável"]],
+["Copiadora","n","negocios",["Copiadora ampliada","Sublimação na copiadora"]],
+["Escritório Piloto","n","negocios",["Escritório Piloto de volta","Escritório Piloto para startups"]],
+["Acadêmico","s","servicos",["Materiais de estudo num só lugar","FAQ do Grêmio","Poliverso","Politique"]],
+["Sociocultural","s","memoria",["Memorial dos 123 anos","Cervejada/Calourada com a AAAP","Gincana de recepção"]],
+["Extensão","s","servicos",["Salas para os grupos de extensão","AEX que valem a pena"]],
+["Expansão","s",null],
+["Eventos","s","memoria",["Cervejada/Calourada com a AAAP","Gincana de recepção"]],
+["Tecnologia","a","apoio",["Novo site do Grêmio","Tecnologia feita com os grupos da Poli"]],
+["Espaços do Grêmio","a","apoio",["Espaços equipados"]],
+["Comunicação","a","imagem",["Imagem que atrai parceiros","Recuperar a confiança dos alunos"]],
+["Representantes discentes","r",null]];
+SQ.forEach(([n,,id,tit])=>(tit||[]).forEach(t=>{if(!P.find(p=>p.id===id).b.some(x=>x.t===t))console.warn("Mapa dos quadrados: a proposta “"+t+"” não existe mais em "+id+" (quadrado "+n+")")}));
 const tg={n:"Negócios",s:"Serviços",a:"Apoio",r:"Representação"};
-$("#sq").innerHTML=SQ.map(([n,c,id])=>id?'<a href="#p-'+id+'" class="'+c+'" data-id="'+id+'">'+n+'<small>'+tg[c]+'</small></a>':'<div class="'+c+' soon">'+n+'<small>detalhes em breve</small></div>').join("");
-// abre uma área das propostas (quadrados, atalhos do início e links #p-area)
-function goArea(id){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
-$$("#sq a,.hero-foot a").forEach(a=>a.onclick=e=>{e.preventDefault();const id=a.getAttribute("href").slice(3);history.replaceState(null,"","#p-"+id);goArea(id)});
-const fromHash=()=>{const m=location.hash.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
+$("#sq").innerHTML=SQ.map(([n,c,id],i)=>id?'<a href="#p-'+id+'" class="'+c+'" data-i="'+i+'">'+n+'<small>'+tg[c]+'</small></a>':'<div class="'+c+' soon">'+n+'<small>detalhes em breve</small></div>').join("");
+// abre uma área das propostas (quadrados, atalhos do início e links #p-area); tit = propostas a destacar
+function goArea(id,tit){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);
+  if(tit&&tit.length){marca=new Set(P.find(p=>p.id===id).b.filter(x=>tit.includes(x.t)).map(x=>x.id));renderCards()}
+  const el=$("#grid li.hit");el?el.scrollIntoView({block:"center"}):$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
+$$("#sq a,.hero-foot a").forEach(a=>a.onclick=e=>{e.preventDefault();const id=a.getAttribute("href").slice(3);history.replaceState(null,"","#p-"+id);goArea(id,a.dataset.i?SQ[a.dataset.i][3]:null)});
+const fromHash=()=>{const h=location.hash,c=h.match(/^#carta(?:\/([\w-]+))?$/);if(c&&CARTA.url)return cartaOpen(c[1]);cartaClose();const m=h.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
 addEventListener("hashchange",fromHash);
 
 // ideias
@@ -554,7 +647,9 @@ $(".menu").onclick=e=>{const o=$("#nav").classList.toggle("open");e.currentTarge
 const closeNav=()=>{$("#nav").classList.remove("open");$(".menu").setAttribute("aria-expanded",false)};
 $$("#nav a").forEach(a=>a.onclick=closeNav);
 // o menu do celular fecha com Esc ou ao tocar fora
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("#nav").classList.contains("open")){closeNav();$(".menu").focus()}});
+document.addEventListener("keydown",e=>{if(e.key!=="Escape")return;
+  if(!cv.el.hidden)$("#cvSide").classList.contains("open")?cvTopics(false):$("#cvExit").click();
+  else if($("#nav").classList.contains("open")){closeNav();$(".menu").focus()}});
 document.addEventListener("click",e=>{if(!e.target.closest("header.top"))closeNav()});
 // marca no menu a seção que está na tela
 const navL=$$("#nav a"),navS=navL.map(a=>$(a.getAttribute("href")));
@@ -562,7 +657,63 @@ const spy=()=>{const y=scrollY+innerHeight*.35;let cur=-1;navS.forEach((x,i)=>{i
 addEventListener("scroll",spy,{passive:true});
 $("#tp").onchange=e=>document.body.classList.toggle("nopend",!e.target.checked);
 $("#help").onclick=()=>{$("#helpmsg").hidden=false};
-setChip(filtro);renderCards();updFav();spy();fromHash();
+
+// ===== carta-programa: o PDF é desenhado na página (PDF.js) e o índice rola até cada tópico =====
+const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+const cv={el:$("#cv"),doc:null,pages:[],pos:{},y:0,from:null,ready:null,lock:0};
+const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/\s+/g,"");
+// liga ou desliga tudo conforme exista o PDF: chamada, índice e links nos cartões
+function cartaSync(){const on=!!CARTA.url;$("#cartaBtn").hidden=!on;$("#cartaSoon").hidden=on;$("#cvDl").href=CARTA.url||"#";
+  $("#cvList").innerHTML=CARTA.topicos.map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n2?' class="n2"':'')+'>'+esc(t.t)+'</button></li>').join("");
+  $$("#cvList button").forEach(b=>b.onclick=()=>{cvTopics(false);cartaGo(b.dataset.t)});
+  if(on)P.forEach(a=>[a,...a.b].forEach(x=>{if(x.c&&!CARTA.topicos.some(t=>t.id===x.c))console.warn("Carta-programa: o tópico “"+x.c+"” não existe no índice ("+(x.g||x.t)+")")}));
+  renderCards()}
+function cartaLoad(){return cv.ready||(cv.ready=(async()=>{
+  const st=$("#cvStatus");st.hidden=false;st.textContent="Carregando a carta-programa…";
+  try{
+    if(!window.pdfjsLib)await new Promise((ok,no)=>{const j=document.createElement("script");j.src=PDFJS+"pdf.min.js";j.onload=ok;j.onerror=no;document.head.appendChild(j)});
+    pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+"pdf.worker.min.js";
+    cv.doc=await pdfjsLib.getDocument(CARTA.url).promise;
+    // cada página só é desenhada quando chega perto da tela
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)cartaDraw(cv.pages[e.target.dataset.n-1])}),{root:$("#cvDoc"),rootMargin:"800px 0px"});
+    for(let n=1;n<=cv.doc.numPages;n++){const pg=await cv.doc.getPage(n),vp=pg.getViewport({scale:1}),el=document.createElement("div");
+      el.className="cv-page";el.dataset.n=n;el.style.aspectRatio=vp.width+"/"+vp.height;el.setAttribute("aria-label","Página "+n);
+      $("#cvDoc").appendChild(el);cv.pages.push({pg,vp,el});io.observe(el)}
+    st.hidden=true;
+    for(const t of CARTA.topicos)cv.pos[t.id]=await cartaFind(t);
+  }catch(e){cv.ready=null;cv.pages.forEach(x=>x.el.remove());cv.pages=[];
+    st.innerHTML='Não foi possível abrir a carta-programa aqui. <a href="'+CARTA.url+'">Baixar o PDF</a>';throw e}
+})())}
+async function cartaDraw(p){if(p.ok)return;p.ok=1;const k=p.el.clientWidth/p.vp.width*Math.min(devicePixelRatio||1,2),vp=p.pg.getViewport({scale:k}),c=document.createElement("canvas");
+  c.width=vp.width;c.height=vp.height;p.el.prepend(c);await p.pg.render({canvasContext:c.getContext("2d"),viewport:vp}).promise}
+// acha no texto do PDF onde o tópico começa; devolve a posição em fração da página (x, y, largura do trecho)
+async function cartaFind(t){const key=norm(t.busca||t.t);
+  for(const p of (t.pag?[cv.pages[t.pag-1]]:cv.pages)){if(!p)continue;
+    const tc=p.tc||(p.tc=await p.pg.getTextContent()),it=tc.items,map=[];let str="";
+    it.forEach((x,k)=>{for(const ch of norm(x.str)){str+=ch;map.push(k)}});
+    const i=str.indexOf(key);if(i<0)continue;
+    const q=x=>pdfjsLib.Util.transform(p.vp.transform,x.transform),a=q(it[map[i]]),h=Math.hypot(a[2],a[3])||12;
+    let x1=a[4]+it[map[i]].width;
+    for(let k=map[i]+1;k<=map[i+key.length-1];k++){const b=q(it[k]);if(Math.abs(b[5]-a[5])>h*.4)break;x1=Math.max(x1,b[4]+it[k].width)}
+    return {p,x:a[4]/p.vp.width,y:(a[5]+h*.2)/p.vp.height,w:(x1-a[4])/p.vp.width,top:(a[5]-h)/p.vp.height}}
+  const p=t.pag&&cv.pages[t.pag-1];return p?{p,top:0}:null}
+const cvCur=id=>$$("#cvList button").forEach(b=>b.dataset.t===id?b.setAttribute("aria-current","true"):b.removeAttribute("aria-current"));
+const cvTop=o=>o.p.el.offsetTop+o.top*o.p.el.clientHeight;
+// rola até o tópico e sublinha o começo dele
+async function cartaGo(id){await cartaLoad();const o=cv.pos[id];if(!o)return;
+  $$(".cv-mark").forEach(m=>m.remove());
+  if(o.w){const m=document.createElement("i");m.className="cv-mark";m.style.cssText="left:"+o.x*100+"%;top:"+o.y*100+"%;width:"+o.w*100+"%";o.p.el.appendChild(m)}
+  cv.lock=Date.now()+900;$("#cvDoc").scrollTo({top:cvTop(o)-28});cvCur(id)}
+$("#cvDoc").addEventListener("scroll",()=>{if(Date.now()<cv.lock)return;const y=$("#cvDoc").scrollTop+90;let cur=null;
+  CARTA.topicos.forEach(t=>{const o=cv.pos[t.id];if(o&&cvTop(o)<=y)cur=t.id});cvCur(cur)},{passive:true});
+const cvTopics=o=>{$("#cvSide").classList.toggle("open",o);$("#cvTog").setAttribute("aria-expanded",o)};
+$("#cvTog").onclick=()=>cvTopics(!$("#cvSide").classList.contains("open"));
+function cartaOpen(id){if(cv.el.hidden){cv.y=scrollY;cv.from=document.activeElement;cv.el.hidden=false;document.body.classList.add("cv-open");$("#cvExit").focus()}
+  cartaLoad().then(()=>{if(id)cartaGo(id)}).catch(()=>{})}
+function cartaClose(){if(cv.el.hidden)return;cv.el.hidden=true;cvTopics(false);document.body.classList.remove("cv-open");scrollTo({top:cv.y,behavior:"instant"});if(cv.from&&cv.from.focus)cv.from.focus({preventScroll:true})}
+$("#cvExit").onclick=()=>{history.replaceState(null,"",location.pathname+location.search);cartaClose()};
+
+setChip(filtro);cartaSync();updFav();spy();fromHash();
 </script>
 </body>
 </html>
