@@ -4,56 +4,58 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#1B2340">
+<meta name="theme-color" content="#0F1F3D">
 <title>Prisma — Um Grêmio que funciona</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231B2340'/%3E%3Cg transform='translate(9 18) scale(.55)'%3E%3Cpolygon points='50,30 10,130 90,130' fill='%23F4F2EC'/%3E%3Cpolygon points='50,30 73.3,23.3 113.3,123.3 90,130' fill='%23E8906A'/%3E%3Cpolygon points='73.3,23.3 96.7,16.7 136.7,116.7 113.3,123.3' fill='%23E0B44E'/%3E%3Cpolygon points='96.7,16.7 120,10 160,110 136.7,116.7' fill='%235BB4E0'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230F1F3D'/%3E%3Cg transform='translate(22 17) scale(.7)'%3E%3Cpolygon points='0,17.5 28,35 28,74 0,93.5' fill='%23F8F5F0'/%3E%3Cpolygon points='0,17.5 28,0 28,35' fill='%23F4BE5A'/%3E%3Cpolygon points='28.8,.5 84,35 58.65,52.66 28.8,34' fill='%23EC7042'/%3E%3Cpolygon points='28.8,54.5 45.2,44.25 58.65,52.66 28.8,73.44' fill='%23B292F5'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* Identidade Prisma — paleta oficial do manual */
+/* Identidade Prisma — paleta e tipografia da prancha de marca */
 :root{
-  --navy:#1B2340;   /* Marinho: base, texto (60%) */
-  --paper:#FAF9F6;  /* Papel: fundo (30%) */
-  --ink-neg:#F4F2EC;/* face do prisma / texto sobre marinho */
-  --coral:#E8906A;  /* acento — oklch .75 .15 40 */
-  --amber:#E0B44E;  /* acento — oklch .75 .15 85 */
-  --sky:#5BB4E0;    /* acento — oklch .75 .15 220 */
-  --coral-d:#C4673F;/* coral escuro: hover e foco */
-  --paper2:#EDEBE5; /* fundo alternado */
-  --ink2:#3A4160;   /* texto secundário */
-  --ink3:#5A607A;
-  --line:#D6D3CA;
+  --navy:#0F1F3D;   /* Azul Poli: base e texto */
+  --paper:#F8F5F0;  /* fundo */
+  --ink-neg:#F8F5F0;/* face clara do símbolo / texto sobre azul */
+  --orange:#EC7042; /* Laranja Energia */
+  --yellow:#F4BE5A; /* Amarelo Ideias */
+  --lilac:#B292F5;  /* Lilás Pessoas */
+  --orange-d:#B94A1F;/* laranja escuro: hover, foco e texto */
+  --paper2:#EFEAE2; /* fundo alternado */
+  --ink2:#3B4763;   /* texto secundário */
+  --ink3:#5C6680;
+  --line:#DAD4C9;
   --r:2px;
-  --fh:Archivo,system-ui,sans-serif;
-  --fb:Archivo,system-ui,sans-serif;
-  --fm:"IBM Plex Mono",ui-monospace,monospace;
+  --fh:Sora,system-ui,sans-serif;   /* títulos */
+  --fb:Inter,system-ui,sans-serif;  /* apoio */
+  --fm:Inter,system-ui,sans-serif;  /* rótulos: caixa alta espaçada */
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{margin:0;font:400 17px/1.6 var(--fb);color:var(--navy);background:var(--paper);-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:var(--fh);line-height:1.05;margin:0 0 .5em}
-h1,h2{font-weight:800;font-variation-settings:'wdth' 112;letter-spacing:-.005em}
+h1,h2{font-weight:700;letter-spacing:-.02em}
+h1{font-weight:300} h1 .hl{font-weight:700}
 h1{font-size:clamp(2.4rem,6.2vw,4.4rem)} h2{font-size:clamp(1.7rem,4vw,2.4rem)}
-h3{font-size:1.12rem;font-weight:700}
-p{margin:0 0 1em} a{color:var(--navy)} a:hover{color:var(--coral-d)}
-:focus-visible{outline:2px solid var(--coral-d);outline-offset:3px}
+h3{font-size:1.12rem;font-weight:600;letter-spacing:-.01em}
+p{margin:0 0 1em} a{color:var(--navy)} a:hover{color:var(--orange-d)}
+:focus-visible{outline:2px solid var(--orange-d);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 section{padding:80px 0}
 .sr{position:absolute;left:-9999px}
 .mono,.eyebrow{font-family:var(--fm);font-weight:500;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
-.eyebrow{display:block;color:var(--amber);margin-bottom:18px}
-.hl{color:var(--coral)}
+.eyebrow{display:block;color:var(--yellow);margin-bottom:18px}
+.hl{color:var(--orange)}
 
-/* ornamento: o prisma em desenho técnico (linhas finas), sem preenchimento */
+/* ornamento: facetas triangulares da prancha (cheias no início, em linhas no Participe) */
 .facets{display:block;height:auto;pointer-events:none}
-.facets *{fill:none;stroke:rgba(244,242,236,.13);stroke-width:1.25;vector-effect:non-scaling-stroke}
+.facets polygon{stroke:var(--navy);stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.facets.lines *{fill:none;stroke-width:1.25;vector-effect:non-scaling-stroke}
 
 /* número de seção (só visual, em mono) */
 main{counter-reset:sec}
 main > section:not(.hero) h2:first-child::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:inline-block;vertical-align:.4em;margin-right:14px;padding:4px 8px;font:500 .8rem var(--fm);letter-spacing:.06em;background:var(--navy);color:var(--ink-neg)}
-#participe h2:first-child::before{background:var(--coral);color:var(--navy)}
+#participe h2:first-child::before{background:var(--orange);color:var(--navy)}
 
 /* pendências */
 .pend{background:#FFE45C;color:var(--navy);padding:0 .3em;border-radius:2px;font-size:.88em}
@@ -64,56 +66,57 @@ body.nopend .pend .tag{display:none}
 .logo{display:block;flex:none}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);line-height:1}
 .brand:hover{color:var(--navy)}
-.brand .name{display:block;font:800 1.35rem var(--fh);font-variation-settings:'wdth' 112;letter-spacing:.04em}
-.brand .sub{display:block;font:500 .56rem var(--fm);letter-spacing:.14em;text-transform:uppercase;margin-top:5px;color:var(--ink2)}
+.brand .name{display:block;font:300 1.32rem var(--fh);letter-spacing:.24em;white-space:nowrap}
+.brand .lam{display:inline-block;width:.74em;height:.7em;overflow:visible}
+.brand .sub{display:block;font:500 .58rem var(--fm);letter-spacing:.13em;margin-top:6px;color:var(--ink2);white-space:nowrap}
 
 /* header */
-header.top{position:sticky;top:0;z-index:20;background:rgba(250,249,246,.94);backdrop-filter:blur(8px);border-bottom:2px solid var(--navy)}
+header.top{position:sticky;top:0;z-index:20;background:rgba(248,245,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .bar{display:flex;align-items:center;gap:20px;height:68px}
 nav{margin-left:auto;display:flex;gap:2px;align-items:center}
-nav a{color:var(--navy);text-decoration:none;padding:8px 12px;font:600 .93rem var(--fb)}
-nav a:hover{color:var(--navy);box-shadow:inset 0 -3px 0 var(--coral)}
-.btn{display:inline-block;border:0;cursor:pointer;font:700 .98rem var(--fb);padding:14px 22px;border-radius:var(--r);text-decoration:none;background:var(--navy);color:var(--ink-neg);transition:transform .15s,filter .15s}
+nav a{color:var(--navy);text-decoration:none;padding:8px 12px;font:500 .93rem var(--fb)}
+nav a:hover{color:var(--navy);box-shadow:inset 0 -3px 0 var(--orange)}
+.btn{display:inline-block;border:0;cursor:pointer;font:600 .98rem var(--fb);padding:14px 22px;border-radius:var(--r);text-decoration:none;background:var(--navy);color:var(--ink-neg);transition:transform .15s,filter .15s}
 .btn:hover{color:var(--ink-neg);transform:translateY(-1px);filter:brightness(1.15)}
-.btn.coral{background:var(--coral);color:var(--navy)} .btn.coral:hover{color:var(--navy);filter:brightness(1.05)}
-.btn.alt{background:var(--amber);color:var(--navy)} .btn.alt:hover{color:var(--navy);filter:brightness(1.05)}
+.btn.orange{background:var(--orange);color:var(--navy)} .btn.orange:hover{color:var(--navy);filter:brightness(1.05)}
+.btn.alt{background:var(--yellow);color:var(--navy)} .btn.alt:hover{color:var(--navy);filter:brightness(1.05)}
 .btn.ghost{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor;color:var(--navy)}
 nav .btn{padding:9px 18px;margin-left:8px}
 nav .btn:hover{box-shadow:none}
 .menu{display:none;margin-left:auto;background:none;border:1.5px solid var(--navy);border-radius:var(--r);padding:6px 14px;font:500 .8rem var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
 @media(max-width:820px){
   .menu{display:block}
-  nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:stretch;padding:12px 20px 20px;border-bottom:2px solid var(--navy)}
+  nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:stretch;padding:12px 20px 20px;border-bottom:1px solid var(--line)}
   nav.open{display:flex} nav a{padding:12px} nav .btn{margin:8px 0 0;text-align:center}
 }
 
-/* hero — versão negativa (marinho) com grade técnica e o prisma em desenho de linhas */
-.hero{background-color:var(--navy);background-image:linear-gradient(rgba(244,242,236,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,242,236,.04) 1px,transparent 1px);background-size:48px 48px;background-position:center top;color:var(--ink-neg);padding:0;overflow:hidden;position:relative;display:flex;flex-direction:column;
+/* hero — versão negativa (azul) com as facetas do prisma no canto */
+.hero{background:var(--navy);color:var(--ink-neg);padding:0;overflow:hidden;position:relative;display:flex;flex-direction:column;
   min-height:max(560px,calc(100vh - 68px));min-height:max(560px,calc(100svh - 68px))}
-.hero .facets{position:absolute;right:-140px;bottom:-170px;width:min(820px,70vw);z-index:0}
+.hero .facets{position:absolute;right:0;bottom:0;width:min(560px,46vw);z-index:0}
 .hero-in{position:relative;z-index:1;flex:1;width:100%;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:center;gap:56px;padding-top:56px;padding-bottom:56px}
 .hero h1{margin-bottom:.35em}
 .hero .hl{white-space:nowrap}
-.hero p.lead{font-size:clamp(1.1rem,1.6vw,1.28rem);line-height:1.55;max-width:36ch;color:rgba(244,242,236,.8);text-wrap:pretty;margin-bottom:0}
+.hero p.lead{font-size:clamp(1.1rem,1.6vw,1.28rem);line-height:1.55;max-width:36ch;color:rgba(248,245,240,.8);text-wrap:pretty;margin-bottom:0}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
 .hero .btn.ghost{color:var(--ink-neg)}
-.hero .mark{display:block;width:100%;max-width:300px;height:auto;aspect-ratio:154/124;justify-self:start;--logo-ink:var(--ink-neg)}
-.hero-foot{position:relative;z-index:1;border-top:1px solid rgba(244,242,236,.16)}
-.hero-foot .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:18px;color:rgba(244,242,236,.62)}
+.hero .mark{display:block;width:100%;max-width:230px;height:auto;aspect-ratio:84/94;justify-self:center;align-self:start;margin-top:4vh;--logo-ink:var(--ink-neg)}
+.hero-foot{position:relative;z-index:1;border-top:1px solid rgba(248,245,240,.16)}
+.hero-foot .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:18px;color:rgba(248,245,240,.62)}
 @media(max-width:900px){
   .hero-in{grid-template-columns:1fr;gap:0;padding-top:40px}
   .hero .mark{display:none}
-  .hero .facets{right:-160px;bottom:-60px;width:520px}
+  .hero .facets{width:min(300px,62vw)}
   .hero-foot .wrap span:last-child{display:none}
 }
 
 /* cards 3 */
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;background:#fff;border:1px solid var(--line)}
 @media(max-width:820px){.three{grid-template-columns:1fr}}
-.pillar{padding:26px 24px;border-top:5px solid var(--coral)}
+.pillar{padding:26px 24px;border-top:5px solid var(--orange)}
 .pillar + .pillar{border-left:1px solid var(--line)}
 @media(max-width:820px){.pillar + .pillar{border-left:0;box-shadow:0 -1px 0 var(--line)}}
-.pillar:nth-child(2){border-top-color:var(--amber)} .pillar:nth-child(3){border-top-color:var(--sky)}
+.pillar:nth-child(2){border-top-color:var(--yellow)} .pillar:nth-child(3){border-top-color:var(--lilac)}
 .pillar h3{margin-bottom:.5em}
 
 /* propostas */
@@ -127,9 +130,9 @@ nav .btn:hover{box-shadow:none}
 @media(max-width:820px){.grid{grid-template-columns:1fr}}
 .card{background:var(--paper);border:1.5px solid transparent;border-radius:var(--r);overflow:hidden}
 .card.open{border-color:var(--navy);background:#fff}
-.card[data-a=imagem]{--c:var(--ink3)} .card[data-a=contas]{--c:var(--navy)} .card[data-a=negocios]{--c:var(--coral)} .card[data-a=servicos]{--c:var(--sky)} .card[data-a=apoio]{--c:var(--amber)} .card[data-a=memoria]{--c:var(--coral-d)}
+.card[data-a=imagem]{--c:var(--ink3)} .card[data-a=contas]{--c:var(--navy)} .card[data-a=negocios]{--c:var(--orange)} .card[data-a=servicos]{--c:var(--lilac)} .card[data-a=apoio]{--c:var(--yellow)} .card[data-a=memoria]{--c:var(--orange-d)}
 .card .head{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;text-align:left;padding:16px 18px 16px 0;cursor:pointer;color:var(--navy);font:inherit}
-.card .head::before{content:"";align-self:stretch;width:8px;background:var(--c);flex:none;transform:skewX(-21.8deg);margin-left:6px}
+.card .head::before{content:"";align-self:center;width:15px;height:18px;background:var(--c);flex:none;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:18px}
 .card .head h3{margin:0;flex:1}
 .card .head small{display:block;font:500 .68rem var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
 .card .chev{flex:none;width:9px;height:9px;margin:0 4px 4px 0;border:solid var(--navy);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s}
@@ -142,9 +145,9 @@ nav .btn:hover{box-shadow:none}
 .props b{display:block;font-weight:700}
 .props p{margin:2px 0 0;color:var(--ink2);font-size:.96rem;line-height:1.5}
 .plink{display:inline-block;margin-top:6px;font-weight:600;font-size:.95rem}
-.lp{display:inline-block;margin:4px 0 2px;padding:2px 8px;background:#F2E3BD;font:500 .66rem var(--fm);letter-spacing:.16em;text-transform:uppercase}
+.lp{display:inline-block;margin:4px 0 2px;padding:2px 8px;background:#E6DCFD;font:500 .66rem var(--fm);letter-spacing:.16em;text-transform:uppercase}
 .fav{flex:none;border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);width:34px;height:34px;font-size:1rem;line-height:1;cursor:pointer;color:var(--navy)}
-.fav[aria-pressed=true]{background:var(--coral);border-color:var(--coral)}
+.fav[aria-pressed=true]{background:var(--orange);border-color:var(--orange)}
 .empty{padding:24px;color:var(--ink2)}
 
 /* quadrados */
@@ -152,7 +155,7 @@ nav .btn:hover{box-shadow:none}
 .sq{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0}
 @media(max-width:820px){.sq{grid-template-columns:repeat(2,1fr)}}
 .sq a,.sq div{aspect-ratio:1.25;border-radius:var(--r);padding:14px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--navy);font:700 1rem var(--fh);background:#fff;border:1.5px solid var(--navy);transition:transform .15s,box-shadow .15s}
-.sq .n{background:var(--coral);border-color:var(--coral)} .sq .s{background:var(--sky);border-color:var(--sky)} .sq .a{background:var(--amber);border-color:var(--amber)} .sq .r{background:transparent;border-style:dashed}
+.sq .n{background:var(--orange);border-color:var(--orange)} .sq .s{background:var(--lilac);border-color:var(--lilac)} .sq .a{background:var(--yellow);border-color:var(--yellow)} .sq .r{background:transparent;border-style:dashed}
 .sq small{font:500 .66rem var(--fm);letter-spacing:.14em;text-transform:uppercase}
 .sq a:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--navy);color:var(--navy)}
 .sq .soon{background:transparent;color:var(--ink3);border:1.5px dashed var(--ink3)}
@@ -174,10 +177,10 @@ nav .btn:hover{box-shadow:none}
 #ideias{background:var(--paper2)}
 .ideas{display:grid;grid-template-columns:1fr 1.1fr;gap:32px;align-items:start}
 @media(max-width:820px){.ideas{grid-template-columns:1fr}}
-form.f{background:var(--paper);border-top:5px solid var(--coral);padding:24px}
+form.f{background:var(--paper);border-top:5px solid var(--orange);padding:24px}
 label{display:block;font-weight:600;margin:0 0 6px}
 textarea,select{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:var(--r);font:400 1rem var(--fb);margin-bottom:14px;background:#fff;color:var(--navy)}
-textarea:focus,select:focus,.search:focus{outline:2px solid var(--coral-d);outline-offset:0;border-color:var(--navy)}
+textarea:focus,select:focus,.search:focus{outline:2px solid var(--orange-d);outline-offset:0;border-color:var(--navy)}
 textarea{min-height:110px;resize:vertical}
 .hint{font-size:.9rem;color:var(--ink2)}
 .ideas h3{display:flex;align-items:center}
@@ -185,7 +188,7 @@ textarea{min-height:110px;resize:vertical}
 .idea p{margin:0;flex:1}
 .idea .meta{font:400 .74rem var(--fm);letter-spacing:.04em;color:var(--ink3);display:block;margin-top:6px}
 .up{border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);padding:6px 10px;font:500 .85rem var(--fm);cursor:pointer;min-width:60px;color:var(--navy)}
-.up[aria-pressed=true]{background:var(--amber);border-color:var(--amber)}
+.up[aria-pressed=true]{background:var(--yellow);border-color:var(--yellow)}
 .badge{background:var(--navy);color:var(--ink-neg);padding:2px 8px;font:500 .72rem var(--fm);margin-left:10px}
 
 /* faq */
@@ -194,54 +197,52 @@ details{border-bottom:1px solid var(--line);padding:18px 0}
 details:first-child{border-top:2px solid var(--navy)}
 summary{cursor:pointer;font:700 1.05rem var(--fh);list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font:400 1.3rem/1 var(--fm);color:var(--coral-d)}
+summary::after{content:"+";font:400 1.3rem/1 var(--fm);color:var(--orange-d)}
 details[open] summary::after{content:"–"}
 details p{margin:12px 0 0;max-width:70ch}
 
 /* participe */
 #participe{background:var(--navy);color:var(--ink-neg);position:relative;overflow:hidden}
 #participe .wrap{position:relative;z-index:1}
-#participe .facets{position:absolute;right:-60px;bottom:-90px;width:min(520px,80vw);z-index:0}
-@media(max-width:900px){#participe .facets{opacity:.5}}
-#participe a{color:var(--amber)}
+#participe .facets{position:absolute;right:-40px;bottom:-40px;width:min(460px,80vw);z-index:0;opacity:.55}
+@media(max-width:900px){#participe .facets{opacity:.3}}
+#participe a{color:var(--yellow)}
 #participe .btn{color:var(--navy)}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(244,242,236,.18);background:var(--navy)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(248,245,240,.18);background:var(--navy)}
 @media(max-width:820px){.two{grid-template-columns:1fr}}
 .two div{padding:24px}
-.two div + div{border-left:1px solid rgba(244,242,236,.18)}
-@media(max-width:820px){.two div + div{border-left:0;border-top:1px solid rgba(244,242,236,.18)}}
-footer{background:var(--navy);color:rgba(244,242,236,.75);padding:0 0 88px;font-size:.9rem}
-footer .wrap{border-top:1px solid rgba(244,242,236,.16);padding-top:28px;display:flex;gap:16px 28px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+.two div + div{border-left:1px solid rgba(248,245,240,.18)}
+@media(max-width:820px){.two div + div{border-left:0;border-top:1px solid rgba(248,245,240,.18)}}
+footer{background:var(--navy);color:rgba(248,245,240,.75);padding:0 0 88px;font-size:.9rem}
+footer .wrap{border-top:1px solid rgba(248,245,240,.16);padding-top:28px;display:flex;gap:16px 28px;flex-wrap:wrap;justify-content:space-between;align-items:center}
 footer .brand{color:var(--ink-neg);--logo-ink:var(--ink-neg)}
 footer .brand:hover{color:var(--ink-neg)}
-footer .brand .sub{color:rgba(244,242,236,.6)}
+footer .brand .sub{color:rgba(248,245,240,.6)}
 .foot-meta{display:flex;flex-direction:column;gap:4px;text-align:right}
 @media(max-width:700px){.foot-meta{text-align:left}}
 
 /* dev bar */
-.dev{position:fixed;left:12px;bottom:12px;z-index:30;background:var(--navy);color:var(--ink-neg);border:1px solid rgba(244,242,236,.2);padding:8px 12px;font:400 .78rem var(--fm);display:flex;gap:10px;align-items:center;box-shadow:0 2px 10px #0003}
+.dev{position:fixed;left:12px;bottom:12px;z-index:30;background:var(--navy);color:var(--ink-neg);border:1px solid rgba(248,245,240,.2);padding:8px 12px;font:400 .78rem var(--fm);display:flex;gap:10px;align-items:center;box-shadow:0 2px 10px #0003}
 .dev label{margin:0;font-weight:400;display:flex;gap:6px;align-items:center;cursor:pointer}
-.pill{position:fixed;right:12px;bottom:12px;z-index:30;background:var(--coral);color:var(--navy);padding:10px 16px;font:500 .8rem var(--fm);letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 16px rgba(27,35,64,.25);display:none}
+.pill{position:fixed;right:12px;bottom:12px;z-index:30;background:var(--orange);color:var(--navy);padding:10px 16px;font:500 .8rem var(--fm);letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 16px rgba(15,31,61,.25);display:none}
 </style>
 </head>
 <body>
-<!-- Símbolo Prisma: a face sólida é o compromisso; a face lateral é o que ele produz -->
+<!-- Símbolo Prisma: um P em facetas que apontam para a mesma direção -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="sym" viewBox="8 8 154 124">
-    <!-- face sólida: o compromisso -->
-    <polygon style="fill:var(--logo-ink,#1B2340)" points="50,30 10,130 90,130"/>
-    <!-- face lateral: a luz decomposta em Coral, Âmbar e Céu -->
-    <polygon fill="#E8906A" points="50,30 73.3,23.3 113.3,123.3 90,130"/>
-    <polygon fill="#E0B44E" points="73.3,23.3 96.7,16.7 136.7,116.7 113.3,123.3"/>
-    <polygon fill="#5BB4E0" points="96.7,16.7 120,10 160,110 136.7,116.7"/>
+  <symbol id="sym" viewBox="0 0 84 94">
+    <polygon style="fill:var(--logo-ink,#0F1F3D)" points="0,17.5 28,35 28,74 0,93.5"/>
+    <polygon fill="#F4BE5A" points="0,17.5 28,0 28,35"/>
+    <polygon fill="#EC7042" points="28.8,.5 84,35 58.65,52.66 28.8,34"/>
+    <polygon fill="#B292F5" points="28.8,54.5 45.2,44.25 58.65,52.66 28.8,73.44"/>
   </symbol>
 </svg>
 <a class="sr" href="#propostas">Ir para as propostas</a>
 
 <header class="top"><div class="wrap bar">
   <a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, início">
-    <svg class="logo" width="40" height="32" aria-hidden="true"><use href="#sym"/></svg>
-    <span><span class="name">PRISMA</span><span class="sub">Chapa · Grêmio Politécnico</span></span>
+    <svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg>
+    <span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span>
   </a>
   <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
   <nav id="nav">
@@ -252,15 +253,15 @@ footer .brand .sub{color:rgba(244,242,236,.6)}
 
 <main>
 <section class="hero" id="inicio">
-  <svg class="facets" viewBox="0 0 170 140" aria-hidden="true"><polygon points="50,30 10,130 90,130"/><polygon points="50,30 120,10 160,110 90,130"/><line x1="50" y1="30" x2="90" y2="130"/></svg>
+  <svg class="facets" viewBox="0 0 400 300" aria-hidden="true"><polygon fill="#EC7042" points="40,300 400,10 290,205"/><polygon fill="#F4BE5A" points="400,10 400,300 290,205"/><polygon fill="#B292F5" points="40,300 400,300 290,205"/></svg>
   <div class="wrap hero-in">
     <div class="hero-txt">
       <span class="eyebrow">Chapa · Grêmio Politécnico</span>
       <h1>Um Grêmio <span class="hl">que funciona.</span></h1>
       <p class="lead">Contas em ordem, negócios que dão resultado e serviços para quem estuda&nbsp;na&nbsp;Poli.</p>
-      <div class="cta"><a class="btn coral" href="#propostas">Ver as propostas</a><a class="btn ghost" href="#ideias">Contar minha ideia</a></div>
+      <div class="cta"><a class="btn orange" href="#propostas">Ver as propostas</a><a class="btn ghost" href="#ideias">Contar minha ideia</a></div>
     </div>
-    <svg class="mark" viewBox="0 0 154 124" aria-hidden="true"><use href="#sym"/></svg>
+    <svg class="mark" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg>
   </div>
   <div class="hero-foot mono" aria-hidden="true"><div class="wrap"><span>Imagem · Contas · Negócios · Serviços · Apoio · Memória e eventos</span></div></div>
 </section>
@@ -307,7 +308,7 @@ footer .brand .sub{color:rgba(244,242,236,.6)}
       <div><h3>Reunião aberta</h3><p>Pelo menos uma por mês, aberta a todos os alunos. Nelas, qualquer aluno propõe e vota, e cada pessoa tem um voto.</p></div>
     </div>
     <h3>Clique em um quadrado para ver as propostas da área</h3>
-    <div class="leg"><span><i style="background:var(--coral)"></i>Negócios</span><span><i style="background:var(--sky)"></i>Serviços</span><span><i style="background:var(--amber)"></i>Apoio</span><span><i style="border-style:dashed"></i>Representação</span></div>
+    <div class="leg"><span><i style="background:var(--orange)"></i>Negócios</span><span><i style="background:var(--lilac)"></i>Serviços</span><span><i style="background:var(--yellow)"></i>Apoio</span><span><i style="border-style:dashed"></i>Representação</span></div>
     <div class="sq" id="sq"></div>
     <div class="org">
       <span class="stamp">Rascunho</span>
@@ -353,19 +354,19 @@ footer .brand .sub{color:rgba(244,242,236,.6)}
 </section>
 
 <section id="participe">
-  <svg class="facets" viewBox="0 0 170 140" aria-hidden="true"><polygon points="50,30 10,130 90,130"/><polygon points="50,30 120,10 160,110 90,130"/><line x1="50" y1="30" x2="90" y2="130"/></svg>
+  <svg class="facets lines" viewBox="0 0 400 300" aria-hidden="true"><polygon stroke="#F4BE5A" points="40,300 400,10 400,300"/><line stroke="#EC7042" x1="40" y1="300" x2="290" y2="205"/><line stroke="#F4BE5A" x1="400" y1="10" x2="290" y2="205"/><line stroke="#B292F5" x1="400" y1="300" x2="290" y2="205"/></svg>
   <div class="wrap">
     <h2>Participe</h2>
     <div class="two">
-      <div><h3>Conte sua ideia</h3><p>O que você muda no Grêmio se puder mudar uma coisa?</p><a class="btn coral" href="#ideias">Contar minha ideia</a></div>
-      <div><h3>Quer ajudar?</h3><p>Há funções para diferentes disponibilidades de tempo. Você escolhe a área em que quer atuar, e cada área tem um responsável. Quem está começando pode entrar como trainee.</p><button class="btn alt" id="help" type="button">Quero ajudar</button><p id="helpmsg" class="hint" style="color:var(--amber);margin:10px 0 0" hidden>No site de verdade, este botão leva ao formulário. <span class="pend"><span class="tag">[CONFIRMAR: link do formulário]</span></span></p></div>
+      <div><h3>Conte sua ideia</h3><p>O que você muda no Grêmio se puder mudar uma coisa?</p><a class="btn orange" href="#ideias">Contar minha ideia</a></div>
+      <div><h3>Quer ajudar?</h3><p>Há funções para diferentes disponibilidades de tempo. Você escolhe a área em que quer atuar, e cada área tem um responsável. Quem está começando pode entrar como trainee.</p><button class="btn alt" id="help" type="button">Quero ajudar</button><p id="helpmsg" class="hint" style="color:var(--yellow);margin:10px 0 0" hidden>No site de verdade, este botão leva ao formulário. <span class="pend"><span class="tag">[CONFIRMAR: link do formulário]</span></span></p></div>
     </div>
     <p style="margin-top:24px;font-size:.95rem">Privacidade: pedimos só nome, curso e e-mail, para responder você e falar sobre a chapa. O formulário é externo e o site não guarda dados. Você pode pedir a qualquer momento que apaguemos o que enviou, escrevendo para <span class="pend"><span class="tag">[CONFIRMAR: e-mail de contato]</span></span>.</p>
   </div>
 </section>
 </main>
 
-<footer><div class="wrap"><a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, voltar ao início"><svg class="logo" width="40" height="32" aria-hidden="true"><use href="#sym"/></svg><span><span class="name">PRISMA</span><span class="sub">Chapa · Grêmio Politécnico</span></span></a><div class="foot-meta"><span>Chapa para a gestão 2027 do Grêmio Politécnico</span><span>Protótipo: nome e identidade visual provisórios. <span class="pend"><span class="tag">[CONFIRMAR: identificação exigida em material de campanha]</span></span></span></div></div></footer>
+<footer><div class="wrap"><a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, voltar ao início"><svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg><span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span></a><div class="foot-meta"><span>Chapa para a gestão 2027 do Grêmio Politécnico</span><span>Protótipo: nome e identidade visual provisórios. <span class="pend"><span class="tag">[CONFIRMAR: identificação exigida em material de campanha]</span></span></span></div></div></footer>
 
 <a class="pill" id="pill" href="#ideias"></a>
 <div class="dev"><label><input type="checkbox" id="tp" checked> Destacar pendências</label></div>
