@@ -276,6 +276,29 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 .foot-meta{display:flex;flex-direction:column;gap:4px;text-align:right}
 @media(max-width:700px){.foot-meta{text-align:left}}
 
+/* pop-up "Quero ajudar": cresce a partir do botão e convida a falar com a chapa */
+.pop{width:calc(100% - 32px);max-width:440px;padding:0;border:0;border-top:5px solid var(--yellow);background:var(--paper);color:var(--navy);box-shadow:0 24px 60px rgba(15,31,61,.35)}
+.pop::backdrop{background:rgba(15,31,61,.6)}
+.pop-in{position:relative;padding:28px 26px 26px}
+.pop h3{margin:0 44px .5em 0;font-size:1.45rem}
+.pop p{margin:0 0 18px;color:var(--ink2)}
+.pop-x{position:absolute;top:14px;right:14px;width:40px;height:40px;border:1.5px solid var(--navy);border-radius:var(--r);background:none;color:var(--navy);font:400 1.4rem/1 var(--fb);cursor:pointer}
+.pop-x:hover{background:#fff}
+.pop-l{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.pop-l a{display:block;padding:12px 16px;background:#fff;border-left:4px solid var(--c,var(--navy));text-decoration:none;color:var(--navy);transition:transform .15s}
+.pop-l a:hover{color:var(--navy);transform:translateX(4px)}
+.pop-l small{display:block;font:500 .64rem var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}
+.pop-l b{display:block;font:600 1.02rem var(--fh);letter-spacing:-.01em;overflow-wrap:anywhere}
+.pop-l span{font-size:.95rem;color:var(--ink2)}
+@keyframes popIn{from{opacity:0;transform:translate(var(--px,0),var(--py,24px)) scale(.2)}to{opacity:1;transform:none}}
+@keyframes popOut{to{opacity:0;transform:translate(var(--px,0),var(--py,24px)) scale(.2)}}
+@keyframes popBg{from{opacity:0}to{opacity:1}}
+@keyframes popBgOut{to{opacity:0}}
+.pop[open]{animation:popIn .34s cubic-bezier(.2,.8,.2,1) both}
+.pop[open]::backdrop{animation:popBg .25s ease both}
+.pop.out{animation:popOut .2s ease both}
+.pop.out::backdrop{animation:popBgOut .2s ease both}
+
 /* carta-programa aberta: o site vira um índice ao lado do PDF */
 body.cv-open{overflow:hidden}
 body.cv-open>.pill,body.cv-open>a.sr{display:none!important}
@@ -289,8 +312,10 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 @keyframes cvSide{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
 .cv.opening .cv-doc{animation:cvGrow .55s cubic-bezier(.6,0,.2,1) both}
 .cv.opening .cv-side{animation:cvSide .38s ease .2s both}
-.cv.closing .cv-doc{animation:cvGrow .42s cubic-bezier(.6,0,.2,1) reverse both}
-.cv.closing .cv-side{animation:cvSide .22s ease reverse both}
+@keyframes cvShrink{from{clip-path:inset(0)}to{clip-path:inset(var(--ct,0px) var(--cr,0px) var(--cb,0px) var(--cl,100%))}}
+@keyframes cvSideOut{to{opacity:0;transform:translateX(-28px)}}
+.cv.closing .cv-doc{animation:cvShrink .42s cubic-bezier(.6,0,.2,1) both}
+.cv.closing .cv-side{animation:cvSideOut .22s ease both}
 .cv{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:300px minmax(0,1fr)}
 .cv[hidden]{display:none}
 .cv-side{position:relative;z-index:2;display:flex;flex-direction:column;min-height:0;background:var(--navy);color:var(--ink-neg)}
@@ -322,6 +347,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
   .cv{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
   header.top{transform-origin:50% 0}
   @keyframes cvSide{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
+  @keyframes cvSideOut{to{opacity:0;transform:translateY(-100%)}}
   .cv-side{flex-direction:row;flex-wrap:wrap;align-items:center}
   .cv-top{flex:none;padding:10px 12px}
   .cv-tt{flex:1;min-width:0;padding:0;font-size:1.05rem;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -489,7 +515,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
     <h2>Participe</h2>
     <div class="two">
       <div><h3>Conte sua ideia</h3><p>O que você muda no Grêmio se puder mudar uma coisa?</p><a class="btn orange" href="#ideias">Contar minha ideia</a></div>
-      <div><h3>Quer ajudar?</h3><p>Há funções para diferentes disponibilidades de tempo. Você escolhe a área em que quer atuar, e cada área tem um responsável. Quem está começando pode entrar como trainee.</p><button class="btn alt" id="help" type="button">Quero ajudar</button><p id="helpmsg" class="hint" style="color:var(--yellow);margin:10px 0 0" hidden>No site de verdade, este botão leva ao formulário. <span class="pend"><span class="tag">[CONFIRMAR: link do formulário]</span></span></p></div>
+      <div><h3>Quer ajudar?</h3><p>Há funções para diferentes disponibilidades de tempo. Você escolhe a área em que quer atuar, e cada área tem um responsável. Quem está começando pode entrar como trainee.</p><button class="btn alt" id="help" type="button" aria-haspopup="dialog">Quero ajudar</button></div>
     </div>
     <p style="margin-top:24px;font-size:.95rem">Privacidade: pedimos só nome, curso e e-mail, para responder você e falar sobre a chapa. O site não guarda dados. Você pode pedir a qualquer momento que apaguemos o que enviou, escrevendo para <a href="mailto:chapa.poli.prisma@gmail.com">chapa.poli.prisma@gmail.com</a>.</p>
   </div>
@@ -499,6 +525,17 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 <footer><div class="wrap"><a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, voltar ao início"><svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg><span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span></a><div class="foot-meta"><span>Chapa para a gestão 2027 do Grêmio Politécnico</span><span>Protótipo: nome e identidade visual provisórios. <span class="pend"><span class="tag">[CONFIRMAR: identificação exigida em material de campanha]</span></span></span></div><div class="dev"><label><input type="checkbox" id="tp" checked> Destacar pendências</label></div></div></footer>
 
 <a class="pill" id="pill" href="#ideias"></a>
+<!-- Pop-up do botão "Quero ajudar": contatos da chapa -->
+<dialog class="pop" id="pop" aria-labelledby="popT"><div class="pop-in">
+  <button class="pop-x" id="popX" type="button" aria-label="Fechar">×</button>
+  <h3 id="popT">Fala com a gente</h3>
+  <p>Toda ajuda conta, de uma hora por semana a uma área inteira. Manda uma mensagem dizendo onde você quer atuar e a gente combina o resto.</p>
+  <ul class="pop-l">
+    <li style="--c:var(--orange)"><a href="mailto:chapa.poli.prisma@gmail.com?subject=Quero%20ajudar%20a%20Prisma"><small>E-mail</small><b>chapa.poli.prisma@gmail.com</b></a></li>
+    <li style="--c:var(--yellow)"><a href="https://wa.me/5511941122488?text=Oi!%20Vi%20o%20site%20da%20Prisma%20e%20quero%20ajudar." target="_blank" rel="noopener"><small>WhatsApp</small><b>Guilherme Petrilli</b><span>(11) 94112-2488</span></a></li>
+    <li style="--c:var(--lilac)"><a href="https://wa.me/5511996888464?text=Oi!%20Vi%20o%20site%20da%20Prisma%20e%20quero%20ajudar." target="_blank" rel="noopener"><small>WhatsApp</small><b>Daniel Travassos</b><span>(11) 99688-8464</span></a></li>
+  </ul>
+</div></dialog>
 <!-- Carta-programa aberta: índice de tópicos à esquerda (com o botão de sair no canto) e o PDF à direita -->
 <div class="cv" id="cv" hidden role="dialog" aria-modal="true" aria-label="Carta-programa">
   <div class="cv-side" id="cvSide">
@@ -670,7 +707,13 @@ const navL=$$("#nav a"),navS=navL.map(a=>$(a.getAttribute("href")));
 const spy=()=>{const y=scrollY+innerHeight*.35;let cur=-1;navS.forEach((x,i)=>{if(x.offsetTop<=y)cur=i});navL.forEach((a,i)=>i===cur?a.setAttribute("aria-current","true"):a.removeAttribute("aria-current"))};
 addEventListener("scroll",spy,{passive:true});
 $("#tp").onchange=e=>document.body.classList.toggle("nopend",!e.target.checked);
-$("#help").onclick=()=>{$("#helpmsg").hidden=false};
+// pop-up "Quero ajudar": abre crescendo a partir do botão; fecha no ×, no Esc ou clicando fora
+const pop=$("#pop");
+$("#help").onclick=e=>{const r=e.currentTarget.getBoundingClientRect();pop.style.setProperty("--px",(r.left+r.width/2-innerWidth/2)+"px");pop.style.setProperty("--py",(r.top+r.height/2-innerHeight/2)+"px");pop.classList.remove("out");pop.showModal()};
+const popClose=()=>{if(!pop.open||pop.classList.contains("out"))return;pop.classList.add("out");setTimeout(()=>{pop.classList.remove("out");pop.close()},cvMs(200))};
+$("#popX").onclick=popClose;
+pop.addEventListener("cancel",e=>{e.preventDefault();popClose()});
+pop.addEventListener("click",e=>{if(e.target===pop)popClose()});
 
 // ===== carta-programa: o PDF é desenhado na página (PDF.js) e o índice rola até cada tópico =====
 const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
