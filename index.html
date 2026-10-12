@@ -268,7 +268,7 @@ footer .brand .sub{color:rgba(244,242,236,.6)}
   <div class="wrap">
     <h2>O que muda para você</h2>
     <div class="three">
-      <div class="pillar"><h3>Contas em ordem</h3><p>Raio-x das contas: levantar dívidas, compromissos e saldo disponível. Depois, gestão organizada e a volta do balanço mensal público, com projetos, negócios e parcerias em andamento. <span class="pend"><span class="tag">[CONFIRMAR: valor oficial da dívida]</span></span></p></div>
+      <div class="pillar"><h3>Contas em ordem</h3><p>A dívida do Grêmio foi majorada em R$ 2,1 milhões pela atual gestão. Vamos fazer o raio-x das contas, com dívidas, compromissos e saldo disponível, organizar a gestão e voltar com o balanço mensal público.</p></div>
       <div class="pillar"><h3>Negócios que funcionam</h3><p>Triedro sem fila, com Pegue e Pague e pedidos antecipados pela internet. Copiadora ampliada e operada por alunos remunerados. E o Escritório Piloto de volta, com projetos reais de engenharia.</p></div>
       <div class="pillar"><h3>Serviços para você</h3><p>Materiais de estudo num só lugar, salas para os grupos de extensão fora do horário de aula, AEX que valem a pena e Aulas Magnas abertas a toda a Poli.</p></div>
     </div>
@@ -444,7 +444,7 @@ function updFav(){
 }
 
 // quadrados: cada frente da equipe aponta para a área de propostas correspondente (null = sem proposta no resumo)
-const SQ=[["Triedro","n","negocios"],["Copiadora","n","negocios"],["Poliglota","n",null],["Escritório Piloto","n","negocios"],
+const SQ=[["Triedro","n","negocios"],["Copiadora","n","negocios"],["Escritório Piloto","n","negocios"],
 ["Acadêmico","s","servicos"],["Sociocultural","s",null],["Extensão","s","servicos"],["Expansão","s",null],["Eventos","s","memoria"],
 ["Tecnologia","a","apoio"],["Espaços do Grêmio","a","apoio"],["Comunicação","a","imagem"],["Representantes discentes","r",null]];
 const tg={n:"Negócios",s:"Serviços",a:"Apoio",r:"Representação"};
@@ -470,10 +470,8 @@ $("#form").onsubmit=e=>{e.preventDefault();const t=$("#txt").value.trim();if(!t)
 
 // faq
 const F=[
-["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica, a Poliglota e o Escritório Piloto, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico."],
-["Por que vocês falam tanto da dívida?","Porque ela condiciona tudo o que o Grêmio consegue fazer. A dívida vem de gestões anteriores e hoje é paga sob um acordo. Atrasar parcelas pode fazer o Grêmio perder os descontos negociados. Por isso a primeira meta é cumprir o acordo e mostrar as contas com clareza. [CONFIRMAR: valor oficial e data do acordo]"],
-["Isso vai aumentar o preço no Triedro, na Copiadora ou na Poliglota?","Nossa meta é melhorar os serviços sem tornar a vida do aluno mais cara, e propomos um desconto para estudantes que recebem o auxílio PAPFE (o auxílio de permanência da USP). [CONFIRMAR: desconto para beneficiários do PAPFE e compromisso sobre preços]"],
-["O Grêmio vai deixar de falar de política?","Não. O estatuto do Grêmio prevê finalidades como defender o ensino público e a democracia, e a entidade é filiada ao DCE, à UEE e à UNE. Isso continua. O que muda é o foco da nossa gestão: serviços e resultados para quem estuda na Poli. A participação em política estudantil é opcional para quem entra na equipe, e posicionamentos públicos da entidade devem passar pela reunião aberta mensal. [CONFIRMAR]"],
+["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica e o Escritório Piloto, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico."],
+["Por que vocês falam tanto da dívida?","Porque ela condiciona tudo o que o Grêmio consegue fazer. A dívida foi majorada em R$ 2,1 milhões pela atual gestão do Grêmio e hoje é paga sob um acordo. Atrasar parcelas pode fazer o Grêmio perder os descontos negociados. Por isso a primeira meta é cumprir o acordo e mostrar as contas com clareza. [CONFIRMAR: data do acordo]"],
 ["Quem pode votar e como funciona a eleição?","Todo aluno de graduação e de pós-graduação stricto sensu da Poli é associado do Grêmio automaticamente, e pode votar. A Diretoria é eleita em Assembleia Geral, por chapas, com voto secreto. [CONFIRMAR: data, local e regras desta eleição, conforme o Regimento Eleitoral]"],
 ["Quem está na chapa?","[CONFIRMAR: os nomes só serão publicados com autorização de cada pessoa.] Enquanto isso, a chapa conversa com alunos de vários cursos e entidades da Poli."],
 ["Como posso sugerir algo ou ajudar?","Pela seção Participe. Existem funções para diferentes disponibilidades de tempo, e quem está começando pode entrar como trainee."]
