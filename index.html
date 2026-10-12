@@ -47,9 +47,8 @@ section{padding:80px 0}
 .eyebrow{display:block;color:var(--yellow);margin-bottom:18px}
 .hl{color:var(--orange)}
 
-/* ornamento: facetas triangulares da prancha (cheias no início, em linhas no Participe) */
+/* ornamento: o prisma em linhas finas (Participe) */
 .facets{display:block;height:auto;pointer-events:none}
-.facets polygon{stroke:var(--navy);stroke-width:2;stroke-linejoin:round;vector-effect:non-scaling-stroke}
 .facets.lines *{fill:none;stroke-width:1.25;vector-effect:non-scaling-stroke}
 
 /* número de seção (só visual, em mono) */
@@ -63,7 +62,14 @@ body.nopend .pend{background:none;padding:0;font-size:inherit}
 body.nopend .pend .tag{display:none}
 
 /* marca: símbolo + logotipo PRISMA */
-.logo{display:block;flex:none}
+.logo{display:block;flex:none;overflow:visible}
+/* hover: as facetas se abrem como luz saindo do prisma */
+.logo polygon{transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+.brand:hover .logo .f-y,.brand:focus-visible .logo .f-y{transform:translate(-3px,-5px)}
+.brand:hover .logo .f-o,.brand:focus-visible .logo .f-o{transform:translate(9px,-3px);transition-delay:.04s}
+.brand:hover .logo .f-l,.brand:focus-visible .logo .f-l{transform:translate(6px,7px);transition-delay:.08s}
+.brand .name{transition:letter-spacing .38s cubic-bezier(.2,.8,.2,1)}
+header .brand:hover .name,header .brand:focus-visible .name{letter-spacing:.3em}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);line-height:1}
 .brand:hover{color:var(--navy)}
 .brand .name{display:block;font:300 1.32rem var(--fh);letter-spacing:.24em;white-space:nowrap}
@@ -90,23 +96,23 @@ nav .btn:hover{box-shadow:none}
   nav.open{display:flex} nav a{padding:12px} nav .btn{margin:8px 0 0;text-align:center}
 }
 
-/* hero — versão negativa (azul) com as facetas do prisma no canto */
+/* hero — versão negativa (azul); o único ornamento é o contorno fino atrás do símbolo */
 .hero{background:var(--navy);color:var(--ink-neg);padding:0;overflow:hidden;position:relative;display:flex;flex-direction:column;
   min-height:max(560px,calc(100vh - 68px));min-height:max(560px,calc(100svh - 68px))}
-.hero .facets{position:absolute;right:0;bottom:0;width:min(560px,46vw);z-index:0}
 .hero-in{position:relative;z-index:1;flex:1;width:100%;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);align-items:center;gap:56px;padding-top:56px;padding-bottom:56px}
 .hero h1{margin-bottom:.35em}
 .hero .hl{white-space:nowrap}
 .hero p.lead{font-size:clamp(1.1rem,1.6vw,1.28rem);line-height:1.55;max-width:36ch;color:rgba(248,245,240,.8);text-wrap:pretty;margin-bottom:0}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
 .hero .btn.ghost{color:var(--ink-neg)}
-.hero .mark{display:block;width:100%;max-width:230px;height:auto;aspect-ratio:84/94;justify-self:center;align-self:start;margin-top:4vh;--logo-ink:var(--ink-neg)}
+.hero .mark{display:block;width:100%;max-width:300px;height:auto;aspect-ratio:122/124;justify-self:center;overflow:visible;--logo-ink:var(--ink-neg)}
+.hero .mark .echo{fill:none;stroke:rgba(248,245,240,.28);stroke-width:1;vector-effect:non-scaling-stroke}
+.hero .mark .tick{fill:none;stroke:var(--yellow);stroke-width:1.25;vector-effect:non-scaling-stroke}
 .hero-foot{position:relative;z-index:1;border-top:1px solid rgba(248,245,240,.16)}
 .hero-foot .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:16px;padding-bottom:18px;color:rgba(248,245,240,.62)}
 @media(max-width:900px){
   .hero-in{grid-template-columns:1fr;gap:0;padding-top:40px}
-  .hero .mark{display:none}
-  .hero .facets{width:min(300px,62vw)}
+  .hero .mark{order:-1;width:120px;justify-self:start;margin:0 0 28px -10px}
   .hero-foot .wrap span:last-child{display:none}
 }
 
@@ -241,7 +247,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 
 <header class="top"><div class="wrap bar">
   <a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, início">
-    <svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg>
+    <svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><polygon fill="#0F1F3D" points="0,17.5 28,35 28,74 0,93.5"/><polygon class="f-y" fill="#F4BE5A" points="0,17.5 28,0 28,35"/><polygon class="f-o" fill="#EC7042" points="28.8,.5 84,35 58.65,52.66 28.8,34"/><polygon class="f-l" fill="#B292F5" points="28.8,54.5 45.2,44.25 58.65,52.66 28.8,73.44"/></svg>
     <span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span>
   </a>
   <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
@@ -253,7 +259,6 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 
 <main>
 <section class="hero" id="inicio">
-  <svg class="facets" viewBox="0 0 400 300" aria-hidden="true"><polygon fill="#EC7042" points="40,300 400,10 290,205"/><polygon fill="#F4BE5A" points="400,10 400,300 290,205"/><polygon fill="#B292F5" points="40,300 400,300 290,205"/></svg>
   <div class="wrap hero-in">
     <div class="hero-txt">
       <span class="eyebrow">Chapa · Grêmio Politécnico</span>
@@ -261,7 +266,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
       <p class="lead">Contas em ordem, negócios que dão resultado e serviços para quem estuda&nbsp;na&nbsp;Poli.</p>
       <div class="cta"><a class="btn orange" href="#propostas">Ver as propostas</a><a class="btn ghost" href="#ideias">Contar minha ideia</a></div>
     </div>
-    <svg class="mark" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg>
+    <svg class="mark" viewBox="-12 -12 122 124" aria-hidden="true"><polygon class="echo" points="13,28.5 41,11 97,46 13,104.5"/><path class="tick" d="M100 -5v10M95 0h10"/><use href="#sym" width="84" height="94"/></svg>
   </div>
   <div class="hero-foot mono" aria-hidden="true"><div class="wrap"><span>Imagem · Contas · Negócios · Serviços · Apoio · Memória e eventos</span></div></div>
 </section>
@@ -361,7 +366,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
       <div><h3>Conte sua ideia</h3><p>O que você muda no Grêmio se puder mudar uma coisa?</p><a class="btn orange" href="#ideias">Contar minha ideia</a></div>
       <div><h3>Quer ajudar?</h3><p>Há funções para diferentes disponibilidades de tempo. Você escolhe a área em que quer atuar, e cada área tem um responsável. Quem está começando pode entrar como trainee.</p><button class="btn alt" id="help" type="button">Quero ajudar</button><p id="helpmsg" class="hint" style="color:var(--yellow);margin:10px 0 0" hidden>No site de verdade, este botão leva ao formulário. <span class="pend"><span class="tag">[CONFIRMAR: link do formulário]</span></span></p></div>
     </div>
-    <p style="margin-top:24px;font-size:.95rem">Privacidade: pedimos só nome, curso e e-mail, para responder você e falar sobre a chapa. O formulário é externo e o site não guarda dados. Você pode pedir a qualquer momento que apaguemos o que enviou, escrevendo para <span class="pend"><span class="tag">[CONFIRMAR: e-mail de contato]</span></span>.</p>
+    <p style="margin-top:24px;font-size:.95rem">Privacidade: pedimos só nome, curso e e-mail, para responder você e falar sobre a chapa. O formulário é externo e o site não guarda dados. Você pode pedir a qualquer momento que apaguemos o que enviou, escrevendo para <a href="mailto:chapa.poli.prisma@gmail.com">chapa.poli.prisma@gmail.com</a>.</p>
   </div>
 </section>
 </main>
@@ -472,10 +477,9 @@ $("#form").onsubmit=e=>{e.preventDefault();const t=$("#txt").value.trim();if(!t)
 
 // faq
 const F=[
-["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica e o Escritório Piloto, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico."],
-["Por que vocês falam tanto da dívida?","Porque ela condiciona tudo o que o Grêmio consegue fazer. A dívida foi majorada em R$ 2,1 milhões pela atual gestão do Grêmio e hoje é paga sob um acordo. Atrasar parcelas pode fazer o Grêmio perder os descontos negociados. Por isso a primeira meta é cumprir o acordo e mostrar as contas com clareza. [CONFIRMAR: data do acordo]"],
+["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica e o Escritório Piloto, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico. E tem potencial enorme para fazer mais."],
+["Por que vocês falam tanto da dívida?","Porque a situação financeira é o alicerce para que qualquer outra coisa possa ser discutida ou executada. A dívida foi majorada em R$ 2,1 milhões pela atual gestão do Grêmio, então é vital que as contas voltem a ser saudáveis."],
 ["Quem pode votar e como funciona a eleição?","Todo aluno de graduação e de pós-graduação stricto sensu da Poli é associado do Grêmio automaticamente, e pode votar. A Diretoria é eleita em Assembleia Geral, por chapas, com voto secreto. [CONFIRMAR: data, local e regras desta eleição, conforme o Regimento Eleitoral]"],
-["Quem está na chapa?","[CONFIRMAR: os nomes só serão publicados com autorização de cada pessoa.] Enquanto isso, a chapa conversa com alunos de vários cursos e entidades da Poli."],
 ["Como posso sugerir algo ou ajudar?","Pela seção Participe. Existem funções para diferentes disponibilidades de tempo, e quem está começando pode entrar como trainee."]
 ];
 $("#faqlist").innerHTML=F.map(([q,a])=>"<details><summary>"+esc(q)+"</summary><p>"+fmt(a)+"</p></details>").join("");
