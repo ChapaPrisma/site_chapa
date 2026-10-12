@@ -8,6 +8,7 @@ Contato da chapa: chapa.poli.prisma@gmail.com
 
 | Seção | O que faz |
 | --- | --- |
+| Menu | Links das seções, "Como votar" (pop-up com datas e horários) e "Participe" |
 | Início | Título, botões e atalhos para cada área de propostas |
 | O que muda para você | Três resumos: contas, negócios e serviços |
 | Propostas | Abas por área, busca, estrela de prioridade e a chamada da carta-programa |
@@ -23,7 +24,7 @@ O site não guarda nada em servidor. As estrelas de prioridade ficam só no nave
 Tudo fica no `<script>` do fim do `index.html`:
 
 - `P`: as áreas e as propostas (`t` título, `d` descrição, `lp:1` para longo prazo, `l` e `lt` para um link).
-- `SQ`: os quadrados das frentes. Cada um aponta para uma área e lista os títulos das propostas que tratam dele. `null` vira "detalhes em breve".
+- `SQ`: os quadrados das frentes. Cada um aponta para uma área e lista os títulos das propostas que tratam dele. Com `null` o quadrado fica tracejado e sem link.
 - `F`: perguntas frequentes.
 - `CARTA`: o PDF da carta-programa e o índice de tópicos (ver abaixo).
 
@@ -31,11 +32,15 @@ O organograma e os textos fixos estão no HTML, na seção correspondente.
 
 **Sempre que mudar uma proposta, revise os mapas.** Os quadrados citam as propostas pelo título, então renomear ou apagar uma proposta quebra a ligação. O console do navegador (F12) mostra um aviso quando um título ou tópico citado não existe mais.
 
-Trechos entre colchetes como `[CONFIRMAR: ...]` aparecem em amarelo no site: são informações que ainda faltam. A caixa "Destacar pendências", no rodapé, esconde o destaque.
+O site não tem mais marcadores de pendência. A única parte que ainda falta é a carta-programa, e a chamada dela só aparece quando o PDF existir (ver abaixo).
+
+### Datas da eleição
+
+O botão "Como votar", no menu, abre um pop-up com datas, horários, locais e o que levar. O texto está no HTML (`<dialog id="vote">`) e a mesma informação aparece resumida na pergunta "Quem pode votar", na lista `F`. As fontes são o Cronograma Eleitoral (CE.OPR.11) e o Regimento Eleitoral (CE.GOV.01) da Comissão Eleitoral. Se a Comissão alterar o cronograma, atualize os dois lugares. O link `#votar` abre o site já com esse pop-up.
 
 ## Carta-programa: o que fazer quando o PDF chegar
 
-O leitor da carta já está pronto e fica desligado enquanto `CARTA.url` for `null`. Para ligar:
+O leitor da carta já está pronto e fica desligado enquanto `CARTA.url` for `null`: nesse estado a chamada "Quer ver os detalhes?" nem aparece no site. Para ligar:
 
 1. Salve o PDF na raiz do repositório, ao lado do `index.html` (por exemplo `carta-programa.pdf`).
 2. No começo do script, preencha `CARTA`:

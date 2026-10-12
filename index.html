@@ -58,10 +58,6 @@ main{counter-reset:sec}
 main > section:not(.hero) h2:first-child::before{counter-increment:sec;content:counter(sec,decimal-leading-zero);display:inline-block;vertical-align:.4em;margin-right:14px;padding:4px 8px;font:500 .8rem var(--fm);letter-spacing:.06em;background:var(--navy);color:var(--ink-neg)}
 #participe h2:first-child::before{background:var(--orange);color:var(--navy)}
 
-/* pendências */
-.pend{background:#FFE45C;color:var(--navy);padding:0 .3em;border-radius:2px;font-size:.88em}
-body.nopend .pend{background:none;padding:0;font-size:inherit}
-body.nopend .pend .tag{display:none}
 
 /* marca: símbolo + logotipo PRISMA */
 .logo{display:block;flex:none;overflow:visible}
@@ -92,12 +88,15 @@ nav .btn[aria-current]{box-shadow:none}
 .btn.ghost{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor;color:var(--navy)}
 nav .btn{padding:9px 18px;margin-left:8px}
 nav .btn:hover{box-shadow:none}
+nav .btn.ghost,nav .btn.ghost:hover{color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+nav .btn.ghost:hover{background:#fff;filter:none}
+nav .btn + .btn{margin-left:6px}
 .menu{display:none;margin-left:auto;background:none;border:1.5px solid var(--navy);border-radius:var(--r);padding:6px 14px;font:500 .8rem var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
-@media(max-width:820px){
+@media(max-width:900px){
   .menu{display:block}
   nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--paper);flex-direction:column;align-items:stretch;padding:12px 20px 20px;border-bottom:1px solid var(--line)}
   nav.open{display:flex} nav a{padding:12px} nav .btn{margin:8px 0 0;text-align:center}
-  nav a:hover,nav a[aria-current]{box-shadow:inset 3px 0 0 var(--orange)} nav .btn:hover{box-shadow:none}
+  nav a:hover,nav a[aria-current]{box-shadow:inset 3px 0 0 var(--orange)} nav .btn:hover{box-shadow:none} nav .btn + .btn{margin-left:0}
 }
 
 /* hero — versão negativa (azul); o único ornamento é o contorno fino atrás do símbolo */
@@ -169,7 +168,6 @@ nav .btn:hover{box-shadow:none}
 .carta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 40px;margin-top:40px;padding:24px 26px 26px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy)}
 .carta h3{margin:0 0 6px;font-size:1.25rem}
 .carta p{margin:0;max-width:52ch;color:var(--ink2)}
-.carta .hint{flex-basis:100%;max-width:none}
 .found{margin:-10px 0 14px;font-size:.92rem;color:var(--ink2)}
 .found:empty{display:none}
 .lk{background:none;border:0;padding:0;font:inherit;color:var(--navy);text-decoration:underline;cursor:pointer}
@@ -277,7 +275,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 @media(max-width:700px){.foot-meta{text-align:left}}
 
 /* pop-up "Quero ajudar": cresce a partir do botão e convida a falar com a chapa */
-.pop{width:calc(100% - 32px);max-width:440px;padding:0;border:0;border-top:5px solid var(--yellow);background:var(--paper);color:var(--navy);box-shadow:0 24px 60px rgba(15,31,61,.35)}
+.pop{width:calc(100% - 32px);max-width:440px;max-height:calc(100vh - 32px);overflow:auto;padding:0;border:0;border-top:5px solid var(--yellow);background:var(--paper);color:var(--navy);box-shadow:0 24px 60px rgba(15,31,61,.35)}
 .pop::backdrop{background:rgba(15,31,61,.6)}
 .pop-in{position:relative;padding:28px 26px 26px}
 .pop h3{margin:0 44px .5em 0;font-size:1.45rem}
@@ -290,6 +288,15 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 .pop-l small{display:block;font:500 .64rem var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}
 .pop-l b{display:block;font:600 1.02rem var(--fh);letter-spacing:-.01em;overflow-wrap:anywhere}
 .pop-l span{font-size:.95rem;color:var(--ink2)}
+/* pop-up "Como votar" */
+.pop.vote{max-width:540px;border-top-color:var(--orange)}
+.pop-d{margin:0 0 16px}
+.pop-d div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:12px 0;border-top:1px solid var(--line)}
+.pop-d dt{padding-top:3px;font:500 .66rem var(--fm);letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.pop-d dd{margin:0}
+.pop-d b{font-family:var(--fh);font-weight:600}
+.pop .hint{margin:0;font-size:.9rem}
+@media(max-width:480px){.pop-d div{grid-template-columns:minmax(0,1fr);gap:2px}}
 @keyframes popIn{from{opacity:0;transform:translate(var(--px,0),var(--py,24px)) scale(.2)}to{opacity:1;transform:none}}
 @keyframes popOut{to{opacity:0;transform:translate(var(--px,0),var(--py,24px)) scale(.2)}}
 @keyframes popBg{from{opacity:0}to{opacity:1}}
@@ -358,8 +365,6 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 }
 
 /* dev bar */
-.dev{flex-basis:100%;font-size:.84rem;color:rgba(248,245,240,.6)}
-.dev label{margin:0;font-weight:400;display:inline-flex;gap:8px;align-items:center;cursor:pointer}
 .pill{position:fixed;right:12px;bottom:12px;z-index:30;background:var(--orange);color:var(--navy);padding:10px 16px;font:500 .8rem var(--fm);letter-spacing:.04em;text-decoration:none;box-shadow:0 4px 16px rgba(15,31,61,.25);display:none}
 </style>
 </head>
@@ -383,6 +388,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
   <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
   <nav id="nav">
     <a href="#propostas">Propostas</a><a href="#como">Como trabalhamos</a><a href="#ideias">Ideias</a><a href="#faq">Perguntas</a>
+    <button class="btn ghost" id="voteBtn" type="button" aria-haspopup="dialog">Como votar</button>
     <a class="btn" href="#participe">Participe</a>
   </nav>
 </div></header>
@@ -428,10 +434,10 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
         <div class="empty" id="empty" hidden>Nenhuma proposta com esse termo. <button class="lk" id="clr" type="button">Limpar a busca</button> ou <a href="#ideias">contar sua ideia</a>.</div>
       </div>
     </div>
-    <div class="carta" id="cartaCta">
+    <!-- a chamada só aparece quando existir o PDF da carta-programa (CARTA.url) -->
+    <div class="carta" id="cartaCta" hidden>
       <div><h3>Quer ver os detalhes?</h3><p>Aqui as propostas estão resumidas. A carta-programa explica cada uma por inteiro.</p></div>
-      <a class="btn" id="cartaBtn" href="#carta" hidden>Abrir a carta-programa</a>
-      <p class="hint" id="cartaSoon">A carta-programa será publicada aqui. <span class="pend"><span class="tag">[CONFIRMAR: PDF da carta-programa]</span></span></p>
+      <a class="btn" id="cartaBtn" href="#carta">Abrir a carta-programa</a>
     </div>
   </div>
 </section>
@@ -522,12 +528,27 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 </section>
 </main>
 
-<footer><div class="wrap"><a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, voltar ao início"><svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg><span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span></a><div class="foot-meta"><span>Chapa para a gestão 2027 do Grêmio Politécnico</span></div><div class="dev"><label><input type="checkbox" id="tp" checked> Destacar pendências</label></div></div></footer>
+<footer><div class="wrap"><a class="brand" href="#inicio" aria-label="Prisma, chapa do Grêmio Politécnico, voltar ao início"><svg class="logo" width="36" height="40" viewBox="0 0 84 94" aria-hidden="true"><use href="#sym"/></svg><span><span class="name">PRISM<svg class="lam" viewBox="0 0 20 19" aria-hidden="true"><path d="M1 19 10 .8 19 19" fill="none" stroke="currentColor" stroke-width="1.75"/></svg></span><span class="sub">Chapa · Grêmio Politécnico</span></span></a><div class="foot-meta"><span>Chapa para a gestão 2027 do Grêmio Politécnico</span></div></div></footer>
 
 <a class="pill" id="pill" href="#ideias"></a>
+<!-- Pop-up "Como votar": datas e horários do Cronograma Eleitoral (CE.OPR.11) e regras do Regimento (CE.GOV.01).
+     Se a Comissão Eleitoral alterar o cronograma, atualizar aqui e na pergunta "Quem pode votar" (lista F). -->
+<dialog class="pop vote" id="vote" aria-labelledby="voteT"><div class="pop-in">
+  <button class="pop-x" type="button" aria-label="Fechar">×</button>
+  <h3 id="voteT">Como votar</h3>
+  <p>A votação é em urnas, com voto secreto. Vota todo aluno de graduação e de pós-graduação stricto sensu da Poli.</p>
+  <dl class="pop-d">
+    <div><dt>Votação</dt><dd><b>10, 11 e 12 de novembro</b> (terça a quinta), das <b>7h às 18h</b>.</dd></div>
+    <div><dt>Onde</dt><dd>Urnas nos conjuntos Biênio/Produção, Civil/Ambiental, Elétrica/Computação, Mecânica/Mecatrônica/Naval, PMI/PMT e Química. A Comissão Eleitoral divulga o horário de cada urna.</dd></div>
+    <div><dt>Leve</dt><dd>Documento oficial com foto ou Cartão USP. O cartão digital vale só aberto no aplicativo; captura de tela não é aceita.</dd></div>
+    <div><dt>Debates</dt><dd>22 de outubro e 5 de novembro (quintas), às 11h, no Vão do Biênio e no Instagram do Grêmio.</dd></div>
+    <div><dt>Resultado</dt><dd>13 de novembro (sexta), às 12h.</dd></div>
+  </dl>
+  <p class="hint">Em intercâmbio fora do Brasil ou em quadrimestre de estágio (Computação ou Química)? Dá para votar à distância: peça a habilitação à Comissão Eleitoral, em <a href="mailto:comissao-eleitoral@gremiopolitecnico.com">comissao-eleitoral@gremiopolitecnico.com</a>. As datas são as do Cronograma Eleitoral; se a Comissão mudar algo, vale o que ela divulgar.</p>
+</div></dialog>
 <!-- Pop-up do botão "Quero ajudar": contatos da chapa -->
 <dialog class="pop" id="pop" aria-labelledby="popT"><div class="pop-in">
-  <button class="pop-x" id="popX" type="button" aria-label="Fechar">×</button>
+  <button class="pop-x" type="button" aria-label="Fechar">×</button>
   <h3 id="popT">Fala com a gente</h3>
   <p>Toda ajuda conta, de uma hora por semana a uma área inteira. Manda uma mensagem dizendo onde você quer atuar e a gente combina o resto.</p>
   <ul class="pop-l">
@@ -596,7 +617,7 @@ const P=[
 ];
 P.forEach(a=>a.b.forEach((x,i)=>x.id=a.id+"-"+i));
 const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-const fmt=s=>esc(s).replace(/\[CONFIRMAR[^\]]*\]/g,m=>'<span class="pend"><span class="tag">'+m+'</span></span>');
+const fmt=esc;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 // prioridades marcadas ficam guardadas só no navegador de quem visita
 const store={get(){try{return JSON.parse(localStorage.getItem("prisma-fav"))||[]}catch(e){return[]}},set(v){try{localStorage.setItem("prisma-fav",JSON.stringify(v))}catch(e){}}};
@@ -647,7 +668,7 @@ function updFav(){
 }
 
 // quadrados: cada frente da equipe → área de propostas e títulos das propostas que tratam dela.
-// null = nenhuma proposta trata da frente (aparece "detalhes em breve"). Rever quando as propostas mudarem.
+// null = nenhuma proposta trata da frente (o quadrado fica sem link). Rever quando as propostas mudarem.
 const SQ=[
 ["Triedro","n","negocios",["Triedro sem fila","Triedro mais conhecido e confortável"]],
 ["Copiadora","n","negocios",["Copiadora ampliada","Sublimação na copiadora"]],
@@ -663,13 +684,13 @@ const SQ=[
 ["Representantes discentes","r",null]];
 SQ.forEach(([n,,id,tit])=>(tit||[]).forEach(t=>{if(!P.find(p=>p.id===id).b.some(x=>x.t===t))console.warn("Mapa dos quadrados: a proposta “"+t+"” não existe mais em "+id+" (quadrado "+n+")")}));
 const tg={n:"Negócios",s:"Serviços",a:"Apoio",r:"Representação"};
-$("#sq").innerHTML=SQ.map(([n,c,id],i)=>id?'<a href="#p-'+id+'" class="'+c+'" data-i="'+i+'">'+n+'<small>'+tg[c]+'</small></a>':'<div class="'+c+' soon">'+n+'<small>detalhes em breve</small></div>').join("");
+$("#sq").innerHTML=SQ.map(([n,c,id],i)=>id?'<a href="#p-'+id+'" class="'+c+'" data-i="'+i+'">'+n+'<small>'+tg[c]+'</small></a>':'<div class="'+c+' soon">'+n+'<small>'+tg[c]+'</small></div>').join("");
 // abre uma área das propostas (quadrados, atalhos do início e links #p-area); tit = propostas a destacar
 function goArea(id,tit){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);
   if(tit&&tit.length){marca=new Set(P.find(p=>p.id===id).b.filter(x=>tit.includes(x.t)).map(x=>x.id));renderCards()}
   const el=$("#grid li.hit");el?el.scrollIntoView({block:"center"}):$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
 $$("#sq a,.hero-foot a").forEach(a=>a.onclick=e=>{e.preventDefault();const id=a.getAttribute("href").slice(3);history.replaceState(null,"","#p-"+id);goArea(id,a.dataset.i?SQ[a.dataset.i][3]:null)});
-const fromHash=()=>{const h=location.hash,c=h.match(/^#carta(?:\/([\w-]+))?$/);if(c&&CARTA.url)return cartaOpen(c[1]);cartaClose();const m=h.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
+const fromHash=()=>{const h=location.hash,c=h.match(/^#carta(?:\/([\w-]+))?$/);if(c&&CARTA.url)return cartaOpen(c[1]);cartaClose();if(h==="#votar")return popOpen($("#vote"),$("#voteBtn"));const m=h.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
 addEventListener("hashchange",fromHash);
 
 // ideias
@@ -688,7 +709,7 @@ $("#txt").oninput=()=>{left();$("#sent").hidden=true};
 const F=[
 ["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica e o Escritório Piloto, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico. E tem potencial enorme para fazer mais."],
 ["Por que vocês falam tanto da dívida?","Porque a situação financeira é o alicerce para que qualquer outra coisa possa ser discutida ou executada. A dívida foi majorada em R$ 2,1 milhões pela atual gestão do Grêmio, então é vital que as contas voltem a ser saudáveis."],
-["Quem pode votar e como funciona a eleição?","Todo aluno de graduação e de pós-graduação stricto sensu da Poli é associado do Grêmio automaticamente, e pode votar. A Diretoria é eleita em Assembleia Geral, por chapas, com voto secreto. [CONFIRMAR: data, local e regras desta eleição, conforme o Regimento Eleitoral]"],
+["Quem pode votar e como funciona a eleição?","Todo aluno de graduação e de pós-graduação stricto sensu da Poli é associado do Grêmio automaticamente, e pode votar. A Diretoria é eleita em Assembleia Geral, por chapas, com voto secreto. A votação é nos dias 10, 11 e 12 de novembro, das 7h às 18h, em urnas nos prédios da Poli. Leve um documento oficial com foto ou o Cartão USP. Os detalhes estão em “Como votar”, no menu."],
 ["Como posso sugerir algo ou ajudar?","Pela seção Participe. Existem funções para diferentes disponibilidades de tempo, e quem está começando pode entrar como trainee."]
 ];
 $("#faqlist").innerHTML=F.map(([q,a])=>"<details><summary>"+esc(q)+"</summary><p>"+fmt(a)+"</p></details>").join("");
@@ -706,21 +727,22 @@ document.addEventListener("click",e=>{if(!e.target.closest("header.top"))closeNa
 const navL=$$("#nav a"),navS=navL.map(a=>$(a.getAttribute("href")));
 const spy=()=>{const y=scrollY+innerHeight*.35;let cur=-1;navS.forEach((x,i)=>{if(x.offsetTop<=y)cur=i});navL.forEach((a,i)=>i===cur?a.setAttribute("aria-current","true"):a.removeAttribute("aria-current"))};
 addEventListener("scroll",spy,{passive:true});
-$("#tp").onchange=e=>document.body.classList.toggle("nopend",!e.target.checked);
-// pop-up "Quero ajudar": abre crescendo a partir do botão; fecha no ×, no Esc ou clicando fora
-const pop=$("#pop");
-$("#help").onclick=e=>{const r=e.currentTarget.getBoundingClientRect();pop.style.setProperty("--px",(r.left+r.width/2-innerWidth/2)+"px");pop.style.setProperty("--py",(r.top+r.height/2-innerHeight/2)+"px");pop.classList.remove("out");pop.showModal()};
-const popClose=()=>{if(!pop.open||pop.classList.contains("out"))return;pop.classList.add("out");setTimeout(()=>{pop.classList.remove("out");pop.close()},cvMs(200))};
-$("#popX").onclick=popClose;
-pop.addEventListener("cancel",e=>{e.preventDefault();popClose()});
-pop.addEventListener("click",e=>{if(e.target===pop)popClose()});
+// pop-ups ("Quero ajudar" e "Como votar"): abrem crescendo a partir do botão; fecham no ×, no Esc ou clicando fora
+const popOpen=(d,from)=>{const r=from.getBoundingClientRect(),ok=r.width>0;
+  d.style.setProperty("--px",(ok?r.left+r.width/2-innerWidth/2:0)+"px");d.style.setProperty("--py",(ok?r.top+r.height/2-innerHeight/2:24)+"px");
+  d.classList.remove("out");if(!d.open)d.showModal()};
+const popClose=d=>{if(!d.open||d.classList.contains("out"))return;d.classList.add("out");setTimeout(()=>{d.classList.remove("out");d.close()},cvMs(200))};
+$$("dialog.pop").forEach(d=>{d.querySelector(".pop-x").onclick=()=>popClose(d);
+  d.addEventListener("cancel",e=>{e.preventDefault();popClose(d)});d.addEventListener("click",e=>{if(e.target===d)popClose(d)})});
+$("#help").onclick=e=>popOpen($("#pop"),e.currentTarget);
+$("#voteBtn").onclick=e=>{popOpen($("#vote"),e.currentTarget);closeNav()};
 
 // ===== carta-programa: o PDF é desenhado na página (PDF.js) e o índice rola até cada tópico =====
 const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
 const cv={el:$("#cv"),doc:null,pages:[],pos:{},from:null,orig:null,ready:null,lock:0,closing:0,tm:0};
 const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/\s+/g,"");
 // liga ou desliga tudo conforme exista o PDF: chamada, índice e links nos cartões
-function cartaSync(){const on=!!CARTA.url;$("#cartaBtn").hidden=!on;$("#cartaSoon").hidden=on;$("#cvDl").href=CARTA.url||"#";
+function cartaSync(){const on=!!CARTA.url;$("#cartaCta").hidden=!on;$("#cvDl").href=CARTA.url||"#";
   $("#cvList").innerHTML=CARTA.topicos.map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n2?' class="n2"':'')+'>'+esc(t.t)+'</button></li>').join("");
   $$("#cvList button").forEach(b=>b.onclick=()=>{cvTopics(false);cartaGo(b.dataset.t)});
   if(on)P.forEach(a=>[a,...a.b].forEach(x=>{if(x.c&&!CARTA.topicos.some(t=>t.id===x.c))console.warn("Carta-programa: o tópico “"+x.c+"” não existe no índice ("+(x.g||x.t)+")")}));
