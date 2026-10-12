@@ -68,6 +68,10 @@ body.nopend .pend .tag{display:none}
 .brand:hover .logo .f-y,.brand:focus-visible .logo .f-y,.hero .mark:hover .f-y{transform:translate(-3px,-5px)}
 .brand:hover .logo .f-o,.brand:focus-visible .logo .f-o,.hero .mark:hover .f-o{transform:translate(9px,-3px);transition-delay:.04s}
 .brand:hover .logo .f-l,.brand:focus-visible .logo .f-l,.hero .mark:hover .f-l{transform:translate(6px,7px);transition-delay:.08s}
+/* logo grande: 5,7x maior na tela, então a mesma abertura leva 5,7x mais tempo (mesma velocidade da pequena) */
+.hero .mark polygon{transition-duration:2.2s}
+.hero .mark:hover .f-o{transition-delay:.23s}
+.hero .mark:hover .f-l{transition-delay:.46s}
 .brand .name{transition:letter-spacing .38s cubic-bezier(.2,.8,.2,1)}
 header .brand:hover .name,header .brand:focus-visible .name{letter-spacing:.3em}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);line-height:1}
