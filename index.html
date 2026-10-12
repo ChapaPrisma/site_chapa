@@ -141,6 +141,7 @@ nav .btn:hover{box-shadow:none}
 .props li>div{flex:1}
 .props b{display:block;font-weight:700}
 .props p{margin:2px 0 0;color:var(--ink2);font-size:.96rem;line-height:1.5}
+.plink{display:inline-block;margin-top:6px;font-weight:600;font-size:.95rem}
 .lp{display:inline-block;margin:4px 0 2px;padding:2px 8px;background:#F2E3BD;font:500 .66rem var(--fm);letter-spacing:.16em;text-transform:uppercase}
 .fav{flex:none;border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);width:34px;height:34px;font-size:1rem;line-height:1;cursor:pointer;color:var(--navy)}
 .fav[aria-pressed=true]{background:var(--coral);border-color:var(--coral)}
@@ -399,7 +400,7 @@ const P=[
  {t:"Recursos para a Poli",d:"Usar o Politique como ponte para doações ao Amigos da Poli e para emendas parlamentares destinadas à Escola."}]},
 {id:"apoio",n:"4",g:"Apoio",b:[
  {t:"Espaços equipados",d:"Micro-ondas novo, geladeiras, reforma de salas e novos equipamentos, por meio de parcerias com empresas."},
- {t:"Novo site do Grêmio",d:"Ferramentas, FAQ, projetos em andamento e memorial reunidos num só lugar."},
+ {t:"Novo site do Grêmio",d:"Ferramentas, FAQ, projetos em andamento e memorial reunidos num só lugar.",l:"https://chapaprisma.github.io/Site_gremio_poli/",lt:"Ver um exemplo de como pode ficar"},
  {t:"Tecnologia feita com os grupos da Poli",d:"Sistemas digitais com Poli AI, Poli Quant e Poli Júnior, e Pegue e Pague construído por alunos de eletrônica e design, por exemplo."}]},
 {id:"memoria",n:"5",g:"Memória e eventos",b:[
  {t:"Memorial dos 123 anos",d:"Arquivo histórico do Grêmio aberto a todos no site."},
@@ -423,7 +424,7 @@ function renderCards(){
     const c=document.createElement("div");c.className="card";c.dataset.a=a.id;c.id="p-"+a.id;
     if(open)c.classList.add("open");
     c.innerHTML='<button class="head" aria-expanded="'+!!open+'"><span style="flex:1"><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></span><span class="chev" aria-hidden="true"></span></button>'+
-      '<div class="body"><ul class="props">'+items.map(x=>'<li><div><b>'+esc(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+fmt(x.d)+'</p></div>'+
+      '<div class="body"><ul class="props">'+items.map(x=>'<li><div><b>'+esc(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+fmt(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+'</div>'+
       '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>').join("")+'</ul></div>';
     c.querySelector(".head").onclick=e=>{a.open=!c.classList.contains("open");c.classList.toggle("open",a.open);e.currentTarget.setAttribute("aria-expanded",a.open);syncToggle()};
     c.querySelectorAll(".fav").forEach(b=>b.onclick=()=>{const id=b.dataset.id;fav.has(id)?fav.delete(id):fav.add(id);const on=fav.has(id);b.setAttribute("aria-pressed",on);b.textContent=on?"★":"☆";updFav()});
