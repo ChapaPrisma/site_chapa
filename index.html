@@ -130,48 +130,55 @@ nav .btn:hover{box-shadow:none}
 .pillar:nth-child(2){border-top-color:var(--yellow)} .pillar:nth-child(3){border-top-color:var(--lilac)}
 .pillar h3{margin-bottom:.5em}
 
-/* propostas */
+/* propostas: áreas em abas (uma por vez) e cada proposta em seu cartão */
 #propostas{background:var(--paper2)}
-.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:24px 0}
-.chip{border:1.5px solid var(--navy);background:transparent;color:var(--navy);border-radius:var(--r);padding:7px 12px;font:500 .74rem var(--fm);letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.chip:hover{background:var(--paper)}
-.chip[aria-pressed=true]{background:var(--navy);color:var(--ink-neg)}
-.search{flex:1;min-width:200px;max-width:320px;padding:9px 14px;border-radius:var(--r);border:1.5px solid var(--line);font:400 .98rem var(--fb);background:var(--paper);color:var(--navy)}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;align-items:start}
-@media(max-width:820px){.grid{grid-template-columns:1fr}}
-.card{background:var(--paper);border:1.5px solid transparent;border-radius:var(--r);overflow:hidden}
-.card.open{border-color:var(--navy);background:#fff}
-.card[data-a=imagem]{--c:var(--ink3)} .card[data-a=contas]{--c:var(--navy)} .card[data-a=negocios]{--c:var(--orange)} .card[data-a=servicos]{--c:var(--lilac)} .card[data-a=apoio]{--c:var(--yellow)} .card[data-a=memoria]{--c:var(--orange-d)}
-.card .head{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;text-align:left;padding:16px 18px 16px 0;cursor:pointer;color:var(--navy);font:inherit}
-.card .head::before{content:"";align-self:center;width:15px;height:18px;background:var(--c);flex:none;clip-path:polygon(0 0,100% 50%,0 100%);margin-left:18px}
-.card .head h3{margin:0;flex:1}
-.card .head .tx{flex:1;min-width:0}
-.card .head .pv{display:block;margin-top:5px;font:400 .9rem var(--fb);color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card.open .head .pv{display:none}
-.card:not(.open) .head:hover{background:#fff}
-.card .head:focus-visible{outline-offset:-4px}
-.card .head small{display:block;font:500 .68rem var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:5px}
-.card .chev{flex:none;width:9px;height:9px;margin:0 4px 4px 0;border:solid var(--navy);border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .2s}
-.card.open .chev{transform:translateY(4px) rotate(-135deg)}
-.card .body{display:grid;grid-template-rows:0fr;visibility:hidden;padding:0 20px;transition:grid-template-rows .26s ease,visibility 0s .26s}
-.card.open .body{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .26s ease,visibility 0s}
-.card .body .in{overflow:hidden;min-height:0}
-.props{list-style:none;margin:0;padding:0 0 8px}
+.tools{margin:24px 0}
+.search{width:100%;max-width:420px;padding:11px 14px;border-radius:var(--r);border:1.5px solid var(--line);font:400 .98rem var(--fb);background:var(--paper);color:var(--navy)}
+[data-a=imagem]{--c:var(--ink3)} [data-a=contas]{--c:var(--navy)} [data-a=negocios]{--c:var(--orange)} [data-a=servicos]{--c:var(--lilac)} [data-a=apoio]{--c:var(--yellow)} [data-a=memoria]{--c:var(--orange-d)}
+.tri{flex:none;width:13px;height:16px;background:var(--c,var(--navy));clip-path:polygon(0 0,100% 50%,0 100%)}
+.pview{display:grid;grid-template-columns:250px minmax(0,1fr);gap:32px;align-items:start}
+.ptabs{position:sticky;top:88px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.ptab{display:flex;align-items:center;gap:12px;width:100%;padding:15px 12px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;text-align:left;font:600 1rem var(--fh);letter-spacing:-.01em;color:var(--navy);cursor:pointer}
+.ptab:hover{background:rgba(255,255,255,.55)}
+.ptab[aria-selected=true]{background:#fff;box-shadow:inset 4px 0 0 var(--c,var(--navy))}
+.ptab .ct{margin-left:auto;font:500 .82rem var(--fb);letter-spacing:0;color:var(--ink3)}
+.ptab.all .nm{padding-left:25px}
+.ptab:focus-visible{outline-offset:-3px}
+.ppanel:focus{outline:none}
+.pgroup + .pgroup{margin-top:44px}
+.ph{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.ph .tri{width:16px;height:20px}
+.ph h3{margin:0;font-size:1.4rem}
+.ph small{display:block;font:500 .68rem var(--fm);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.props{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .props mark{background:#FBE3A8;color:inherit;padding:0 1px}
-.props li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line)}
-.props li>div{flex:1}
-.props b{display:block;font-weight:700}
-.props p{margin:2px 0 0;color:var(--ink2);font-size:.96rem;line-height:1.5}
-.plink{display:inline-block;margin-top:6px;font-weight:600;font-size:.95rem}
-.lp{display:inline-block;margin:4px 0 2px;padding:2px 8px;background:#E6DCFD;font:500 .66rem var(--fm);letter-spacing:.16em;text-transform:uppercase}
+.props li{display:flex;gap:12px;align-items:flex-start;padding:18px 16px 20px 20px;background:#fff;border-top:3px solid var(--c)}
+.props li>div{flex:1;min-width:0}
+.props b{display:block;font:600 1.02rem/1.3 var(--fh);letter-spacing:-.01em}
+.props p{margin:7px 0 0;color:var(--ink2);font-size:.96rem;line-height:1.5}
+.plink{display:inline-block;margin-top:8px;font-weight:600;font-size:.95rem}
+.lp{display:inline-block;margin:7px 0 0;padding:2px 8px;background:#E6DCFD;font:500 .66rem var(--fm);letter-spacing:.16em;text-transform:uppercase}
 .fav{flex:none;border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);width:40px;height:40px;font-size:1.05rem;line-height:1;cursor:pointer;color:var(--navy)}
 .fav[aria-pressed=true]{background:var(--orange);border-color:var(--orange)}
-.empty{padding:24px;color:var(--ink2)}
+.empty{padding:24px;background:#fff;color:var(--ink2)}
 .found{margin:-10px 0 14px;font-size:.92rem;color:var(--ink2)}
 .found:empty{display:none}
 .lk{background:none;border:0;padding:0;font:inherit;color:var(--navy);text-decoration:underline;cursor:pointer}
 .lk:hover{color:var(--orange-d)}
-@media(pointer:coarse){.chip{padding:11px 14px}.search{padding:11px 14px}.up{padding:10px 12px}}
+@media(pointer:coarse){.up{padding:10px 12px}}
+@media(max-width:820px){
+  .pview{grid-template-columns:minmax(0,1fr);gap:16px}
+  /* no celular as abas viram uma faixa que rola de lado e acompanha a leitura */
+  .ptabs{top:68px;z-index:5;flex-direction:row;gap:8px;overflow-x:auto;margin:0 -20px;padding:10px 20px;background:var(--paper2);border-top:0;scrollbar-width:none}
+  .ptabs::-webkit-scrollbar{display:none}
+  .ptab{flex:none;width:auto;gap:8px;padding:10px 14px;border:1.5px solid var(--navy);font-size:.92rem;white-space:nowrap}
+  .ptab[aria-selected=true]{background:var(--navy);color:var(--ink-neg);box-shadow:none}
+  .ptab[aria-selected=true] .ct{color:rgba(248,245,240,.7)}
+  .ptab[aria-selected=true] .tri{display:none}
+  .ptab .ct{margin-left:2px}
+  .ptab.all .nm{padding-left:0}
+  .props{grid-template-columns:minmax(0,1fr)}
+}
 
 /* quadrados */
 #como{background:var(--paper)}
@@ -329,22 +336,19 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 <section id="propostas">
   <div class="wrap">
     <h2>Propostas</h2>
-    <p>São 27 propostas em seis áreas, cada uma em uma linha, com o essencial. O que está aqui pode ser ajustado a partir das conversas com os alunos. Abra uma área e marque com a estrela <b>☆</b> o que importa para você.</p>
-    <div class="tools" role="group" aria-label="Filtrar propostas">
-      <button class="chip" data-f="Todas" aria-pressed="true">Todas</button>
-      <button class="chip" data-f="imagem" aria-pressed="false">Imagem</button>
-      <button class="chip" data-f="contas" aria-pressed="false">Financeiro</button>
-      <button class="chip" data-f="negocios" aria-pressed="false">Negócios</button>
-      <button class="chip" data-f="servicos" aria-pressed="false">Serviços</button>
-      <button class="chip" data-f="apoio" aria-pressed="false">Apoio</button>
-      <button class="chip" data-f="memoria" aria-pressed="false">Memória e eventos</button>
+    <p>São 27 propostas em seis áreas, cada uma em uma linha, com o essencial. O que está aqui pode ser ajustado a partir das conversas com os alunos. Escolha uma área e marque com a estrela <b>☆</b> o que importa para você.</p>
+    <div class="tools">
       <label class="sr" for="q">Buscar nas propostas</label>
       <input id="q" class="search" type="search" placeholder="Buscar: triedro, salas, AEX, estágio…">
-      <button class="chip" id="toggleAll" type="button">Abrir todas</button>
     </div>
     <p class="found" id="found" role="status"></p>
-    <div class="grid" id="grid"></div>
-    <div class="empty" id="empty" hidden>Nenhuma proposta com esse termo. <button class="lk" id="clr" type="button">Limpar a busca</button> ou <a href="#ideias">contar sua ideia</a>.</div>
+    <div class="pview">
+      <div class="ptabs" id="ptabs" role="tablist" aria-label="Áreas das propostas"></div>
+      <div>
+        <div class="ppanel" id="grid" role="tabpanel" tabindex="-1" aria-label="Propostas da área escolhida"></div>
+        <div class="empty" id="empty" hidden>Nenhuma proposta com esse termo. <button class="lk" id="clr" type="button">Limpar a busca</button> ou <a href="#ideias">contar sua ideia</a>.</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -484,37 +488,38 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 // prioridades marcadas ficam guardadas só no navegador de quem visita
 const store={get(){try{return JSON.parse(localStorage.getItem("prisma-fav"))||[]}catch(e){return[]}},set(v){try{localStorage.setItem("prisma-fav",JSON.stringify(v))}catch(e){}}};
 const ids=new Set(P.flatMap(a=>a.b).map(x=>x.id));
-const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro="Todas", termo="";
+const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro=P[0].id, termo="", antes=null;
 // destaca o termo buscado
 const hl=s=>{if(!termo)return fmt(s);const i=s.toLowerCase().indexOf(termo);return i<0?esc(s):esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+termo.length))+"</mark>"+hl(s.slice(i+termo.length))};
 
+// uma área por vez (ou todas, na busca e em "Todas as propostas"): nada abre nem empurra o resto da página
 function renderCards(){
-  const g=$("#grid"); g.innerHTML="";
-  let n=0,tot=0;
+  let n=0,tot=0,h="";
   P.forEach(a=>{
     const items=a.b.filter(x=>!termo||(x.t+" "+x.d+" "+a.g).toLowerCase().includes(termo));
     if((filtro!=="Todas"&&a.id!==filtro)||!items.length)return;
     n++;tot+=items.length;
-    const open=a.open||!!termo;
-    const c=document.createElement("div");c.className="card";c.dataset.a=a.id;c.id="p-"+a.id;
-    if(open)c.classList.add("open");
-    c.innerHTML='<button class="head" aria-expanded="'+!!open+'"><span class="tx"><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3><span class="pv">'+esc(a.b.map(x=>x.t).join(", "))+'</span></span><span class="chev" aria-hidden="true"></span></button>'+
-      '<div class="body"><div class="in"><ul class="props">'+items.map(x=>'<li><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+'</div>'+
-      '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>').join("")+'</ul></div></div>';
-    c.querySelector(".head").onclick=e=>{a.open=!c.classList.contains("open");c.classList.toggle("open",a.open);e.currentTarget.setAttribute("aria-expanded",a.open);syncToggle()};
-    c.querySelectorAll(".fav").forEach(b=>b.onclick=()=>{const id=b.dataset.id;fav.has(id)?fav.delete(id):fav.add(id);const on=fav.has(id);b.setAttribute("aria-pressed",on);b.textContent=on?"★":"☆";updFav()});
-    g.appendChild(c);
+    h+='<div class="pgroup" data-a="'+a.id+'" id="p-'+a.id+'"><div class="ph"><span class="tri" aria-hidden="true"></span><div><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></div></div>'+
+      '<ul class="props">'+items.map(x=>'<li><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+'</div>'+
+      '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>').join("")+'</ul></div>';
   });
-  $("#empty").hidden=n>0; syncToggle();
+  $("#grid").innerHTML=h;
+  $$("#grid .fav").forEach(b=>b.onclick=()=>{const id=b.dataset.id;fav.has(id)?fav.delete(id):fav.add(id);const on=fav.has(id);b.setAttribute("aria-pressed",on);b.textContent=on?"★":"☆";updFav()});
+  $("#empty").hidden=n>0;
   $("#found").textContent=termo&&tot?tot+(tot>1?" propostas":" proposta")+" com “"+termo+"”":"";
 }
-function syncToggle(){const vis=$$("#grid .card");const all=vis.length&&vis.every(c=>c.classList.contains("open"));$("#toggleAll").textContent=all?"Fechar todas":"Abrir todas"}
-$("#toggleAll").onclick=()=>{const vis=$$("#grid .card");const all=vis.every(c=>c.classList.contains("open"));P.forEach(a=>{if($("#p-"+a.id))a.open=!all});renderCards()};
-$$(".chip[data-f]").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;$$(".chip[data-f]").forEach(x=>x.setAttribute("aria-pressed",x===b));P.forEach(a=>{if(a.id===filtro)a.open=true});renderCards()});
-const setChip=f=>{filtro=f;$$(".chip[data-f]").forEach(x=>x.setAttribute("aria-pressed",x.dataset.f===f))};
-// a busca sempre olha todas as áreas
-$("#q").oninput=e=>{termo=e.target.value.trim().toLowerCase();if(termo)setChip("Todas");renderCards()};
-$("#clr").onclick=()=>{termo="";$("#q").value="";renderCards();$("#q").focus()};
+// abas das áreas
+$("#ptabs").innerHTML=P.map(a=>'<button class="ptab" role="tab" type="button" data-f="'+a.id+'" data-a="'+a.id+'"><span class="tri" aria-hidden="true"></span><span class="nm">'+esc(a.g)+'</span><span class="ct">'+a.b.length+'</span></button>').join("")+
+  '<button class="ptab all" role="tab" type="button" data-f="Todas"><span class="nm">Todas as propostas</span><span class="ct">'+ids.size+'</span></button>';
+const setChip=f=>{filtro=f;$$(".ptab").forEach(x=>{const on=x.dataset.f===f;x.setAttribute("aria-selected",on);x.tabIndex=on?0:-1})};
+const pick=(b,foc)=>{termo="";antes=null;$("#q").value="";setChip(b.dataset.f);renderCards();if(foc)b.focus();
+  const t=$("#ptabs");if(t.scrollWidth>t.clientWidth)t.scrollLeft=b.offsetLeft-20;
+  const v=$(".pview");if(v.getBoundingClientRect().top<0)v.scrollIntoView()};
+$$(".ptab").forEach((b,i,all)=>{b.onclick=()=>pick(b);
+  b.onkeydown=e=>{const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];if(!d)return;e.preventDefault();pick(all[(i+d+all.length)%all.length],true)}});
+// a busca olha todas as áreas; ao limpar, volta para a área em que a pessoa estava
+$("#q").oninput=e=>{termo=e.target.value.trim().toLowerCase();if(termo&&antes===null){antes=filtro;setChip("Todas")}else if(!termo&&antes!==null){setChip(antes);antes=null}renderCards()};
+$("#clr").onclick=()=>{const q=$("#q");q.value="";q.oninput({target:q});q.focus()};
 
 function updFav(){
   const n=fav.size,pill=$("#pill");
@@ -531,8 +536,7 @@ const SQ=[["Triedro","n","negocios"],["Copiadora","n","negocios"],["Escritório 
 const tg={n:"Negócios",s:"Serviços",a:"Apoio",r:"Representação"};
 $("#sq").innerHTML=SQ.map(([n,c,id])=>id?'<a href="#p-'+id+'" class="'+c+'" data-id="'+id+'">'+n+'<small>'+tg[c]+'</small></a>':'<div class="'+c+' soon">'+n+'<small>detalhes em breve</small></div>').join("");
 // abre uma área das propostas (quadrados, atalhos do início e links #p-area)
-function goArea(id){if(!ids.size||!P.some(p=>p.id===id))return;termo="";$("#q").value="";setChip("Todas");
-  P.forEach(p=>p.open=p.id===id);renderCards();const el=$("#p-"+id);el.scrollIntoView();el.querySelector(".head").focus({preventScroll:true})}
+function goArea(id){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
 $$("#sq a,.hero-foot a").forEach(a=>a.onclick=e=>{e.preventDefault();const id=a.getAttribute("href").slice(3);history.replaceState(null,"","#p-"+id);goArea(id)});
 const fromHash=()=>{const m=location.hash.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
 addEventListener("hashchange",fromHash);
@@ -577,7 +581,7 @@ const spy=()=>{const y=scrollY+innerHeight*.35;let cur=-1;navS.forEach((x,i)=>{i
 addEventListener("scroll",spy,{passive:true});
 $("#tp").onchange=e=>document.body.classList.toggle("nopend",!e.target.checked);
 $("#help").onclick=()=>{$("#helpmsg").hidden=false};
-renderCards();renderIdeas();updFav();spy();fromHash();
+setChip(filtro);renderCards();renderIdeas();updFav();spy();fromHash();
 </script>
 </body>
 </html>
