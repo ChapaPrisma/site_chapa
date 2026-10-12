@@ -404,7 +404,6 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
         <p class="hint" id="marcadas"></p>
         <button class="btn" type="submit">Contar minha ideia</button>
         <p class="sent" id="sent" role="status" hidden>Abrimos seu e-mail com a ideia pronta para enviar. Se nada abriu, escreva para chapa.poli.prisma@gmail.com.</p>
-        <p class="hint" style="margin:12px 0 0">Em breve o envio será por formulário, sem sair da página. <span class="pend"><span class="tag">[CONFIRMAR: URL do formulário externo]</span></span></p>
       </form>
     </div>
   </div>
@@ -425,7 +424,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
       <div><h3>Conte sua ideia</h3><p>O que você muda no Grêmio se puder mudar uma coisa?</p><a class="btn orange" href="#ideias">Contar minha ideia</a></div>
       <div><h3>Quer ajudar?</h3><p>Há funções para diferentes disponibilidades de tempo. Você escolhe a área em que quer atuar, e cada área tem um responsável. Quem está começando pode entrar como trainee.</p><button class="btn alt" id="help" type="button">Quero ajudar</button><p id="helpmsg" class="hint" style="color:var(--yellow);margin:10px 0 0" hidden>No site de verdade, este botão leva ao formulário. <span class="pend"><span class="tag">[CONFIRMAR: link do formulário]</span></span></p></div>
     </div>
-    <p style="margin-top:24px;font-size:.95rem">Privacidade: pedimos só nome, curso e e-mail, para responder você e falar sobre a chapa. O formulário é externo e o site não guarda dados. Você pode pedir a qualquer momento que apaguemos o que enviou, escrevendo para <a href="mailto:chapa.poli.prisma@gmail.com">chapa.poli.prisma@gmail.com</a>.</p>
+    <p style="margin-top:24px;font-size:.95rem">Privacidade: pedimos só nome, curso e e-mail, para responder você e falar sobre a chapa. O site não guarda dados. Você pode pedir a qualquer momento que apaguemos o que enviou, escrevendo para <a href="mailto:chapa.poli.prisma@gmail.com">chapa.poli.prisma@gmail.com</a>.</p>
   </div>
 </section>
 </main>
@@ -534,7 +533,7 @@ addEventListener("hashchange",fromHash);
 // ideias
 const AREAS=["Qualquer área",...P.map(p=>p.g)];
 $("#area").innerHTML=AREAS.map(a=>"<option>"+esc(a)+"</option>").join("");
-// enquanto não há formulário, a ideia segue por e-mail para a chapa
+// a ideia segue por e-mail para a chapa
 $("#form").onsubmit=e=>{e.preventDefault();const t=$("#txt").value.trim();if(!t)return;
   const pri=P.flatMap(a=>a.b).filter(x=>fav.has(x.id)).map(x=>x.t);
   const body=t+"\n\nÁrea: "+$("#area").value+(pri.length?"\nPrioridades marcadas: "+pri.join(", "):"");
