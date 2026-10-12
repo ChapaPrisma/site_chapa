@@ -64,10 +64,10 @@ body.nopend .pend .tag{display:none}
 /* marca: símbolo + logotipo PRISMA */
 .logo{display:block;flex:none;overflow:visible}
 /* hover: as facetas se abrem como luz saindo do prisma */
-.logo polygon{transition:transform .38s cubic-bezier(.2,.8,.2,1)}
-.brand:hover .logo .f-y,.brand:focus-visible .logo .f-y{transform:translate(-3px,-5px)}
-.brand:hover .logo .f-o,.brand:focus-visible .logo .f-o{transform:translate(9px,-3px);transition-delay:.04s}
-.brand:hover .logo .f-l,.brand:focus-visible .logo .f-l{transform:translate(6px,7px);transition-delay:.08s}
+.logo polygon,.hero .mark polygon{transition:transform .38s cubic-bezier(.2,.8,.2,1)}
+.brand:hover .logo .f-y,.brand:focus-visible .logo .f-y,.hero .mark:hover .f-y{transform:translate(-3px,-5px)}
+.brand:hover .logo .f-o,.brand:focus-visible .logo .f-o,.hero .mark:hover .f-o{transform:translate(9px,-3px);transition-delay:.04s}
+.brand:hover .logo .f-l,.brand:focus-visible .logo .f-l,.hero .mark:hover .f-l{transform:translate(6px,7px);transition-delay:.08s}
 .brand .name{transition:letter-spacing .38s cubic-bezier(.2,.8,.2,1)}
 header .brand:hover .name,header .brand:focus-visible .name{letter-spacing:.3em}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);line-height:1}
@@ -266,7 +266,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
       <p class="lead">Contas em ordem, negócios que dão resultado e serviços para quem estuda&nbsp;na&nbsp;Poli.</p>
       <div class="cta"><a class="btn orange" href="#propostas">Ver as propostas</a><a class="btn ghost" href="#ideias">Contar minha ideia</a></div>
     </div>
-    <svg class="mark" viewBox="-12 -12 122 124" aria-hidden="true"><polygon class="echo" points="13,28.5 41,11 97,46 13,104.5"/><path class="tick" d="M100 -5v10M95 0h10"/><use href="#sym" width="84" height="94"/></svg>
+    <svg class="mark" viewBox="-12 -12 122 124" aria-hidden="true"><polygon class="echo" points="13,28.5 41,11 97,46 13,104.5"/><path class="tick" d="M100 -5v10M95 0h10"/><polygon fill="#F8F5F0" points="0,17.5 28,35 28,74 0,93.5"/><polygon class="f-y" fill="#F4BE5A" points="0,17.5 28,0 28,35"/><polygon class="f-o" fill="#EC7042" points="28.8,.5 84,35 58.65,52.66 28.8,34"/><polygon class="f-l" fill="#B292F5" points="28.8,54.5 45.2,44.25 58.65,52.66 28.8,73.44"/></svg>
   </div>
   <div class="hero-foot mono" aria-hidden="true"><div class="wrap"><span>Imagem · Contas · Negócios · Serviços · Apoio · Memória e eventos</span></div></div>
 </section>
