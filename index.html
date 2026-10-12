@@ -166,10 +166,10 @@ nav .btn:hover{box-shadow:none}
 .props li.hit{outline:2px solid var(--navy);outline-offset:-2px}
 .props li[data-c]{cursor:pointer}
 /* chamada para a carta-programa, no fim das propostas */
-.carta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 40px;margin-top:48px;padding:28px 28px 30px;background:var(--navy);color:var(--ink-neg)}
-.carta h3{margin:0 0 6px;font-size:1.35rem}
-.carta p{margin:0;max-width:52ch;color:rgba(248,245,240,.82)}
-.carta .hint{color:rgba(248,245,240,.72)}
+.carta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 40px;margin-top:40px;padding:24px 26px 26px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy)}
+.carta h3{margin:0 0 6px;font-size:1.25rem}
+.carta p{margin:0;max-width:52ch;color:var(--ink2)}
+.carta .hint{flex-basis:100%;max-width:none}
 .found{margin:-10px 0 14px;font-size:.92rem;color:var(--ink2)}
 .found:empty{display:none}
 .lk{background:none;border:0;padding:0;font:inherit;color:var(--navy);text-decoration:underline;cursor:pointer}
@@ -390,7 +390,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer,body.cv-open>.pill
     </div>
     <div class="carta" id="cartaCta">
       <div><h3>Quer ver os detalhes?</h3><p>Aqui as propostas estão resumidas. A carta-programa explica cada uma por inteiro.</p></div>
-      <a class="btn orange" id="cartaBtn" href="#carta" hidden>Abrir a carta-programa</a>
+      <a class="btn" id="cartaBtn" href="#carta" hidden>Abrir a carta-programa</a>
       <p class="hint" id="cartaSoon">A carta-programa será publicada aqui. <span class="pend"><span class="tag">[CONFIRMAR: PDF da carta-programa]</span></span></p>
     </div>
   </div>
