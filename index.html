@@ -161,8 +161,7 @@ nav .btn + .btn{margin-left:6px}
 .fav{flex:none;border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);width:40px;height:40px;font-size:1.05rem;line-height:1;cursor:pointer;color:var(--navy)}
 .fav[aria-pressed=true]{background:var(--orange);border-color:var(--orange)}
 .empty{padding:24px;background:#fff;color:var(--ink2)}
-/* proposta apontada por um quadrado das frentes; cartão que abre a carta-programa */
-.props li.hit{outline:2px solid var(--navy);outline-offset:-2px}
+/* cartão que abre a carta-programa */
 .props li[data-c]{cursor:pointer}
 /* chamada para a carta-programa, no fim das propostas */
 .carta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 40px;margin-top:40px;padding:24px 26px 26px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy)}
@@ -191,10 +190,9 @@ nav .btn + .btn{margin-left:6px}
 .sq{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0}
 @media(max-width:820px){.sq{grid-template-columns:repeat(2,1fr)}}
 .sq a,.sq div{aspect-ratio:1.25;border-radius:var(--r);padding:14px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--navy);font:700 1rem var(--fh);background:#fff;border:1.5px solid var(--navy);transition:transform .15s,box-shadow .15s}
-.sq .n{background:var(--orange);border-color:var(--orange)} .sq .s{background:var(--lilac);border-color:var(--lilac)} .sq .a{background:var(--yellow);border-color:var(--yellow)} .sq .r{background:transparent;border-style:dashed}
+.sq .n{background:var(--orange);border-color:var(--orange)} .sq .s{background:var(--lilac);border-color:var(--lilac)} .sq .a{background:var(--yellow);border-color:var(--yellow)}
 .sq small{font:500 .66rem var(--fm);letter-spacing:.14em;text-transform:uppercase}
 .sq a:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--navy);color:var(--navy)}
-.sq .soon{background:transparent;color:var(--ink3);border:1.5px dashed var(--ink3)}
 .leg{display:flex;gap:18px;flex-wrap:wrap;font:500 .72rem var(--fm);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;color:var(--ink2)}
 .leg i{display:inline-block;width:12px;height:12px;border:1px solid var(--navy);margin-right:7px;vertical-align:-1px}
 .org{background:#fff;border:1px solid var(--line);padding:24px;margin-top:32px;position:relative}
@@ -309,23 +307,17 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 /* carta-programa aberta: o site vira um índice ao lado do PDF */
 body.cv-open{overflow:hidden}
 body.cv-open>.pill,body.cv-open>a.sr{display:none!important}
-/* entrada animada: a carta cresce a partir de onde a pessoa clicou e o site encolhe para a coluna do índice.
+/* entrada e saída animadas (em cartaOpen/cartaClose, no script): a carta sobe do cartão em que a pessoa clicou e cresce
+   até ocupar a tela; o site recua e some; o índice desliza para o lugar dele e os tópicos entram em sequência.
    O site fica só invisível (não sai do lugar), então ao sair ele volta exatamente onde estava. */
-header.top,main,footer{transition:transform .55s cubic-bezier(.6,0,.2,1),opacity .3s ease,visibility 0s}
-header.top{transform-origin:0 0}
-body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(var(--cvk,.22));opacity:0;visibility:hidden;pointer-events:none;
-  transition:transform .55s cubic-bezier(.6,0,.2,1),opacity .3s ease .2s,visibility 0s .55s}
-@keyframes cvGrow{from{clip-path:inset(var(--ct,0px) var(--cr,0px) var(--cb,0px) var(--cl,100%))}to{clip-path:inset(0)}}
-@keyframes cvSide{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
-.cv.opening .cv-doc{animation:cvGrow .55s cubic-bezier(.6,0,.2,1) both}
-.cv.opening .cv-side{animation:cvSide .38s ease .2s both}
-@keyframes cvShrink{from{clip-path:inset(0)}to{clip-path:inset(var(--ct,0px) var(--cr,0px) var(--cb,0px) var(--cl,100%))}}
-@keyframes cvSideOut{to{opacity:0;transform:translateX(-28px)}}
-.cv.closing .cv-doc{animation:cvShrink .42s cubic-bezier(.6,0,.2,1) both}
-.cv.closing .cv-side{animation:cvSideOut .22s ease both}
+header.top,main,footer{transition:transform .56s cubic-bezier(.2,0,0,1),opacity .34s ease,visibility 0s}
+body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translateX(-36px) scale(.94);opacity:0;visibility:hidden;pointer-events:none;
+  transition:transform .56s cubic-bezier(.2,0,0,1),opacity .34s ease,visibility 0s .56s}
+/* moldura com sombra que acompanha a borda da carta enquanto ela cresce */
+.cv-frame{grid-column:2;grid-row:1;transform-origin:0 0;pointer-events:none;opacity:0;box-shadow:0 30px 90px rgba(15,31,61,.5),0 2px 12px rgba(15,31,61,.3)}
 .cv{position:fixed;inset:0;z-index:50;display:grid;grid-template-columns:300px minmax(0,1fr)}
 .cv[hidden]{display:none}
-.cv-side{position:relative;z-index:2;display:flex;flex-direction:column;min-height:0;background:var(--navy);color:var(--ink-neg)}
+.cv-side{grid-column:1;grid-row:1;position:relative;z-index:2;display:flex;flex-direction:column;min-height:0;background:var(--navy);color:var(--ink-neg)}
 .cv-top{padding:14px 16px}
 .cv-exit{display:inline-flex;align-items:center;gap:9px;padding:9px 14px 9px 13px;border:1.5px solid rgba(248,245,240,.5);border-radius:var(--r);background:none;color:var(--ink-neg);font:600 .92rem var(--fb);cursor:pointer}
 .cv-exit::before{content:"";width:7px;height:7px;border:solid currentColor;border-width:0 0 2px 2px;transform:rotate(45deg)}
@@ -344,19 +336,21 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 .cv-list button:focus-visible{outline-offset:-3px}
 .cv-dl{padding:14px 20px;border-top:1px solid rgba(248,245,240,.16);font-size:.9rem}
 .cv-dl a{color:var(--yellow)}
-.cv-doc{position:relative;overflow-y:auto;padding:24px 24px 64px;background:var(--paper2);scroll-behavior:smooth}
+.cv-doc{grid-column:2;grid-row:1;position:relative;overflow-y:auto;padding:24px 24px 64px;background:var(--paper2);scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){.cv-doc{scroll-behavior:auto}}
 .cv-page{position:relative;max-width:880px;margin:0 auto 16px;background:#fff}
-.cv-page canvas{display:block;width:100%;height:100%}
+.cv-page canvas{display:block;width:100%;height:100%;opacity:0;transition:opacity .35s ease}
+.cv-page canvas.on{opacity:1}
 /* marca onde o tópico começa: fica por cima da página, o PDF não é alterado */
-.cv-mark{position:absolute;height:3px;background:var(--orange);pointer-events:none}
-.cv-mark::before{content:"";position:absolute;right:100%;top:-12px;margin-right:6px;width:11px;height:14px;background:var(--orange);clip-path:polygon(0 0,100% 50%,0 100%)}
+.cv-mark{position:absolute;height:3px;background:var(--orange);pointer-events:none;animation:markIn .55s cubic-bezier(.2,0,0,1) .18s both}
+@keyframes markIn{from{width:0}}
+@keyframes markTri{from{opacity:0;transform:translateX(-10px)}}
+.cv-mark::before{content:"";position:absolute;right:100%;top:-12px;margin-right:6px;width:11px;height:14px;background:var(--orange);clip-path:polygon(0 0,100% 50%,0 100%);animation:markTri .3s ease .1s both}
 .cv-status{max-width:880px;margin:48px auto;text-align:center;color:var(--ink2)}
 @media(max-width:820px){
   .cv{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
-  header.top{transform-origin:50% 0}
-  @keyframes cvSide{from{opacity:0;transform:translateY(-100%)}to{opacity:1;transform:none}}
-  @keyframes cvSideOut{to{opacity:0;transform:translateY(-100%)}}
+  body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(.95)}
+  .cv-doc,.cv-frame{grid-column:1;grid-row:2}
   .cv-side{flex-direction:row;flex-wrap:wrap;align-items:center}
   .cv-top{flex:none;padding:10px 12px}
   .cv-tt{flex:1;min-width:0;padding:0;font-size:1.05rem;font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -453,8 +447,8 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
       <div><h3>Resultado público</h3><p>Cada área tem meta e jeito de medir. Painel todo mês e demonstrações financeiras todo trimestre, como o estatuto exige.</p></div>
       <div><h3>Reunião aberta</h3><p>Pelo menos uma por mês, aberta a todos os alunos. Nelas, qualquer aluno propõe e vota, e cada pessoa tem um voto.</p></div>
     </div>
-    <h3>Clique em um quadrado para ver as propostas da área</h3>
-    <div class="leg"><span><i style="background:var(--orange)"></i>Negócios</span><span><i style="background:var(--lilac)"></i>Serviços</span><span><i style="background:var(--yellow)"></i>Apoio</span><span><i style="border-style:dashed"></i>Representação</span></div>
+    <h3>Clique em um quadrado para ver as propostas de cada frente</h3>
+    <div class="leg"><span><i style="background:var(--orange)"></i>Negócios</span><span><i style="background:var(--lilac)"></i>Serviços</span><span><i style="background:var(--yellow)"></i>Apoio</span></div>
     <div class="sq" id="sq"></div>
     <div class="org">
       <h3>Organização da equipe</h3>
@@ -568,6 +562,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
     <ol class="cv-list" id="cvList"></ol>
     <div class="cv-dl"><a id="cvDl" href="#" download>Baixar o PDF</a></div>
   </div>
+  <div class="cv-frame" id="cvFrame"></div>
   <div class="cv-doc" id="cvDoc" tabindex="0"><p class="cv-status" id="cvStatus" role="status"></p></div>
 </div>
 
@@ -671,7 +666,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 // prioridades marcadas ficam guardadas só no navegador de quem visita
 const store={get(){try{return JSON.parse(localStorage.getItem("prisma-fav"))||[]}catch(e){return[]}},set(v){try{localStorage.setItem("prisma-fav",JSON.stringify(v))}catch(e){}}};
 const ids=new Set(P.flatMap(a=>a.b).map(x=>x.id));
-const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro=P[0].id, termo="", antes=null, marca=null;
+const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro=P[0].id, termo="", antes=null, so=null, soNome="";
 // tópico da carta-programa que trata da proposta (o da proposta vale mais que o da área)
 const topico=(a,x)=>{const id=x.c||a.c;return CARTA.url&&id&&CARTA.topicos.some(t=>t.id===id)?id:null};
 // destaca o termo buscado
@@ -681,11 +676,11 @@ const hl=s=>{if(!termo)return fmt(s);const i=s.toLowerCase().indexOf(termo);retu
 function renderCards(){
   let n=0,tot=0,h="";
   P.forEach(a=>{
-    const items=a.b.filter(x=>!termo||(x.t+" "+x.d+" "+a.g).toLowerCase().includes(termo));
+    const items=a.b.filter(x=>(!termo||(x.t+" "+x.d+" "+a.g).toLowerCase().includes(termo))&&(!so||so.has(x.id)));
     if((filtro!=="Todas"&&a.id!==filtro)||!items.length)return;
     n++;tot+=items.length;
     h+='<div class="pgroup" data-a="'+a.id+'" id="p-'+a.id+'"><div class="ph"><span class="tri" aria-hidden="true"></span><div><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></div></div>'+
-      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(marca&&marca.has(x.id)?' class="hit"':'')+(c?' data-c="'+c+'"':'')+'><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-programa</a>':'')+'</div>'+
+      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(c?' data-c="'+c+'"':'')+'><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-programa</a>':'')+'</div>'+
       '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>'}).join("")+'</ul></div>';
   });
   $("#grid").innerHTML=h;
@@ -693,19 +688,22 @@ function renderCards(){
   // o cartão inteiro abre a carta-programa no tópico da proposta (menos a estrela e os links)
   $$("#grid li[data-c]").forEach(li=>li.onclick=e=>{if(!e.target.closest("a,button"))location.hash="#carta/"+li.dataset.c});
   $("#empty").hidden=n>0;
-  $("#found").textContent=termo&&tot?tot+(tot>1?" propostas":" proposta")+" com “"+termo+"”":"";
+  // linha de contexto: resultado da busca ou a frente escolhida num quadrado
+  if(so){$("#found").innerHTML='<b>'+esc(soNome)+'</b>: '+tot+(tot>1?' propostas tratam':' proposta trata')+' dessa frente. <button class="lk" id="soClr" type="button">Ver todas as propostas</button>';
+    $("#soClr").onclick=()=>pick($('.ptab[data-f="Todas"]'))}
+  else $("#found").textContent=termo&&tot?tot+(tot>1?" propostas":" proposta")+" com “"+termo+"”":"";
 }
 // abas das áreas
 $("#ptabs").innerHTML=P.map(a=>'<button class="ptab" role="tab" type="button" data-f="'+a.id+'" data-a="'+a.id+'"><span class="tri" aria-hidden="true"></span><span class="nm">'+esc(a.g)+'</span><span class="ct">'+a.b.length+'</span></button>').join("")+
   '<button class="ptab all" role="tab" type="button" data-f="Todas"><span class="nm">Todas as propostas</span><span class="ct">'+ids.size+'</span></button>';
 const setChip=f=>{filtro=f;$$(".ptab").forEach(x=>{const on=x.dataset.f===f;x.setAttribute("aria-selected",on);x.tabIndex=on?0:-1})};
-const pick=(b,foc)=>{termo="";antes=null;marca=null;$("#q").value="";setChip(b.dataset.f);renderCards();if(foc)b.focus();
+const pick=(b,foc)=>{termo="";antes=null;so=null;$("#q").value="";setChip(b.dataset.f);renderCards();if(foc)b.focus();
   const t=$("#ptabs");if(t.scrollWidth>t.clientWidth)t.scrollLeft=b.offsetLeft-20;
   const v=$(".pview");if(v.getBoundingClientRect().top<0)v.scrollIntoView()};
 $$(".ptab").forEach((b,i,all)=>{b.onclick=()=>pick(b);
   b.onkeydown=e=>{const d={ArrowDown:1,ArrowRight:1,ArrowUp:-1,ArrowLeft:-1}[e.key];if(!d)return;e.preventDefault();pick(all[(i+d+all.length)%all.length],true)}});
 // a busca olha todas as áreas; ao limpar, volta para a área em que a pessoa estava
-$("#q").oninput=e=>{marca=null;termo=e.target.value.trim().toLowerCase();if(termo&&antes===null){antes=filtro;setChip("Todas")}else if(!termo&&antes!==null){setChip(antes);antes=null}renderCards()};
+$("#q").oninput=e=>{so=null;termo=e.target.value.trim().toLowerCase();if(termo&&antes===null){antes=filtro;setChip("Todas")}else if(!termo&&antes!==null){setChip(antes);antes=null}renderCards()};
 $("#clr").onclick=()=>{const q=$("#q");q.value="";q.oninput({target:q});q.focus()};
 
 function updFav(){
@@ -716,31 +714,34 @@ function updFav(){
   $("#marcadas").textContent=n?"Você marcou como prioridade: "+names.join(", ")+".":"";
 }
 
-// quadrados: cada frente da equipe → área de propostas e títulos das propostas que tratam dela.
-// null = nenhuma proposta trata da frente (o quadrado fica sem link). Rever quando as propostas mudarem.
+// quadrados: cada frente da equipe → títulos das propostas que tratam dela, de qualquer área.
+// Expansão = toda ação que liga a Poli a agentes de fora (empresas, poder público, pessoas).
+// Uma proposta pode estar em mais de uma frente. Rever quando as propostas mudarem.
 const SQ=[
-["Triedro","n","negocios",["Triedro sem fila","Triedro mais conhecido e confortável"]],
-["Copiadora","n","negocios",["Copiadora ampliada","Sublimação na copiadora"]],
-["Poliglota","n","negocios",["Poliglota renovada"]],
-["Escritório Piloto","n","negocios",["Escritório Piloto de volta","Escritório Piloto para startups"]],
-["Acadêmico","s","servicos",["Novo Fuja do Nabo","Grupos de estudo","FAQ do Grêmio","Poliverso","Politique"]],
-["Sociocultural","s","memoria",["Jornal Politécnico digital","Memorial dos 123 anos","Acervo da Resistência"]],
-["Extensão","s","servicos",["Salas para os grupos de extensão","Grupos de extensão mais perto do Grêmio"]],
-["Expansão","s",null],
-["Eventos","s","memoria",["Cervejada/Calourada com a AAAP","Bixopp de volta"]],
-["Tecnologia","a","apoio",["Novo site do Grêmio","Tecnologia feita com os grupos da Poli"]],
-["Espaços do Grêmio","a","apoio",["Espaços equipados"]],
-["Comunicação","a","imagem",["Imagem que atrai parceiros","Recuperar a confiança dos alunos"]],
-["Representantes discentes","r",null]];
-SQ.forEach(([n,,id,tit])=>(tit||[]).forEach(t=>{if(!P.find(p=>p.id===id).b.some(x=>x.t===t))console.warn("Mapa dos quadrados: a proposta “"+t+"” não existe mais em "+id+" (quadrado "+n+")")}));
-const tg={n:"Negócios",s:"Serviços",a:"Apoio",r:"Representação"};
-$("#sq").innerHTML=SQ.map(([n,c,id],i)=>id?'<a href="#p-'+id+'" class="'+c+'" data-i="'+i+'">'+n+'<small>'+tg[c]+'</small></a>':'<div class="'+c+' soon">'+n+'<small>'+tg[c]+'</small></div>').join("");
-// abre uma área das propostas (quadrados, atalhos do início e links #p-area); tit = propostas a destacar
-function goArea(id,tit){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);
-  if(tit&&tit.length){marca=new Set(P.find(p=>p.id===id).b.filter(x=>tit.includes(x.t)).map(x=>x.id));renderCards()}
-  const el=$("#grid li.hit");el?el.scrollIntoView({block:"center"}):$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
-$$("#sq a,.hero-foot a").forEach(a=>a.onclick=e=>{e.preventDefault();const id=a.getAttribute("href").slice(3);history.replaceState(null,"","#p-"+id);goArea(id,a.dataset.i?SQ[a.dataset.i][3]:null)});
-const fromHash=()=>{const h=location.hash,c=h.match(/^#carta(?:\/([\w-]+))?$/);if(c&&CARTA.url)return cartaOpen(c[1]);cartaClose();if(h==="#votar")return popOpen($("#vote"),$("#voteBtn"));const m=h.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
+["Triedro","n",["Triedro sem fila","Triedro mais conhecido e confortável"]],
+["Copiadora","n",["Copiadora ampliada","Sublimação na copiadora"]],
+["Poliglota","n",["Poliglota renovada"]],
+["Escritório Piloto","n",["Escritório Piloto de volta","Escritório Piloto para startups"]],
+["Acadêmico","s",["Novo Fuja do Nabo","Grupos de estudo","FAQ do Grêmio","Manuais em dia"]],
+["Sociocultural","s",["Jornal Politécnico digital","Memorial dos 123 anos","Acervo da Resistência","Ações sociais mantidas e ampliadas"]],
+["Extensão","s",["Salas para os grupos de extensão","Grupos de extensão mais perto do Grêmio","AEX que valem a pena"]],
+["Expansão","s",["Vagas de estágio no app do Grêmio","Preferência para quem apoia","Poliverso","Politique","Recursos para a Poli","Espaços equipados","Casa do Politécnico","Imagem que atrai parceiros"]],
+["Eventos","s",["Cervejada/Calourada com a AAAP","Bixopp de volta"]],
+["Tecnologia","a",["Novo site do Grêmio","Tecnologia feita com os grupos da Poli"]],
+["Espaços do Grêmio","a",["Espaços equipados"]],
+["Comunicação","a",["Imagem que atrai parceiros","Recuperar a confiança dos alunos"]]];
+const porTitulo=new Map(P.flatMap(a=>a.b).map(x=>[x.t,x.id]));
+SQ.forEach(([n,,tit])=>tit.forEach(t=>{if(!porTitulo.has(t))console.warn("Mapa dos quadrados: a proposta “"+t+"” não existe mais (quadrado "+n+")")}));
+const tg={n:"Negócios",s:"Serviços",a:"Apoio"};
+$("#sq").innerHTML=SQ.map(([n,c],i)=>'<a href="#frente-'+slug(n)+'" class="'+c+'" data-i="'+i+'">'+n+'<small>'+tg[c]+'</small></a>').join("");
+// abre uma área das propostas (atalhos do início e links #p-area)
+function goArea(id){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
+// mostra só as propostas de uma frente (quadrados e links #frente-nome)
+function goFront(i){const f=SQ[i];if(!f)return;pick($('.ptab[data-f="Todas"]'));so=new Set(f[2].map(t=>porTitulo.get(t)).filter(Boolean));soNome=f[0];renderCards();
+  $("#found").scrollIntoView();$("#grid").focus({preventScroll:true})}
+$$(".hero-foot a").forEach(a=>a.onclick=e=>{e.preventDefault();const id=a.getAttribute("href").slice(3);history.replaceState(null,"","#p-"+id);goArea(id)});
+$$("#sq a").forEach(a=>a.onclick=e=>{e.preventDefault();history.replaceState(null,"",a.getAttribute("href"));goFront(+a.dataset.i)});
+const fromHash=()=>{const h=location.hash,c=h.match(/^#carta(?:\/([\w-]+))?$/);if(c&&CARTA.url)return cartaOpen(c[1]);cartaClose();if(h==="#votar")return popOpen($("#vote"),$("#voteBtn"));const f=h.match(/^#frente-([\w-]+)$/);if(f)return goFront(SQ.findIndex(x=>slug(x[0])===f[1]));const m=h.match(/^#p-(\w+)$/);if(m)goArea(m[1])};
 addEventListener("hashchange",fromHash);
 
 // ideias
@@ -818,7 +819,7 @@ function cartaLoad(){return cv.ready||(cv.ready=(async()=>{
     st.innerHTML='Não foi possível abrir a carta-programa aqui. <a href="'+CARTA.url+'">Baixar o PDF</a>';throw e}
 })())}
 async function cartaDraw(p){if(p.ok)return;p.ok=1;const k=p.el.clientWidth/p.vp.width*Math.min(devicePixelRatio||1,2),vp=p.pg.getViewport({scale:k}),c=document.createElement("canvas");
-  c.width=vp.width;c.height=vp.height;p.el.prepend(c);await p.pg.render({canvasContext:c.getContext("2d"),viewport:vp}).promise}
+  c.width=vp.width;c.height=vp.height;p.el.prepend(c);await p.pg.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;c.classList.add("on")}
 // acha no texto do PDF onde o tópico começa: entre os trechos que casam com o título, vale o de letra maior
 // (o título de verdade, e não a linha do sumário ou uma menção no meio do texto). Devolve a posição em fração da página.
 async function cartaFind(t){const key=norm(t.busca||t.t);let best=null;
@@ -839,33 +840,60 @@ const cvCur=id=>$$("#cvList button").forEach(b=>{if(b.dataset.t!==id)return b.re
   const l=$("#cvList");if(l.clientHeight){const y=b.offsetTop-l.offsetTop;if(y<l.scrollTop||y+b.offsetHeight>l.scrollTop+l.clientHeight)l.scrollTop=y-l.clientHeight/3}});
 const cvTop=o=>o.p.el.offsetTop+o.top*o.p.el.clientHeight;
 // rola até o tópico e sublinha o começo dele
-async function cartaGo(id){await cartaLoad();const o=cv.pos[id];if(!o)return;
+// pulo = ir direto, sem rolar pelas páginas do caminho (na abertura e quando o tópico está longe)
+async function cartaGo(id,pulo){await cartaLoad();const o=cv.pos[id];if(!o)return;
+  const d=$("#cvDoc"),y=Math.max(0,cvTop(o)-28),longe=pulo||Math.abs(y-d.scrollTop)>d.clientHeight*2;
   $$(".cv-mark").forEach(m=>m.remove());
   if(o.w){const m=document.createElement("i");m.className="cv-mark";m.style.cssText="left:"+o.x*100+"%;top:"+o.y*100+"%;width:"+o.w*100+"%";o.p.el.appendChild(m)}
-  cv.lock=Date.now()+900;$("#cvDoc").scrollTo({top:cvTop(o)-28});cvCur(id)}
+  cv.lock=Date.now()+900;d.scrollTo({top:y,behavior:longe?"instant":"smooth"});
+  if(longe&&cvMs(1))o.p.el.animate([{opacity:.2,transform:"translateY(16px)"},{opacity:1,transform:"none"}],{duration:420,easing:EASE});
+  cvCur(id)}
 $("#cvDoc").addEventListener("scroll",()=>{if(Date.now()<cv.lock)return;const y=$("#cvDoc").scrollTop+90;let cur=null;
   CARTA.topicos.forEach(t=>{const o=cv.pos[t.id];if(o&&cvTop(o)<=y)cur=t.id});cvCur(cur)},{passive:true});
 const cvTopics=o=>{$("#cvSide").classList.toggle("open",o);$("#cvTog").setAttribute("aria-expanded",o)};
 $("#cvTog").onclick=()=>cvTopics(!$("#cvSide").classList.contains("open"));
 // de onde a carta cresce: o cartão ou a chamada em que a pessoa clicou (sem isso, ela entra pela direita)
 document.addEventListener("click",e=>{cv.orig=e.target.closest?e.target.closest("#cartaCta,.props li[data-c]"):null},true);
+// passar o mouse (ou tocar) num cartão já começa a baixar a carta, para ela abrir sem espera
+document.addEventListener("pointerover",e=>{if(CARTA.url&&e.target.closest&&e.target.closest("#cartaCta,.props li[data-c]"))cartaLoad().catch(()=>{})},{passive:true});
 const cvMs=n=>matchMedia("(prefers-reduced-motion:reduce)").matches?0:n;
+const EASE="cubic-bezier(.2,0,0,1)";
+const cvPartes=()=>[$("#cvDoc"),$("#cvSide"),$("#cvFrame"),$(".cv-top"),$(".cv-tt"),...$$("#cvList li")];
+const cvStop=()=>cvPartes().forEach(el=>el.getAnimations().forEach(a=>{if(!(a instanceof CSSAnimation))a.cancel()}));
+// a coreografia: devolve a duração em ms (0 para quem pediu menos movimento)
+function cvAnim(abrir){const d=$("#cvDoc"),s=$("#cvSide"),f=$("#cvFrame"),b=d.getBoundingClientRect(),r=cv.rect,largo=innerWidth>820;
+  cvStop();if(!cvMs(1))return 0;
+  // janela por onde a carta aparece: do retângulo de origem até a área inteira do documento
+  const L=r?Math.max(0,r.left-b.left):b.width,T=r?Math.max(0,r.top-b.top):0,R=r?Math.max(0,b.right-r.right):0,B=r?Math.max(0,b.bottom-r.bottom):0;
+  const de="inset("+T+"px "+R+"px "+B+"px "+L+"px round 3px)",ate="inset(0px 0px 0px 0px round 0px)";
+  const fr="translate("+L+"px,"+T+"px) scale("+Math.max(.02,(b.width-L-R)/b.width)+","+Math.max(.02,(b.height-T-B)/b.height)+")";
+  const lado=largo?"translateX(-100%)":"translateY(-100%)";
+  if(abrir){
+    d.animate([{clipPath:de},{clipPath:ate}],{duration:640,easing:EASE,fill:"both"});
+    f.animate([{transform:fr},{transform:"none"}],{duration:640,easing:EASE,fill:"both"});f.animate([{opacity:1},{opacity:1,offset:.7},{opacity:0}],{duration:640,fill:"both"});
+    s.animate([{transform:lado},{transform:"none"}],{duration:560,delay:70,easing:EASE,fill:"both"});
+    // botão, título e tópicos do índice entram um depois do outro
+    [$(".cv-top"),$(".cv-tt"),...$$("#cvList li")].forEach((el,i)=>el.animate([{opacity:0,transform:"translateX(-16px)"},{opacity:1,transform:"none"}],{duration:340,delay:260+Math.min(i,26)*15,easing:"ease-out",fill:"both"}));
+    return 640}
+  d.animate([{clipPath:ate},{clipPath:de}],{duration:460,easing:EASE,fill:"both"});
+  f.animate([{transform:"none"},{transform:fr}],{duration:460,easing:EASE,fill:"both"});f.animate([{opacity:0},{opacity:1,offset:.2},{opacity:1}],{duration:460,fill:"both"});
+  s.animate([{transform:"none"},{transform:lado}],{duration:400,easing:EASE,fill:"both"});
+  return 460}
 function cartaOpen(id){
   if(cv.el.hidden||cv.closing){clearTimeout(cv.tm);cv.closing=0;if(cv.el.hidden)cv.from=document.activeElement;
-    const wide=innerWidth>820,r=cv.orig&&cv.orig.isConnected?cv.orig.getBoundingClientRect():null;cv.orig=null;
-    // o site encolhe até a largura do índice (no celular só recua um pouco), a partir do ponto da tela em que está
-    document.body.style.setProperty("--cvk",wide?300/innerWidth:.92);
-    [$("main"),$("footer")].forEach(el=>el.style.transformOrigin=(wide?"0 ":"50% ")+(scrollY-el.offsetTop)+"px");
-    cv.el.hidden=false;cv.el.classList.remove("opening","closing");
-    const d=$("#cvDoc"),b=d.getBoundingClientRect(),px=v=>Math.max(0,v)+"px",ok=r&&r.width&&r.bottom>0&&r.top<innerHeight;
-    d.style.setProperty("--ct",ok?px(r.top-b.top):"0px");d.style.setProperty("--cl",ok?px(r.left-b.left):"100%");
-    d.style.setProperty("--cr",ok?px(b.right-r.right):"0px");d.style.setProperty("--cb",ok?px(b.bottom-r.bottom):"0px");
-    void cv.el.offsetWidth;cv.el.classList.add("opening");document.body.classList.add("cv-open");$("#cvExit").focus()}
-  cartaLoad().then(()=>{if(id)cartaGo(id)}).catch(()=>{})}
-// saída: o caminho inverso — a carta se recolhe e o site volta a ocupar a tela
+    const o=cv.orig&&cv.orig.isConnected?cv.orig.getBoundingClientRect():null;cv.orig=null;
+    cv.rect=o&&o.width&&o.bottom>0&&o.top<innerHeight?o:null;
+    // o site recua a partir do meio da tela; o espaço da barra de rolagem fica reservado para nada pular de lugar
+    const sw=innerWidth-document.documentElement.clientWidth,meio=innerHeight/2,ox=innerWidth>820?"0 ":"50% ";
+    $("header.top").style.transformOrigin=ox+meio+"px";
+    [$("main"),$("footer")].forEach(el=>el.style.transformOrigin=ox+(scrollY-el.offsetTop+meio)+"px");
+    document.body.style.paddingRight=sw>0?sw+"px":"";
+    cv.el.hidden=false;document.body.classList.add("cv-open");cvAnim(true);$("#cvExit").focus({preventScroll:true})}
+  cartaLoad().then(()=>{if(id)cartaGo(id,true)}).catch(()=>{})}
+// saída: o caminho inverso — a carta se recolhe para onde saiu e o site volta a ocupar a tela
 function cartaClose(){if(cv.el.hidden||cv.closing)return;cv.closing=1;cvTopics(false);
-  cv.el.classList.remove("opening");void cv.el.offsetWidth;cv.el.classList.add("closing");document.body.classList.remove("cv-open");
-  cv.tm=setTimeout(()=>{cv.el.hidden=true;cv.el.classList.remove("closing");cv.closing=0},cvMs(430));
+  const ms=cvAnim(false);document.body.classList.remove("cv-open");document.body.style.paddingRight="";
+  cv.tm=setTimeout(()=>{cv.el.hidden=true;cvStop();cv.closing=0},ms);
   if(cv.from&&cv.from.focus)cv.from.focus({preventScroll:true})}
 $("#cvExit").onclick=()=>{history.replaceState(null,"",location.pathname+location.search);cartaClose()};
 

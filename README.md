@@ -26,7 +26,7 @@ Tudo fica no `<script>` do fim do `index.html`, no bloco "MAPAS":
 
 - `CARTA`: o PDF da carta-programa e o índice de tópicos.
 - `P`: as áreas e as propostas (`t` título, `d` descrição, `c` tópico da carta, `lp:1` para prazo mais longo, `l` e `lt` para um link).
-- `SQ`: os quadrados das frentes. Cada um aponta para uma área e lista os títulos das propostas que tratam dele. Com `null` o quadrado fica tracejado e sem link.
+- `SQ`: os quadrados das frentes. Cada um lista os títulos das propostas que tratam dele, de qualquer área; uma proposta pode estar em mais de uma frente. Clicar no quadrado mostra só essas propostas. "Expansão" reúne toda ação que liga a Poli a agentes de fora (empresas, poder público, pessoas).
 - `F`: perguntas frequentes.
 
 O organograma e os textos fixos estão no HTML, na seção correspondente.
@@ -44,10 +44,10 @@ O arquivo é `carta-programa.pdf`, na raiz. A versão publicada é a "vf 2" (16 
 Como funciona:
 
 - O PDF é desenhado na própria página com a biblioteca PDF.js, carregada do cdnjs só quando alguém abre a carta. Se ela não carregar, aparece um link para baixar o PDF.
-- Ao abrir, a carta cresce a partir de onde a pessoa clicou e o site encolhe para a coluna da esquerda, que vira o índice. O botão "Sair" (ou Esc, ou o voltar do navegador) faz o caminho inverso e devolve a pessoa ao mesmo ponto do site.
+- Ao abrir, a carta sobe do cartão em que a pessoa clicou e cresce até ocupar a tela; o site recua e some, e o índice desliza para o lugar dele, com os tópicos entrando em sequência. A coreografia está na função `cvAnim`, no script. O botão "Sair" (ou Esc, ou o voltar do navegador) faz o caminho inverso e devolve a pessoa ao mesmo ponto do site.
 - Clicar num tópico rola o PDF até ele e sublinha o título. O sublinhado é um elemento por cima da página; o arquivo PDF não é alterado.
 - O site acha cada título sozinho no texto do PDF: entre os trechos que casam com o `busca` do tópico, vale o de letra maior (o título de verdade, e não a linha do sumário ou uma menção no meio do texto). Por isso não há números de página no código, e mudar a paginação não quebra nada.
-- Links diretos: `#carta` abre a carta e `#carta/id` abre já no tópico (por exemplo `#carta/triedro`). `#p-negocios` abre o site na área de propostas indicada.
+- Links diretos: `#carta` abre a carta e `#carta/id` abre já no tópico (por exemplo `#carta/triedro`). `#p-negocios` abre o site na área de propostas indicada e `#frente-expansao`, nas propostas de uma frente.
 - O PDF precisa ter texto de verdade (exportado do editor). Num PDF escaneado, que é só imagem, não há como localizar os títulos.
 - Se `CARTA.url` for `null`, a carta fica desligada: somem a chamada, o índice e os links dos cartões.
 
