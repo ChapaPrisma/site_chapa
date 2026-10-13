@@ -336,6 +336,9 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
 .cv-list button:focus-visible{outline-offset:-3px}
 .cv-dl{padding:14px 20px;border-top:1px solid rgba(248,245,240,.16);font-size:.9rem}
 .cv-dl a{color:var(--yellow)}
+/* botão discreto: o mesmo botão do site, contornado e menor, para não competir com o índice */
+.cv-dl .btn-discreto{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;font-size:.88rem;background:transparent;color:var(--ink-neg);border:1px solid rgba(248,245,240,.35)}
+.cv-dl .btn-discreto:hover,.cv-dl .btn-discreto:focus-visible{color:var(--yellow);border-color:var(--yellow);filter:none}
 .cv-doc{grid-column:2;grid-row:1;position:relative;overflow-y:auto;padding:24px 24px 64px;background:var(--paper2);scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){.cv-doc{scroll-behavior:auto}}
 .cv-page{position:relative;max-width:880px;margin:0 auto 16px;background:#fff}
@@ -561,7 +564,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
     <div class="cv-tt">Carta-programa</div>
     <button class="cv-exit cv-tog" id="cvTog" type="button" aria-expanded="false" aria-controls="cvList">Tópicos</button>
     <ol class="cv-list" id="cvList"></ol>
-    <div class="cv-dl"><a id="cvDl" href="#" download>Baixar o PDF</a></div>
+    <div class="cv-dl"><a class="btn btn-discreto" id="cvDl" href="#" download><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar o PDF</a></div>
   </div>
   <div class="cv-frame" id="cvFrame"></div>
   <div class="cv-doc" id="cvDoc" tabindex="0"><p class="cv-status" id="cvStatus" role="status"></p></div>
