@@ -336,6 +336,8 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 .cv-tog::before{transform:rotate(-45deg);margin-top:-4px}
 .cv-list{flex:1;min-height:0;overflow-y:auto;list-style:none;margin:0;padding:6px 0 12px;border-top:1px solid rgba(248,245,240,.16)}
 .cv-list button{display:block;width:100%;padding:12px 20px 12px 17px;border:0;border-left:3px solid transparent;background:none;text-align:left;font:500 .98rem/1.35 var(--fb);color:rgba(248,245,240,.82);cursor:pointer}
+.cv-list button{display:flex;gap:10px}
+.cv-list .num{flex:none;min-width:1.7em;color:var(--orange);font-weight:600}
 .cv-list button.n2{padding-left:34px;font-size:.92rem}
 .cv-list button:hover{background:rgba(248,245,240,.07);color:var(--ink-neg)}
 .cv-list button[aria-current]{border-left-color:var(--orange);background:rgba(248,245,240,.09);color:var(--ink-neg);font-weight:600}
@@ -404,7 +406,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
     </div>
     <svg class="mark" viewBox="-12 -12 122 124" aria-hidden="true"><polygon class="echo" points="13,28.5 41,11 97,46 13,104.5"/><path class="tick" d="M100 -5v10M95 0h10"/><polygon fill="#F8F5F0" points="0,17.5 28,35 28,74 0,93.5"/><polygon class="f-y" fill="#F4BE5A" points="0,17.5 28,0 28,35"/><polygon class="f-o" fill="#EC7042" points="28.8,.5 84,35 58.65,52.66 28.8,34"/><polygon class="f-l" fill="#B292F5" points="28.8,54.5 45.2,44.25 58.65,52.66 28.8,73.44"/></svg>
   </div>
-  <div class="hero-foot mono" role="navigation" aria-label="Propostas por área"><div class="wrap"><span>Propostas por área</span><a href="#p-imagem">Imagem</a><a href="#p-contas">Contas</a><a href="#p-negocios">Negócios</a><a href="#p-servicos">Serviços</a><a href="#p-apoio">Apoio</a><a href="#p-memoria">Memória e eventos</a></div></div>
+  <div class="hero-foot mono" role="navigation" aria-label="Propostas por área"><div class="wrap"><span>Propostas por área</span><a href="#p-contas">Contas</a><a href="#p-negocios">Negócios</a><a href="#p-servicos">Serviços</a><a href="#p-apoio">Apoio</a><a href="#p-memoria">Eventos e memória</a><a href="#p-imagem">Imagem</a></div></div>
 </section>
 
 <section id="muda">
@@ -421,7 +423,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 <section id="propostas">
   <div class="wrap">
     <h2>Propostas</h2>
-    <p>São 27 propostas em seis áreas, cada uma em uma linha, com o essencial. O que está aqui pode ser ajustado a partir das conversas com os alunos. Escolha uma área e marque com a estrela <b>☆</b> o que importa para você.</p>
+    <p>São <span id="np">36</span> propostas em seis áreas, cada uma em uma linha, com o essencial. O que está aqui pode ser ajustado a partir das conversas com os alunos. Escolha uma área e marque com a estrela <b>☆</b> o que importa para você.</p>
     <div class="tools">
       <label class="sr" for="q">Buscar nas propostas</label>
       <input id="q" class="search" type="search" placeholder="Buscar: triedro, salas, AEX, estágio…">
@@ -571,51 +573,98 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:scale(va
 
 <script>
 // ===== MAPAS — rever sempre que as propostas ou a carta-programa mudarem =====
-// 1) CARTA: o PDF da carta-programa e o índice de tópicos.
-//    Quando o PDF chegar: salve o arquivo ao lado do index.html, preencha `url` e liste os tópicos:
-//    {id, t: nome no índice, pag: página do PDF, busca: texto do título como está no PDF, n2:1 se for subtópico}
-// 2) Em P (abaixo): campo c:"id-do-tópico" na área (vale para todas as propostas dela) ou numa proposta específica.
+// A carta-programa (carta-programa.pdf) é a fonte: as propostas do site são o resumo dela.
+// 1) CARTA: o PDF e o índice de tópicos, na ordem do documento.
+//    {id, n: numeração como no PDF, t: título no índice, busca: começo do título como está escrito no PDF (só quando difere de t)}
+//    O site localiza cada título sozinho no texto do PDF (o trecho de letra maior que casa com `busca`), então
+//    mudar a paginação não quebra nada: só se mexe aqui quando um título muda, entra ou sai.
+//    Ao trocar o PDF por uma versão nova, aumente o número em ?v= para ninguém ver a versão antiga guardada pelo navegador.
+// 2) P: campo c:"id-do-tópico" em cada proposta (ou na área, valendo para todas as dela).
 // 3) SQ (mais abaixo): cada quadrado das frentes → área e títulos das propostas que tratam dela.
-// O console do navegador avisa quando um título ou tópico citado nesses mapas deixa de existir.
-const CARTA={url:null,topicos:[]};
+// O console do navegador (F12) avisa quando um título, tópico ou proposta citado nesses mapas não é encontrado.
+const CARTA={url:"carta-programa.pdf?v=1",topicos:[
+{id:"contas",n:"1",t:"Financeiro e contas"},
+{id:"contas-diagnostico",n:"1.1",t:"Diagnóstico e organização financeira"},
+{id:"contas-transparencia",n:"1.2",t:"Transparência das contas"},
+{id:"contas-arrecadacao",n:"1.3",t:"Arrecadação e parcerias com empresas"},
+{id:"negocios",n:"2",t:"Negócios"},
+{id:"triedro",n:"2.1",t:"Triedro"},
+{id:"copiadora",n:"2.2",t:"Copiadora"},
+{id:"poliglota",n:"2.3",t:"Poliglota"},
+{id:"escritorio-piloto",n:"2.4",t:"Escritório Piloto"},
+{id:"servicos",n:"3",t:"Serviços"},
+{id:"apoio-academico",n:"3.1",t:"Apoio acadêmico"},
+{id:"grupos-extensao",n:"3.2",t:"Grupos de extensão"},
+{id:"poliverso",n:"3.3",t:"Poliverso"},
+{id:"politique",n:"3.4",t:"Politique"},
+{id:"apoio",n:"4",t:"Apoio"},
+{id:"espacos",n:"4.1",t:"Espaços do Grêmio"},
+{id:"tecnologia",n:"4.2",t:"Tecnologia e comunicação"},
+{id:"representantes",n:"4.3",t:"Representantes discentes"},
+{id:"aex",n:"4.4",t:"Projetos com AEX"},
+{id:"cadopo",n:"4.5",t:"Continuidade do estudo de viabilidade da CADOPÔ",busca:"Continuidade do estudo de viabilidade"},
+{id:"acoes-sociais",n:"4.6",t:"Continuidade das ações sociais existentes"},
+{id:"manuais",n:"4.7",t:"Atualização dos “Manuais”",busca:"Atualização dos"},
+{id:"eventos",n:"5",t:"Eventos e memória"},
+{id:"festas",n:"5.1",t:"Festas e eventos"},
+{id:"jornal",n:"5.2",t:"Jornal Politécnico e sua expansão para o mundo digital das newsletters",busca:"Jornal Politécnico e sua expansão"},
+{id:"acervo",n:"5.3",t:"Digitalização do acervo de documentos, fotos e notícias do Grêmio",busca:"Digitalização do acervo de"},
+{id:"resistencia",n:"5.4",t:"Acervo da Resistência"},
+{id:"diploma",n:"5.5",t:"Remodelagem do diploma físico do politécnico"},
+{id:"imagem",n:"6",t:"Imagem"},
+{id:"imagem-externa",n:"6.1",t:"Imagem externa hostil à captação de parcerias e patrocínios"},
+{id:"imagem-interna",n:"6.2",t:"Imagem interna que transmite dubiedade"},
+{id:"nota-final",n:"",t:"Nota final"}
+]};
 
-// Propostas conforme o documento "Propostas Prisma — resumo": 6 áreas, 27 propostas. lp = longo prazo.
+// Propostas: resumo da carta-programa, na mesma ordem e numeração dela. lp = prazo mais longo (os trechos em itálico da carta).
 const P=[
-{id:"imagem",n:"0",g:"Imagem",b:[
- {t:"Imagem que atrai parceiros",d:"Redes sociais que não afastem empresas e patrocínios, abrindo caminho para parcerias como a do Espaço ON."},
- {t:"Recuperar a confiança dos alunos",d:"Mais transparência e eficiência: gestão mais hierarquizada, melhor delegação de tarefas e projetos temporários abertos a alunos de fora do Grêmio."}]},
-{id:"contas",n:"1",g:"Financeiro e contas",b:[
- {t:"Raio-x das contas",d:"Levantar dívidas (há indícios de um valor na casa dos sete dígitos), compromissos e saldo disponível."},
- {t:"Gestão organizada",d:"Responsabilidades claras e acompanhamento das decisões."},
- {t:"Gastar melhor, arrecadar mais",d:"Novas receitas e melhor aproveitamento dos negócios do Grêmio, com prioridade para as ações sociais."},
- {t:"Balanço mensal público",d:"Volta da divulgação mensal das contas, junto com os projetos, negócios e parcerias em andamento."},
- {t:"Vagas de estágio no app do Grêmio",d:"Empresas anunciam para a maioria dos politécnicos em troca de uma taxa ou da doação de equipamentos."},
- {t:"Preferência para quem apoia",d:"Empresas que mais contribuírem ganham prioridade na divulgação. Também buscaremos projetos em conjunto com empresas."}]},
-{id:"negocios",n:"2",g:"Negócios",b:[
- {t:"Triedro sem fila",d:"Pegue e Pague para café e itens rápidos, pedidos antecipados pela internet e estudo de marmitas e delivery."},
- {t:"Triedro mais conhecido e confortável",d:"Divulgação pela USP e melhoria das mesas e do espaço de convivência."},
- {t:"Copiadora ampliada",d:"Operada por alunos remunerados, com impressão de apostilas, PDFs, provas antigas e simulados, e apoio a grupos de estudo."},
- {t:"Escritório Piloto de volta",d:"Projetos reais de engenharia, com orientação de professores."},
- {t:"Sublimação na copiadora",d:"Confecção de artigos.",lp:1},
- {t:"Escritório Piloto para startups",d:"Apoio ou aceleração de startups, quando as contas estiverem organizadas.",lp:1}]},
-{id:"servicos",n:"3",g:"Serviços",b:[
- {t:"Materiais de estudo num só lugar",d:"Acesso simples ao Fuja e a outros materiais, no modelo do PoliShare, além de grupos de estudo."},
- {t:"FAQ do Grêmio",d:"Respostas para as dúvidas do dia a dia da Poli."},
- {t:"Salas para os grupos de extensão",d:"Negociar com a diretoria o uso de salas fora do horário de aula, com um sistema de reservas."},
- {t:"AEX que valem a pena",d:"Projetos com grupos e empresas que resolvam problemas reais da Poli, em vez de mera burocracia."},
- {t:"Poliverso",d:"Aulas Magnas com engenheiros de destaque e carreiras diversas, abertas a toda a Poli e feitas em parceria com os grupos de extensão."},
- {t:"Politique",d:"Aulas Magnas com nomes do poder público (ministros, secretários, governador e parlamentares), dando espaço a todos os espectros democráticos."},
- {t:"Recursos para a Poli",d:"Usar o Politique como ponte para doações ao Amigos da Poli e para emendas parlamentares destinadas à Escola."}]},
-{id:"apoio",n:"4",g:"Apoio",b:[
- {t:"Espaços equipados",d:"Micro-ondas novo, geladeiras, reforma de salas e novos equipamentos, por meio de parcerias com empresas."},
- {t:"Novo site do Grêmio",d:"Ferramentas, FAQ, projetos em andamento e memorial reunidos num só lugar.",l:"https://chapaprisma.github.io/Site_gremio_poli/",lt:"Ver um exemplo de como pode ficar"},
- {t:"Tecnologia feita com os grupos da Poli",d:"Sistemas digitais com Poli AI, Poli Quant e Poli Júnior, e Pegue e Pague construído por alunos de eletrônica e design, por exemplo."}]},
-{id:"memoria",n:"5",g:"Memória e eventos",b:[
- {t:"Memorial dos 123 anos",d:"Arquivo histórico do Grêmio aberto a todos no site."},
- {t:"Cervejada/Calourada com a AAAP",d:"Logo no começo do ano que vem, além de outras festas com a AAAP e os CAs."},
- {t:"Gincana de recepção",d:"Para integrar os ingressantes e apresentar o campus, como já ocorre na FEA."}]}
+{id:"contas",n:"1",g:"Financeiro e contas",c:"contas",b:[
+ {t:"Raio-x das contas",c:"contas-diagnostico",d:"Levantar dívidas (há indícios de um valor na casa dos sete dígitos), compromissos e saldo disponível."},
+ {t:"Gestão organizada",c:"contas-diagnostico",d:"Responsabilidades claras e acompanhamento das decisões."},
+ {t:"Gastar melhor, arrecadar mais",c:"contas-diagnostico",d:"Novas receitas e melhor aproveitamento dos negócios do Grêmio, com prioridade para as ações sociais."},
+ {t:"Balanço mensal público",c:"contas-transparencia",d:"Volta da divulgação mensal das contas, junto com os projetos, negócios e parcerias em andamento."},
+ {t:"Vagas de estágio no app do Grêmio",c:"contas-arrecadacao",d:"Empresas anunciam para a maioria dos politécnicos em troca de uma taxa ou da doação de equipamentos."},
+ {t:"Preferência para quem apoia",c:"contas-arrecadacao",d:"Empresas que mais contribuírem ganham prioridade na divulgação. Também buscaremos projetos em conjunto com empresas."}]},
+{id:"negocios",n:"2",g:"Negócios",c:"negocios",b:[
+ {t:"Triedro sem fila",c:"triedro",d:"Pegue e Pague para café e itens rápidos, pedidos antecipados pela internet e estudo de marmitas e entrega."},
+ {t:"Triedro mais conhecido e confortável",c:"triedro",d:"Divulgação pela USP e melhoria das mesas e do espaço de convivência."},
+ {t:"Copiadora ampliada",c:"copiadora",d:"Operada por alunos remunerados, com impressão de PDFs, apostilas, cadernetas de provas antigas e simulados."},
+ {t:"Sublimação na copiadora",c:"copiadora",d:"Confecção de artigos.",lp:1},
+ {t:"Poliglota renovada",c:"poliglota",d:"Site e estrutura atualizados e melhor comunicação, para levar a escola de línguas do Grêmio além da Poli e da USP."},
+ {t:"Escritório Piloto de volta",c:"escritorio-piloto",d:"Projetos reais de engenharia, com orientação de professores."},
+ {t:"Escritório Piloto para startups",c:"escritorio-piloto",d:"Apoio ou aceleração de startups, quando as contas estiverem organizadas.",lp:1}]},
+{id:"servicos",n:"3",g:"Serviços",c:"servicos",b:[
+ {t:"Novo Fuja do Nabo",c:"apoio-academico",d:"No site e no aplicativo do Grêmio: provas antigas, exercícios resolvidos, videoaulas, guias e resumos num só lugar, começando pelo ciclo básico."},
+ {t:"Grupos de estudo",c:"apoio-academico",d:"Criação de grupos de estudo para apoiar os alunos nas disciplinas."},
+ {t:"FAQ do Grêmio",c:"apoio-academico",d:"Respostas para as dúvidas do dia a dia, sobre a Poli e sobre as matérias."},
+ {t:"Salas para os grupos de extensão",c:"grupos-extensao",d:"Negociar com a diretoria o uso de salas fora do horário de aula, com um sistema de reservas."},
+ {t:"Grupos de extensão mais perto do Grêmio",c:"grupos-extensao",d:"Projetos em conjunto, mais visibilidade para os grupos e parcerias com empresas que resolvam problemas do dia a dia da Poli."},
+ {t:"Poliverso",c:"poliverso",d:"Aulas Magnas com engenheiros de destaque e carreiras diversas, abertas a toda a Poli e feitas em parceria com os grupos de extensão."},
+ {t:"Politique",c:"politique",d:"Aulas Magnas com nomes do poder público (ministros, secretários, governador e parlamentares), dando espaço a todos os espectros democráticos."},
+ {t:"Recursos para a Poli",c:"politique",d:"Usar o Politique como ponte para parcerias e recursos do poder público para a Escola, junto com o Amigos da Poli e o Poli Alumni."}]},
+{id:"apoio",n:"4",g:"Apoio",c:"apoio",b:[
+ {t:"Espaços equipados",c:"espacos",d:"Micro-ondas novos, geladeiras, reforma de salas e novos equipamentos, por meio de parcerias com empresas."},
+ {t:"Novo site do Grêmio",c:"tecnologia",d:"Ferramentas, perguntas frequentes, mapa dos bandejões, consulta e reserva de salas, orientações para ingressantes e o memorial num só lugar.",l:"https://chapaprisma.github.io/Site_gremio_poli/",lt:"Ver um exemplo de como pode ficar"},
+ {t:"Tecnologia feita com os grupos da Poli",c:"tecnologia",d:"Sistemas digitais com Poli AI, Poli Quant, Poli Finance e Poli Júnior, e Pegue e Pague construído por alunos de eletrônica e design, por exemplo."},
+ {t:"AEX que valem a pena",c:"aex",d:"Projetos reais de engenharia, propostos também pelos alunos, e horas de AEX nos grupos de extensão, em vez de mera burocracia."},
+ {t:"Casa do Politécnico",c:"cadopo",d:"Continuar o estudo de viabilidade da reconstrução da CADOPÔ, a moradia estudantil dos politécnicos, com parceiros externos e grupos de extensão."},
+ {t:"Ações sociais mantidas e ampliadas",c:"acoes-sociais",d:"Poli Vai à Escola, Meninas na Poli e as demais continuam e crescem, com apoio das novas AEX."},
+ {t:"Manuais em dia",c:"manuais",d:"Tutoriais atualizados sobre transferência interna, trancamento de matérias, bolsas e outras burocracias da Escola."}]},
+{id:"memoria",n:"5",g:"Eventos e memória",c:"eventos",b:[
+ {t:"Cervejada/Calourada com a AAAP",c:"festas",d:"Logo no começo do ano que vem, além de outras festas com a AAAP e os CAs."},
+ {t:"Bixopp de volta",c:"festas",d:"Estudo de viabilidade e retorno do Bixopp."},
+ {t:"Jornal Politécnico digital",c:"jornal",d:"O jornal chega ao celular por e-mail e newsletter, ganha novas seções e tem o acervo digitalizado. A versão impressa continua."},
+ {t:"Memorial dos 123 anos",c:"acervo",d:"Arquivo histórico do Grêmio, com documentos, fotos e notícias, aberto a todos no site."},
+ {t:"Acervo da Resistência",c:"resistencia",d:"Memorial digital permanente dos estudantes da Poli assassinados pela ditadura militar e dos que resistiram ao regime."},
+ {t:"Diploma à altura",c:"diploma",d:"Remodelar o diploma físico do politécnico, para que ele faça jus à conquista."}]},
+{id:"imagem",n:"6",g:"Imagem",c:"imagem",b:[
+ {t:"Imagem que atrai parceiros",c:"imagem-externa",d:"Redes sociais que não afastem empresas e patrocínios, abrindo caminho para parcerias como a do Espaço ON."},
+ {t:"Recuperar a confiança dos alunos",c:"imagem-interna",d:"Mais transparência e eficiência: gestão mais hierarquizada, melhor delegação de tarefas e projetos temporários abertos a alunos de fora do Grêmio."}]}
 ];
-P.forEach(a=>a.b.forEach((x,i)=>x.id=a.id+"-"+i));
+// cada proposta tem um id estável, derivado do título (as estrelas marcadas pelos visitantes dependem dele)
+const slug=s=>s.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+P.forEach(a=>a.b.forEach(x=>x.id=a.id+"-"+slug(x.t)));
 const esc=s=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 const fmt=esc;
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -672,12 +721,13 @@ function updFav(){
 const SQ=[
 ["Triedro","n","negocios",["Triedro sem fila","Triedro mais conhecido e confortável"]],
 ["Copiadora","n","negocios",["Copiadora ampliada","Sublimação na copiadora"]],
+["Poliglota","n","negocios",["Poliglota renovada"]],
 ["Escritório Piloto","n","negocios",["Escritório Piloto de volta","Escritório Piloto para startups"]],
-["Acadêmico","s","servicos",["Materiais de estudo num só lugar","FAQ do Grêmio","Poliverso","Politique"]],
-["Sociocultural","s","memoria",["Memorial dos 123 anos","Cervejada/Calourada com a AAAP","Gincana de recepção"]],
-["Extensão","s","servicos",["Salas para os grupos de extensão","AEX que valem a pena"]],
+["Acadêmico","s","servicos",["Novo Fuja do Nabo","Grupos de estudo","FAQ do Grêmio","Poliverso","Politique"]],
+["Sociocultural","s","memoria",["Jornal Politécnico digital","Memorial dos 123 anos","Acervo da Resistência"]],
+["Extensão","s","servicos",["Salas para os grupos de extensão","Grupos de extensão mais perto do Grêmio"]],
 ["Expansão","s",null],
-["Eventos","s","memoria",["Cervejada/Calourada com a AAAP","Gincana de recepção"]],
+["Eventos","s","memoria",["Cervejada/Calourada com a AAAP","Bixopp de volta"]],
 ["Tecnologia","a","apoio",["Novo site do Grêmio","Tecnologia feita com os grupos da Poli"]],
 ["Espaços do Grêmio","a","apoio",["Espaços equipados"]],
 ["Comunicação","a","imagem",["Imagem que atrai parceiros","Recuperar a confiança dos alunos"]],
@@ -740,12 +790,16 @@ $("#voteBtn").onclick=e=>{popOpen($("#vote"),e.currentTarget);closeNav()};
 // ===== carta-programa: o PDF é desenhado na página (PDF.js) e o índice rola até cada tópico =====
 const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
 const cv={el:$("#cv"),doc:null,pages:[],pos:{},from:null,orig:null,ready:null,lock:0,closing:0,tm:0};
-const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/\s+/g,"");
+const norm=s=>s.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replace(/\s+/g,"");
 // liga ou desliga tudo conforme exista o PDF: chamada, índice e links nos cartões
 function cartaSync(){const on=!!CARTA.url;$("#cartaCta").hidden=!on;$("#cvDl").href=CARTA.url||"#";
-  $("#cvList").innerHTML=CARTA.topicos.map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n2?' class="n2"':'')+'>'+esc(t.t)+'</button></li>').join("");
+  $("#cvList").innerHTML=CARTA.topicos.map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n&&t.n.includes(".")?' class="n2"':'')+'>'+(t.n?'<span class="num">'+t.n+'</span>':'')+'<span>'+esc(t.t)+'</span></button></li>').join("");
   $$("#cvList button").forEach(b=>b.onclick=()=>{cvTopics(false);cartaGo(b.dataset.t)});
   if(on)P.forEach(a=>[a,...a.b].forEach(x=>{if(x.c&&!CARTA.topicos.some(t=>t.id===x.c))console.warn("Carta-programa: o tópico “"+x.c+"” não existe no índice ("+(x.g||x.t)+")")}));
+  // ajuda na revisão: subtópicos da carta que nenhuma proposta do resumo cita
+  if(on){const usados=new Set(P.flatMap(a=>a.b.map(x=>x.c)));const livres=CARTA.topicos.filter(t=>t.n&&t.n.includes(".")&&!usados.has(t.id)).map(t=>t.n+" "+t.t);
+    if(livres.length)console.info("Carta-programa: subtópicos sem proposta no resumo → "+livres.join("; "))}
+  $("#np").textContent=ids.size;
   renderCards()}
 function cartaLoad(){return cv.ready||(cv.ready=(async()=>{
   const st=$("#cvStatus");st.hidden=false;st.textContent="Carregando a carta-programa…";
@@ -765,18 +819,24 @@ function cartaLoad(){return cv.ready||(cv.ready=(async()=>{
 })())}
 async function cartaDraw(p){if(p.ok)return;p.ok=1;const k=p.el.clientWidth/p.vp.width*Math.min(devicePixelRatio||1,2),vp=p.pg.getViewport({scale:k}),c=document.createElement("canvas");
   c.width=vp.width;c.height=vp.height;p.el.prepend(c);await p.pg.render({canvasContext:c.getContext("2d"),viewport:vp}).promise}
-// acha no texto do PDF onde o tópico começa; devolve a posição em fração da página (x, y, largura do trecho)
-async function cartaFind(t){const key=norm(t.busca||t.t);
-  for(const p of (t.pag?[cv.pages[t.pag-1]]:cv.pages)){if(!p)continue;
-    const tc=p.tc||(p.tc=await p.pg.getTextContent()),it=tc.items,map=[];let str="";
-    it.forEach((x,k)=>{for(const ch of norm(x.str)){str+=ch;map.push(k)}});
-    const i=str.indexOf(key);if(i<0)continue;
-    const q=x=>pdfjsLib.Util.transform(p.vp.transform,x.transform),a=q(it[map[i]]),h=Math.hypot(a[2],a[3])||12;
-    let x1=a[4]+it[map[i]].width;
-    for(let k=map[i]+1;k<=map[i+key.length-1];k++){const b=q(it[k]);if(Math.abs(b[5]-a[5])>h*.4)break;x1=Math.max(x1,b[4]+it[k].width)}
-    return {p,x:a[4]/p.vp.width,y:(a[5]+h*.2)/p.vp.height,w:(x1-a[4])/p.vp.width,top:(a[5]-h)/p.vp.height}}
-  const p=t.pag&&cv.pages[t.pag-1];return p?{p,top:0}:null}
-const cvCur=id=>$$("#cvList button").forEach(b=>b.dataset.t===id?b.setAttribute("aria-current","true"):b.removeAttribute("aria-current"));
+// acha no texto do PDF onde o tópico começa: entre os trechos que casam com o título, vale o de letra maior
+// (o título de verdade, e não a linha do sumário ou uma menção no meio do texto). Devolve a posição em fração da página.
+async function cartaFind(t){const key=norm(t.busca||t.t);let best=null;
+  for(const p of cv.pages){
+    const tc=p.tc||(p.tc=await p.pg.getTextContent()),it=tc.items;
+    if(!p.map){p.str="";p.map=[];it.forEach((x,k)=>{for(const ch of norm(x.str)){p.str+=ch;p.map.push(k)}})}
+    for(let i=p.str.indexOf(key);i>=0;i=p.str.indexOf(key,i+1)){
+      const q=x=>pdfjsLib.Util.transform(p.vp.transform,x.transform),k0=p.map[i],a=q(it[k0]),h=Math.hypot(a[2],a[3])||12;
+      if(best&&h<=best.h+.5)continue;
+      let x1=a[4]+it[k0].width;
+      for(let k=k0+1;k<=p.map[i+key.length-1];k++){const b=q(it[k]);if(Math.abs(b[5]-a[5])>h*.4)break;x1=Math.max(x1,b[4]+it[k].width)}
+      const top=(a[5]-h)/p.vp.height;
+      best={p,h,x:a[4]/p.vp.width,y:(a[5]+h*.2)/p.vp.height,w:(x1-a[4])/p.vp.width,top:top<.2?0:top}}}
+  if(!best)console.warn("Carta-programa: não achei no PDF o título “"+(t.busca||t.t)+"”");
+  return best}
+// marca o tópico atual no índice e o mantém à vista na lista
+const cvCur=id=>$$("#cvList button").forEach(b=>{if(b.dataset.t!==id)return b.removeAttribute("aria-current");if(b.hasAttribute("aria-current"))return;b.setAttribute("aria-current","true");
+  const l=$("#cvList");if(l.clientHeight){const y=b.offsetTop-l.offsetTop;if(y<l.scrollTop||y+b.offsetHeight>l.scrollTop+l.clientHeight)l.scrollTop=y-l.clientHeight/3}});
 const cvTop=o=>o.p.el.offsetTop+o.top*o.p.el.clientHeight;
 // rola até o tópico e sublinha o começo dele
 async function cartaGo(id){await cartaLoad();const o=cv.pos[id];if(!o)return;
