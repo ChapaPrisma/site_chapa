@@ -161,9 +161,9 @@ nav .btn + .btn{margin-left:6px}
 .fav{flex:none;border:1.5px solid var(--navy);background:transparent;border-radius:var(--r);width:40px;height:40px;font-size:1.05rem;line-height:1;cursor:pointer;color:var(--navy)}
 .fav[aria-pressed=true]{background:var(--orange);border-color:var(--orange)}
 .empty{padding:24px;background:#fff;color:var(--ink2)}
-/* cartão que abre a carta-programa */
+/* cartão que abre a carta-proposta */
 .props li[data-c]{cursor:pointer}
-/* chamada para a carta-programa, no fim das propostas */
+/* chamada para a carta-proposta, no fim das propostas */
 .carta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 40px;margin-top:40px;padding:24px 26px 26px;background:#fff;border:1px solid var(--line);border-top:3px solid var(--navy)}
 .carta h3{margin:0 0 6px;font-size:1.25rem}
 .carta p{margin:0;max-width:52ch;color:var(--ink2)}
@@ -304,7 +304,7 @@ footer .brand .sub{color:rgba(248,245,240,.6)}
 .pop.out{animation:popOut .2s ease both}
 .pop.out::backdrop{animation:popBgOut .2s ease both}
 
-/* carta-programa aberta: o site vira um índice ao lado do PDF */
+/* carta-proposta aberta: o site vira um índice ao lado do PDF */
 body.cv-open{overflow:hidden}
 body.cv-open>.pill,body.cv-open>a.sr{display:none!important}
 /* entrada e saída animadas (em cartaOpen/cartaClose, no script): a carta sobe do cartão em que a pessoa clicou e cresce
@@ -433,10 +433,10 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
         <div class="empty" id="empty" hidden>Nenhuma proposta com esse termo. <button class="lk" id="clr" type="button">Limpar a busca</button> ou <a href="#ideias">contar sua ideia</a>.</div>
       </div>
     </div>
-    <!-- a chamada só aparece quando existir o PDF da carta-programa (CARTA.url) -->
+    <!-- a chamada só aparece quando existir o PDF da carta-proposta (CARTA.url) -->
     <div class="carta" id="cartaCta" hidden>
-      <div><h3>Quer ver os detalhes?</h3><p>Aqui as propostas estão resumidas. A carta-programa explica cada uma por inteiro.</p></div>
-      <a class="btn" id="cartaBtn" href="#carta">Abrir a carta-programa</a>
+      <div><h3>Quer ver os detalhes?</h3><p>Aqui as propostas estão resumidas. A carta-proposta explica cada uma por inteiro.</p></div>
+      <a class="btn" id="cartaBtn" href="#carta">Abrir a carta-proposta</a>
     </div>
   </div>
 </section>
@@ -557,11 +557,11 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
     <li style="--c:var(--lilac)"><a href="https://wa.me/5511976567059?text=Oi!%20Vi%20o%20site%20da%20Prisma%20e%20quero%20ajudar." target="_blank" rel="noopener"><small>WhatsApp</small><b>Daniel Travassos</b><span>(11) 97656-7059</span></a></li>
   </ul>
 </div></dialog>
-<!-- Carta-programa aberta: índice de tópicos à esquerda (com o botão de sair no canto) e o PDF à direita -->
-<div class="cv" id="cv" hidden role="dialog" aria-modal="true" aria-label="Carta-programa">
+<!-- Carta-proposta aberta: índice de tópicos à esquerda (com o botão de sair no canto) e o PDF à direita -->
+<div class="cv" id="cv" hidden role="dialog" aria-modal="true" aria-label="Carta-proposta">
   <div class="cv-side" id="cvSide">
     <div class="cv-top"><button class="cv-exit" id="cvExit" type="button">Sair</button></div>
-    <div class="cv-tt">Carta-programa</div>
+    <div class="cv-tt">Carta-proposta</div>
     <button class="cv-exit cv-tog" id="cvTog" type="button" aria-expanded="false" aria-controls="cvList">Tópicos</button>
     <ol class="cv-list" id="cvList"></ol>
     <div class="cv-dl"><a class="btn btn-discreto" id="cvDl" href="#" download><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Baixar o PDF</a></div>
@@ -571,8 +571,8 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
 </div>
 
 <script>
-// ===== MAPAS — rever sempre que as propostas ou a carta-programa mudarem =====
-// A carta-programa (carta-programa.pdf) é a fonte: as propostas do site são o resumo dela.
+// ===== MAPAS — rever sempre que as propostas ou a carta-proposta mudarem =====
+// A carta-proposta (carta-proposta.pdf) é a fonte: as propostas do site são o resumo dela.
 // 1) CARTA: o PDF e o índice de tópicos, na ordem do documento.
 //    {id, n: numeração como no PDF, t: título no índice, busca: começo do título como está escrito no PDF (só quando difere de t)}
 //    O site localiza cada título sozinho no texto do PDF (o trecho de letra maior que casa com `busca`), então
@@ -581,7 +581,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
 // 2) P: campo c:"id-do-tópico" em cada proposta (ou na área, valendo para todas as dela).
 // 3) SQ (mais abaixo): cada quadrado das frentes → área e títulos das propostas que tratam dela.
 // O console do navegador (F12) avisa quando um título, tópico ou proposta citado nesses mapas não é encontrado.
-const CARTA={url:"carta-programa.pdf?v=1",topicos:[
+const CARTA={url:"carta-proposta.pdf?v=2",topicos:[
 {id:"contas",n:"1",t:"Financeiro e contas"},
 {id:"contas-diagnostico",n:"1.1",t:"Diagnóstico e organização financeira"},
 {id:"contas-transparencia",n:"1.2",t:"Transparência das contas"},
@@ -616,7 +616,7 @@ const CARTA={url:"carta-programa.pdf?v=1",topicos:[
 {id:"nota-final",n:"",t:"Nota final"}
 ]};
 
-// Propostas: resumo da carta-programa, na mesma ordem e numeração dela. lp = prazo mais longo (os trechos em itálico da carta).
+// Propostas: resumo da carta-proposta, na mesma ordem e numeração dela. lp = prazo mais longo (os trechos em itálico da carta).
 const P=[
 {id:"contas",n:"1",g:"Financeiro e contas",c:"contas",b:[
  {t:"Raio-x das contas",c:"contas-diagnostico",d:"Levantar dívidas (há indícios de um valor na casa dos sete dígitos), compromissos e saldo disponível."},
@@ -671,7 +671,7 @@ const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const store={get(){try{return JSON.parse(localStorage.getItem("prisma-fav"))||[]}catch(e){return[]}},set(v){try{localStorage.setItem("prisma-fav",JSON.stringify(v))}catch(e){}}};
 const ids=new Set(P.flatMap(a=>a.b).map(x=>x.id));
 const fav=new Set(store.get().filter(i=>ids.has(i))); let filtro=P[0].id, termo="", antes=null, so=null, soNome="";
-// tópico da carta-programa que trata da proposta (o da proposta vale mais que o da área)
+// tópico da carta-proposta que trata da proposta (o da proposta vale mais que o da área)
 const topico=(a,x)=>{const id=x.c||a.c;return CARTA.url&&id&&CARTA.topicos.some(t=>t.id===id)?id:null};
 // destaca o termo buscado
 const hl=s=>{if(!termo)return fmt(s);const i=s.toLowerCase().indexOf(termo);return i<0?esc(s):esc(s.slice(0,i))+"<mark>"+esc(s.slice(i,i+termo.length))+"</mark>"+hl(s.slice(i+termo.length))};
@@ -684,12 +684,12 @@ function renderCards(){
     if((filtro!=="Todas"&&a.id!==filtro)||!items.length)return;
     n++;tot+=items.length;
     h+='<div class="pgroup" data-a="'+a.id+'" id="p-'+a.id+'"><div class="ph"><span class="tri" aria-hidden="true"></span><div><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></div></div>'+
-      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(c?' data-c="'+c+'"':'')+'><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-programa</a>':'')+'</div>'+
+      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(c?' data-c="'+c+'"':'')+'><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-proposta</a>':'')+'</div>'+
       '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>'}).join("")+'</ul></div>';
   });
   $("#grid").innerHTML=h;
   $$("#grid .fav").forEach(b=>b.onclick=()=>{const id=b.dataset.id;fav.has(id)?fav.delete(id):fav.add(id);const on=fav.has(id);b.setAttribute("aria-pressed",on);b.textContent=on?"★":"☆";updFav()});
-  // o cartão inteiro abre a carta-programa no tópico da proposta (menos a estrela e os links)
+  // o cartão inteiro abre a carta-proposta no tópico da proposta (menos a estrela e os links)
   $$("#grid li[data-c]").forEach(li=>li.onclick=e=>{if(!e.target.closest("a,button"))location.hash="#carta/"+li.dataset.c});
   $("#empty").hidden=n>0;
   // linha de contexto: resultado da busca ou a frente escolhida num quadrado
@@ -792,7 +792,7 @@ $$("dialog.pop").forEach(d=>{d.querySelector(".pop-x").onclick=()=>popClose(d);
 $("#help").onclick=e=>popOpen($("#pop"),e.currentTarget);
 $("#voteBtn").onclick=e=>{popOpen($("#vote"),e.currentTarget);closeNav()};
 
-// ===== carta-programa: o PDF é desenhado na página (PDF.js) e o índice rola até cada tópico =====
+// ===== carta-proposta: o PDF é desenhado na página (PDF.js) e o índice rola até cada tópico =====
 const PDFJS="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
 const cv={el:$("#cv"),doc:null,pages:[],pos:{},from:null,orig:null,ready:null,lock:0,closing:0,tm:0};
 const norm=s=>s.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replace(/\s+/g,"");
@@ -800,14 +800,14 @@ const norm=s=>s.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replace(/\
 function cartaSync(){const on=!!CARTA.url;$("#cartaCta").hidden=!on;$("#cvDl").href=CARTA.url||"#";
   $("#cvList").innerHTML=CARTA.topicos.map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n&&t.n.includes(".")?' class="n2"':'')+'>'+(t.n?'<span class="num">'+t.n+'</span>':'')+'<span>'+esc(t.t)+'</span></button></li>').join("");
   $$("#cvList button").forEach(b=>b.onclick=()=>{cvTopics(false);cartaGo(b.dataset.t)});
-  if(on)P.forEach(a=>[a,...a.b].forEach(x=>{if(x.c&&!CARTA.topicos.some(t=>t.id===x.c))console.warn("Carta-programa: o tópico “"+x.c+"” não existe no índice ("+(x.g||x.t)+")")}));
+  if(on)P.forEach(a=>[a,...a.b].forEach(x=>{if(x.c&&!CARTA.topicos.some(t=>t.id===x.c))console.warn("Carta-proposta: o tópico “"+x.c+"” não existe no índice ("+(x.g||x.t)+")")}));
   // ajuda na revisão: subtópicos da carta que nenhuma proposta do resumo cita
   if(on){const usados=new Set(P.flatMap(a=>a.b.map(x=>x.c)));const livres=CARTA.topicos.filter(t=>t.n&&t.n.includes(".")&&!usados.has(t.id)).map(t=>t.n+" "+t.t);
-    if(livres.length)console.info("Carta-programa: subtópicos sem proposta no resumo → "+livres.join("; "))}
+    if(livres.length)console.info("Carta-proposta: subtópicos sem proposta no resumo → "+livres.join("; "))}
   $("#np").textContent=ids.size;
   renderCards()}
 function cartaLoad(){return cv.ready||(cv.ready=(async()=>{
-  const st=$("#cvStatus");st.hidden=false;st.textContent="Carregando a carta-programa…";
+  const st=$("#cvStatus");st.hidden=false;st.textContent="Carregando a carta-proposta…";
   try{
     if(!window.pdfjsLib)await new Promise((ok,no)=>{const j=document.createElement("script");j.src=PDFJS+"pdf.min.js";j.onload=ok;j.onerror=no;document.head.appendChild(j)});
     pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+"pdf.worker.min.js";
@@ -820,7 +820,7 @@ function cartaLoad(){return cv.ready||(cv.ready=(async()=>{
     st.hidden=true;
     for(const t of CARTA.topicos)cv.pos[t.id]=await cartaFind(t);
   }catch(e){cv.ready=null;cv.pages.forEach(x=>x.el.remove());cv.pages=[];
-    st.innerHTML='Não foi possível abrir a carta-programa aqui. <a href="'+CARTA.url+'">Baixar o PDF</a>';throw e}
+    st.innerHTML='Não foi possível abrir a carta-proposta aqui. <a href="'+CARTA.url+'">Baixar o PDF</a>';throw e}
 })())}
 async function cartaDraw(p){if(p.ok)return;p.ok=1;const k=p.el.clientWidth/p.vp.width*Math.min(devicePixelRatio||1,2),vp=p.pg.getViewport({scale:k}),c=document.createElement("canvas");
   c.width=vp.width;c.height=vp.height;p.el.prepend(c);await p.pg.render({canvasContext:c.getContext("2d"),viewport:vp}).promise;c.classList.add("on")}
@@ -837,7 +837,7 @@ async function cartaFind(t){const key=norm(t.busca||t.t);let best=null;
       for(let k=k0+1;k<=p.map[i+key.length-1];k++){const b=q(it[k]);if(Math.abs(b[5]-a[5])>h*.4)break;x1=Math.max(x1,b[4]+it[k].width)}
       const top=(a[5]-h)/p.vp.height;
       best={p,h,x:a[4]/p.vp.width,y:(a[5]+h*.2)/p.vp.height,w:(x1-a[4])/p.vp.width,top:top<.2?0:top}}}
-  if(!best)console.warn("Carta-programa: não achei no PDF o título “"+(t.busca||t.t)+"”");
+  if(!best)console.warn("Carta-proposta: não achei no PDF o título “"+(t.busca||t.t)+"”");
   return best}
 // marca o tópico atual no índice e o mantém à vista na lista
 const cvCur=id=>$$("#cvList button").forEach(b=>{if(b.dataset.t!==id)return b.removeAttribute("aria-current");if(b.hasAttribute("aria-current"))return;b.setAttribute("aria-current","true");
