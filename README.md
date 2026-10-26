@@ -39,7 +39,9 @@ O botão "Como votar", no menu, abre um pop-up com datas, horários, locais e o 
 
 ## Carta-proposta
 
-O arquivo é `carta-proposta.pdf`, na raiz. A versão publicada é a "vf 2" (16 páginas), ligada em 13/10/2026.
+O arquivo é `carta-proposta.pdf`, na raiz. A versão publicada é a v6 (15 páginas), de 26/10/2026: a "vf 2" de 13/10 sem o tópico 2.4 Escritório Piloto e com o nome carta-proposta.
+
+O PDF é gerado a partir de HTML, na pasta `Carta programa/fonte` do computador do Guilherme: `carta-v6.html` é a fonte desta versão e `gerar.py` faz o PDF (`python gerar.py carta-v6.html saida.pdf`; precisa de `pypdf` e do Chrome). O gerador preenche sozinho os números de página do sumário. Para mudar o texto da carta, edite o HTML e gere de novo, em vez de editar o PDF.
 
 Como funciona:
 

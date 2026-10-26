@@ -411,7 +411,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
     <h2>O que muda para você</h2>
     <div class="three">
       <div class="pillar"><h3>Contas em ordem</h3><p>A dívida do Grêmio foi majorada em R$ 2,1 milhões pela atual gestão. Vamos fazer o raio-x das contas, com dívidas, compromissos e saldo disponível, organizar a gestão e voltar com o balanço mensal público.</p></div>
-      <div class="pillar"><h3>Negócios que funcionam</h3><p>Triedro sem fila, com Pegue e Pague e pedidos antecipados pela internet. Copiadora ampliada e operada por alunos remunerados. E o Escritório Piloto de volta, com projetos reais de engenharia.</p></div>
+      <div class="pillar"><h3>Negócios que funcionam</h3><p>Triedro sem fila, com Pegue e Pague e pedidos antecipados pela internet. E a Copiadora ampliada e operada por alunos remunerados.</p></div>
       <div class="pillar"><h3>Serviços para você</h3><p>Materiais de estudo num só lugar, salas para os grupos de extensão fora do horário de aula, AEX que valem a pena e Aulas Magnas abertas a toda a Poli. E as ações sociais do Grêmio, como o Poli Vai à Escola e o Meninas na Poli, continuam e crescem.</p></div>
     </div>
   </div>
@@ -581,7 +581,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
 // 2) P: campo c:"id-do-tópico" em cada proposta (ou na área, valendo para todas as dela).
 // 3) SQ (mais abaixo): cada quadrado das frentes → área e títulos das propostas que tratam dela.
 // O console do navegador (F12) avisa quando um título, tópico ou proposta citado nesses mapas não é encontrado.
-const CARTA={url:"carta-proposta.pdf?v=2",topicos:[
+const CARTA={url:"carta-proposta.pdf?v=3",topicos:[
 {id:"contas",n:"1",t:"Financeiro e contas"},
 {id:"contas-diagnostico",n:"1.1",t:"Diagnóstico e organização financeira"},
 {id:"contas-transparencia",n:"1.2",t:"Transparência das contas"},
@@ -590,7 +590,6 @@ const CARTA={url:"carta-proposta.pdf?v=2",topicos:[
 {id:"triedro",n:"2.1",t:"Triedro"},
 {id:"copiadora",n:"2.2",t:"Copiadora"},
 {id:"poliglota",n:"2.3",t:"Poliglota"},
-{id:"escritorio-piloto",n:"2.4",t:"Escritório Piloto"},
 {id:"servicos",n:"3",t:"Serviços"},
 {id:"apoio-academico",n:"3.1",t:"Apoio acadêmico"},
 {id:"grupos-extensao",n:"3.2",t:"Grupos de extensão"},
@@ -630,9 +629,7 @@ const P=[
  {t:"Triedro mais conhecido e confortável",c:"triedro",d:"Divulgação pela USP e melhoria das mesas e do espaço de convivência."},
  {t:"Copiadora ampliada",c:"copiadora",d:"Operada por alunos remunerados, com impressão de PDFs, apostilas, cadernetas de provas antigas e simulados."},
  {t:"Sublimação na copiadora",c:"copiadora",d:"Confecção de artigos.",lp:1},
- {t:"Poliglota renovada",c:"poliglota",d:"Site e estrutura atualizados e melhor comunicação, para levar a escola de línguas do Grêmio além da Poli e da USP."},
- {t:"Escritório Piloto de volta",c:"escritorio-piloto",d:"Projetos reais de engenharia, com orientação de professores."},
- {t:"Escritório Piloto para startups",c:"escritorio-piloto",d:"Apoio ou aceleração de startups, quando as contas estiverem organizadas.",lp:1}]},
+ {t:"Poliglota renovada",c:"poliglota",d:"Site e estrutura atualizados e melhor comunicação, para levar a escola de línguas do Grêmio além da Poli e da USP."}]},
 {id:"servicos",n:"3",g:"Serviços",c:"servicos",b:[
  {t:"Novo Fuja do Nabo",c:"apoio-academico",d:"No site e no aplicativo do Grêmio: provas antigas, exercícios resolvidos, videoaulas, guias e resumos num só lugar, começando pelo ciclo básico."},
  {t:"Grupos de estudo",c:"apoio-academico",d:"Criação de grupos de estudo para apoiar os alunos nas disciplinas."},
@@ -725,7 +722,6 @@ const SQ=[
 ["Triedro","n",["Triedro sem fila","Triedro mais conhecido e confortável"]],
 ["Copiadora","n",["Copiadora ampliada","Sublimação na copiadora"]],
 ["Poliglota","n",["Poliglota renovada"]],
-["Escritório Piloto","n",["Escritório Piloto de volta","Escritório Piloto para startups"]],
 ["Expansão","n",["Vagas de estágio no app do Grêmio","Preferência para quem apoia","Poliverso","Politique","Recursos para a Poli","Espaços equipados","Casa do Politécnico","Imagem que atrai parceiros"]],
 ["Acadêmico","s",["Novo Fuja do Nabo","Grupos de estudo","FAQ do Grêmio","Manuais em dia"]],
 ["Sociocultural","s",["Jornal Politécnico digital","Memorial dos 123 anos","Acervo da Resistência","Ações sociais mantidas e ampliadas"]],
@@ -762,7 +758,7 @@ $("#txt").oninput=()=>{left();$("#sent").hidden=true};
 
 // faq
 const F=[
-["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica e o Escritório Piloto, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico. E tem potencial enorme para fazer mais."],
+["O que o Grêmio faz?","O Grêmio Politécnico é a associação que representa os estudantes da Poli, fundada em 1903. Além de representar os alunos, ele administra o Triedro, a Copiadora Politécnica e a Poliglota, e organiza projetos como a Semana de Arte da Poli e o Jornal O Politécnico. E tem potencial enorme para fazer mais."],
 ["Por que vocês falam tanto da dívida?","Porque a situação financeira é o alicerce para que qualquer outra coisa possa ser discutida ou executada. A dívida foi majorada em R$ 2,1 milhões pela atual gestão do Grêmio, então é vital que as contas voltem a ser saudáveis."],
 ["Quem pode votar e como funciona a eleição?","Todo aluno de graduação e de pós-graduação stricto sensu da Poli é associado do Grêmio automaticamente, e pode votar. A Diretoria é eleita em Assembleia Geral, por chapas, com voto secreto. A votação é nos dias 10, 11 e 12 de novembro, das 7h às 18h, em urnas nos prédios da Poli. Leve um documento oficial com foto ou o Cartão USP. Os detalhes estão em “Como votar”, no menu."],
 ["Como posso sugerir algo ou ajudar?","Pela seção Participe. Existem funções para diferentes disponibilidades de tempo, e quem está começando pode entrar como trainee."]
