@@ -35,7 +35,7 @@ O organograma e os textos fixos estão no HTML, na seção correspondente.
 
 ### Datas da eleição
 
-O botão "Como votar", no menu, abre um pop-up com datas, horários, locais e o que levar. O texto está no HTML (`<dialog id="vote">`) e a mesma informação aparece resumida na pergunta "Quem pode votar", na lista `F`. As fontes são o Cronograma Eleitoral (CE.OPR.11) e o Regimento Eleitoral (CE.GOV.01) da Comissão Eleitoral. Se a Comissão alterar o cronograma, atualize os dois lugares. O link `#votar` abre o site já com esse pop-up.
+O botão "Como votar", no menu, abre um pop-up com datas, horários, locais e o que levar. O texto está no HTML (`<dialog id="vote">`) e a mesma informação aparece resumida na pergunta "Quem pode votar", na lista `F`. As regras vêm do Regimento Eleitoral (CE.GOV.01) da Comissão Eleitoral. A votação de 10 a 12/11 foi anulada. Desde 23/11/2026, o pop-up mostra a nova eleição: votação de 24 a 26/11, das 8h às 18h, nas mesmas urnas; identificação por NUSP, e-Card ou carteirinha; resultado na sexta, 27/11. Os debates aparecem como já realizados, com links para os vídeos no YouTube do Grêmio. Se a Comissão alterar o cronograma, atualize os dois lugares. O link `#votar` abre o site já com esse pop-up.
 
 ## Carta-proposta
 
