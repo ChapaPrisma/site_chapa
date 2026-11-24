@@ -1,0 +1,77 @@
+/* Versão "menos IA" do site da chapa (prévia em /novo/), por cima do tema feixe.
+   Segue a leitura de "o-que-faz-um-site-parecer-ia.md" (24/11/2026): gente com nome, um topo fora do molde,
+   uma coisa maior que as outras (as contas) e nenhuma grade de caixas iguais. */
+
+/* ---------- topo ---------- */
+/* fundo liso da marca, sem o brilho radial atrás do prisma */
+html.feixe .hero { background: #0F2347; }
+/* o título numa cor só */
+html.feixe .hero h1 .hl { color: inherit; }
+/* o texto já aparece parado: só o prisma espera o GSAP */
+html.feixe-espera .hero h1, html.feixe-espera .hero p.lead, html.feixe-espera .hero .cta { visibility: visible; }
+.hero .cta { align-items: center; gap: 14px 22px; }
+.hero .quando { margin: 0; color: rgba(248, 246, 242, .78); font-size: .98rem; line-height: 1.45; max-width: 30ch; }
+.hero .quando b { color: #F8F6F2; font-weight: 600; }
+.hero .quando .lk { display: inline; padding: 0; border: 0; background: none; font: inherit; color: #FFC845; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.hero .quando .lk:hover, .hero .quando .lk:focus-visible { color: #fff; }
+
+/* marcação de pendência: só aparece na prévia, para a chapa preencher */
+.confirmar { display: block; margin: 0; padding: 10px 12px; border: 1.5px dashed #B8860B; background: rgba(255, 200, 69, .16);
+  color: #5A4300; font-size: .88rem; line-height: 1.45; }
+
+/* ---------- quem está na chapa ---------- */
+#quem { background: var(--paper); padding-top: 72px; }
+.quem { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 40px 56px; align-items: start; margin-top: 28px; }
+.quem-foto { margin: 0; }
+.quem-foto .moldura { aspect-ratio: 3 / 2; display: flex; align-items: flex-end; padding: 16px; background:
+  repeating-linear-gradient(135deg, rgba(15, 35, 71, .05) 0 12px, rgba(15, 35, 71, 0) 12px 24px), var(--paper2);
+  border: 1px solid var(--line); }
+.quem-foto figcaption { margin-top: 10px; font-size: .9rem; color: var(--ink2); }
+.quem-txt > p { max-width: 46ch; }
+.pessoas { list-style: none; margin: 8px 0 22px; padding: 0; border-top: 2px solid var(--navy); }
+.pessoas li { display: grid; grid-template-columns: 1fr auto; gap: 2px 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.pessoas b { font-size: 1.22rem; letter-spacing: -.01em; }
+.pessoas span { grid-column: 1; color: var(--ink2); font-size: .95rem; }
+.pessoas a { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-weight: 600; font-size: .92rem; white-space: nowrap; }
+@media (max-width: 860px) { .quem { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .pessoas li { grid-template-columns: 1fr; } .pessoas a { grid-column: 1; grid-row: auto; margin-top: 6px; } }
+
+/* ---------- o que muda: as contas são o alicerce, então vêm maiores ---------- */
+.muda { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 0; margin-top: 32px; align-items: stretch; }
+.muda-contas { background: #0F2347; color: #F8F6F2; padding: 36px 36px 32px; }
+.muda-contas h3 { font-size: clamp(1.7rem, 3.2vw, 2.35rem); letter-spacing: -.03em; margin-bottom: .45em; color: #fff; }
+.muda-contas .forte { font-size: clamp(1.15rem, 1.8vw, 1.38rem); line-height: 1.45; max-width: 34ch; color: #F8F6F2; }
+.muda-contas .forte b { color: #FFC845; font-weight: 700; white-space: nowrap; }
+.muda-contas p { color: rgba(248, 246, 242, .82); max-width: 52ch; }
+.muda-contas a { color: #FFC845; font-weight: 600; }
+.muda-contas a:hover { color: #fff; }
+.muda-resto { padding: 6px 0 0 36px; }
+#muda .muda-resto > div { padding: 18px 0 20px; border: 0; box-shadow: none; }
+#muda .muda-resto > div + div { border-top: 1px solid var(--line); }
+.muda-resto h3 { font-size: 1.08rem; }
+.muda-resto p { margin: 0; font-size: .97rem; color: var(--ink2); }
+@media (max-width: 860px) { .muda { grid-template-columns: 1fr; } .muda-contas { padding: 28px 22px 24px; } .muda-resto { padding: 8px 0 0; } }
+
+/* ---------- como vamos trabalhar: uma regra que manda e duas que decorrem dela ---------- */
+.regras { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px 56px; margin: 32px 0 44px; align-items: start; }
+.regra-mae { margin: 0; font-size: clamp(1.3rem, 2.3vw, 1.7rem); line-height: 1.35; letter-spacing: -.015em; max-width: 26ch; }
+.regra-mae b { display: block; margin-bottom: .2em; font-size: 1.15em; letter-spacing: -.025em; }
+.regras dl { margin: 4px 0 0; }
+.regras dl div { padding: 12px 0 14px; border-top: 1px solid var(--line); }
+.regras dt { font-weight: 700; margin-bottom: 2px; }
+.regras dd { margin: 0; color: var(--ink2); font-size: .97rem; }
+@media (max-width: 860px) { .regras { grid-template-columns: 1fr; } }
+
+/* ---------- participe: entrar na equipe é o pedido; a ideia é um atalho ---------- */
+.part { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr); gap: 28px 56px; align-items: end; }
+.part-ajuda h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); letter-spacing: -.02em; }
+.part-ajuda p { max-width: 50ch; color: rgba(248, 246, 242, .85); }
+.part-ideia { margin: 0; padding-left: 18px; border-left: 2px solid #FF6B3D; color: rgba(248, 246, 242, .85); max-width: 34ch; }
+@media (max-width: 860px) { .part { grid-template-columns: 1fr; } }
+
+/* menu: com a seção Participe à vista, o botão ganhava texto azul sobre fundo azul (defeito também do site atual) */
+html.feixe nav a.btn[aria-current] { color: var(--ink-neg); }
+
+/* ---------- rodapé: quem mantém e quando foi atualizado ---------- */
+.foot-meta a { color: #FFC845; }
+.foot-meta .atual { color: rgba(248, 246, 242, .6); }
