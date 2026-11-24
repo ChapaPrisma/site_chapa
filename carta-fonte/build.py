@@ -299,14 +299,17 @@ def faixas_no_pe(pdfp, pgs, limite=0.66):
 if __name__ == '__main__':
     out = sys.argv[1] if len(sys.argv) > 1 else 'carta.pdf'
     hp = os.path.join(ROOT, 'carta.html')
-    pgs = {}
-    for volta in range(6):
+    pgs, usado = {}, None
+    for volta in range(10):
         open(hp, 'w', encoding='utf-8').write(montar(pgs))
         asyncio.run(pdf(hp, out))
+        usado = dict(pgs)
         pgs, n = paginas(out)
         baixo = faixas_no_pe(out, pgs)
-        if not baixo:
-            if volta >= 1: break
+        if baixo:
+            NOVA.add(baixo[0])  # uma de cada vez: mover uma muda a posição das seguintes
             continue
-        NOVA.add(baixo[0])  # uma de cada vez: mover uma muda a posição das seguintes
+        if pgs == usado:
+            break  # o sumário impresso bate com as páginas reais
+    assert pgs == usado, 'sumário não estabilizou'
     print('páginas:', n, pgs, 'capítulos em página nova:', sorted(NOVA))
