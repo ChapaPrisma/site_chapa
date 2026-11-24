@@ -43,12 +43,25 @@
         .from(".hero .mark .echo, .hero .mark .tick", { autoAlpha: 0, duration: 0.5 }, "<0.2")
         .from(".feixe-ponto", { autoAlpha: 0, scale: 0, duration: 0.3 }, "-=0.25")
         .from(".feixe-raios line", { scaleX: 0, svgOrigin: "0 " + MEIO, duration: 1.1, stagger: 0.08, ease: "power4.out" }, "<0.1")
-        .to(".feixe-ponto", { scale: 1.7, duration: 0.22, repeat: 1, yoyo: true, ease: "power1.inOut" }, "<")
+        .fromTo(".feixe-ponto", { scale: 1 }, { scale: 1.7, duration: 0.22, repeat: 1, yoyo: true, ease: "power1.inOut", immediateRender: false }, ">-0.05")
         .from(".hero .eyebrow, .hero h1, .hero p.lead, .hero .cta", { autoAlpha: 0, y: 26, duration: 0.7, stagger: 0.09 }, "<0.1");
       raiz.classList.remove("feixe-espera");
     });
   } else {
     raiz.classList.remove("feixe-espera");
+  }
+
+  // hover: quando as facetas se abrem (CSS do site), a ponta laranja anda (9, -3) no viewBox do símbolo;
+  // os raios e o ponto vão junto e o feixe se abre um pouco, com a mesma duração da transição das facetas
+  if (window.gsap && !reduz && mark && raios) {
+    var anda = function (on) {
+      var k = mark.getBoundingClientRect().width / 122;   // px por unidade do viewBox
+      var vars = { x: on ? 9 * k : 0, y: on ? -3 * k : 0, duration: 0.38, ease: "power3.out", overwrite: "auto" };
+      gsap.to(raios, Object.assign({ scaleY: on ? 1.22 : 1, transformOrigin: "0% 50%" }, vars));
+      gsap.to(ponto, Object.assign({ scale: on ? 1.5 : 1 }, vars));
+    };
+    mark.addEventListener("mouseenter", function () { anda(true); });
+    mark.addEventListener("mouseleave", function () { anda(false); });
   }
 
   // aviso de prévia, com link para a estética atual (só nas páginas em /novo/)
