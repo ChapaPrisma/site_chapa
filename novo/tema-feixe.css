@@ -1,0 +1,68 @@
+/* Tema "feixe" do site da chapa (prévia em /novo/).
+   Camada por cima do CSS atual, toda sob html.feixe: alinha o site ao manual de marca de 28/10
+   (DM Sans e a paleta nova) e traz a assinatura do prisma com o feixe de quatro cores no topo.
+   Para desfazer, basta não carregar este arquivo. */
+
+html.feixe {
+  --navy: #0F2347; --paper: #F8F6F2; --ink-neg: #F8F6F2;
+  --orange: #FF6B3D; --yellow: #FFC845; --lilac: #C9A7FF; --orange-d: #C2410C;
+  --paper2: #EFEBE3; --ink2: #3B4763; --ink3: #5B6478; --line: #DCD8CF;
+  --r: 6px;
+  --fh: "DM Sans", system-ui, sans-serif; --fb: "DM Sans", system-ui, sans-serif; --fm: "DM Sans", system-ui, sans-serif;
+}
+
+/* as cores do símbolo e dos ornamentos passam para a paleta do manual */
+html.feixe [fill="#F4BE5A"] { fill: #FFC845; }
+html.feixe [fill="#EC7042"] { fill: #FF6B3D; }
+html.feixe [fill="#B292F5"] { fill: #C9A7FF; }
+html.feixe [fill="#0F1F3D"] { fill: #0F2347; }
+html.feixe [fill="#F8F5F0"] { fill: #F8F6F2; }
+html.feixe [stroke="#F4BE5A"] { stroke: #FFC845; }
+html.feixe [stroke="#EC7042"] { stroke: #FF6B3D; }
+html.feixe [stroke="#B292F5"] { stroke: #C9A7FF; }
+
+/* tipografia do manual: DM Sans Bold nos títulos, letras apertadas */
+html.feixe h1 { font-weight: 700; letter-spacing: -.045em; line-height: 1; }
+html.feixe h1 .hl { font-weight: 700; }
+html.feixe h2 { letter-spacing: -.03em; }
+html.feixe h3 { letter-spacing: -.015em; }
+html.feixe .brand .name { font-weight: 400; }
+
+/* rótulos em texto normal, não em caixa alta espaçada */
+html.feixe .mono, html.feixe .eyebrow, html.feixe .ph small, html.feixe .lp, html.feixe .sq small, html.feixe .leg,
+html.feixe .tier, html.feixe .sec h4 small, html.feixe .sec li small, html.feixe .sec li i, html.feixe .pop-l small,
+html.feixe .pop-d dt, html.feixe .menu, html.feixe .brand .sub, html.feixe .pill {
+  text-transform: none; letter-spacing: 0; font-weight: 600;
+}
+html.feixe .eyebrow { font-size: .95rem; }
+html.feixe .brand .sub { font-size: .7rem; font-weight: 500; }
+html.feixe .sq small, html.feixe .ph small, html.feixe .tier, html.feixe .sec h4 small, html.feixe .sec li small, html.feixe .pop-d dt { font-size: .8rem; }
+
+/* as seções não são uma sequência: sai a numeração 01, 02… */
+html.feixe main > section:not(.hero) h2:first-child::before { content: none; }
+
+html.feixe header.top { background: rgba(248, 246, 242, .94); }
+html.feixe .props mark { background: rgba(255, 200, 69, .5); }
+
+/* hero: azul da marca com o brilho atrás do prisma */
+html.feixe .hero { background: radial-gradient(56rem 32rem at 82% 38%, rgba(27, 58, 115, .95), rgba(27, 58, 115, 0) 70%), linear-gradient(180deg, #0F2347 0%, #0A1833 100%); }
+html.feixe .hero p.lead { color: rgba(248, 246, 242, .82); }
+.feixe-raios { position: absolute; z-index: 0; overflow: visible; pointer-events: none; }
+.feixe-raios line { stroke-width: 2.5px; vector-effect: non-scaling-stroke; }
+.feixe-ponto { position: absolute; z-index: 2; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #fff; pointer-events: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .12), 0 0 18px 4px rgba(255, 255, 255, .45); }
+html.feixe .hero .mark { position: relative; z-index: 1; }
+
+/* estado inicial da abertura (o GSAP tira; some sozinho em 3 s se o GSAP não carregar) */
+html.feixe-espera .hero .mark, html.feixe-espera .hero h1, html.feixe-espera .hero .eyebrow,
+html.feixe-espera .hero p.lead, html.feixe-espera .hero .cta { visibility: hidden; }
+
+/* aviso de prévia */
+.previa-aviso { position: fixed; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 60;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; max-width: calc(100% - 24px);
+  padding: 8px 8px 8px 16px; border-radius: 999px; background: #0F2347; color: #fff; font: 500 .86rem "DM Sans", system-ui, sans-serif;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .25); }
+.previa-aviso a { color: #0F2347; background: #FFC845; text-decoration: none; font-weight: 700; padding: 5px 12px; border-radius: 999px; }
+.previa-aviso a:hover, .previa-aviso a:focus-visible { background: #fff; color: #0F2347; outline: none; }
+.previa-aviso button { width: 28px; height: 28px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .14); color: #fff; font: 700 1rem/1 system-ui, sans-serif; cursor: pointer; }
+@media (max-width: 560px) { .previa-aviso { left: auto; right: 12px; transform: none; padding: 6px 6px 6px 12px; font-size: .78rem; gap: 8px; } .previa-aviso span { display: none; } }
