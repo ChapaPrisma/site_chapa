@@ -134,7 +134,7 @@ nav .btn + .btn{margin-left:6px}
 #propostas{background:var(--paper2)}
 .tools{margin:24px 0}
 .search{width:100%;max-width:420px;padding:11px 14px;border-radius:var(--r);border:1.5px solid var(--line);font:400 .98rem var(--fb);background:var(--paper);color:var(--navy)}
-[data-a=imagem]{--c:var(--ink3)} [data-a=contas]{--c:var(--navy)} [data-a=negocios]{--c:var(--orange)} [data-a=servicos]{--c:var(--lilac)} [data-a=apoio]{--c:var(--yellow)} [data-a=memoria]{--c:var(--orange-d)}
+[data-a=rds]{--c:var(--yellow)} [data-a=academico]{--c:var(--lilac)} [data-a=engenharia]{--c:var(--orange)} [data-a=social]{--c:var(--lilac)} [data-a=portal]{--c:var(--orange)} [data-a=eventos]{--c:var(--yellow)} [data-a=imagem]{--c:var(--ink3)} [data-a=contas]{--c:var(--navy)} [data-a=negocios]{--c:var(--orange)} [data-a=servicos]{--c:var(--lilac)} [data-a=apoio]{--c:var(--yellow)} [data-a=memoria]{--c:var(--orange-d)}
 .tri{flex:none;width:13px;height:16px;background:var(--c,var(--navy));clip-path:polygon(0 0,100% 50%,0 100%)}
 .pview{display:grid;grid-template-columns:250px minmax(0,1fr);gap:32px;align-items:start}
 .ptabs{position:sticky;top:88px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
@@ -154,6 +154,7 @@ nav .btn + .btn{margin-left:6px}
 .props mark{background:#FBE3A8;color:inherit;padding:0 1px}
 .props li{display:flex;gap:12px;align-items:flex-start;padding:18px 16px 20px 20px;background:#fff;border-top:3px solid var(--c)}
 .props li>div{flex:1;min-width:0}
+.props .pm{display:block;margin-bottom:5px;font:600 .74rem var(--fb);letter-spacing:.02em;color:var(--ink3)}
 .props b{display:block;font:600 1.02rem/1.3 var(--fh);letter-spacing:-.01em}
 .props p{margin:7px 0 0;color:var(--ink2);font-size:.96rem;line-height:1.5}
 .plink{display:inline-block;margin-top:8px;font-weight:600;font-size:.95rem}
@@ -190,13 +191,13 @@ nav .btn + .btn{margin-left:6px}
 .sq{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:24px 0}
 @media(max-width:820px){.sq{grid-template-columns:repeat(2,1fr)}}
 .sq a,.sq div{aspect-ratio:1.25;border-radius:var(--r);padding:14px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--navy);font:700 1rem var(--fh);background:#fff;border:1.5px solid var(--navy);transition:transform .15s,box-shadow .15s}
-.sq .n{background:var(--orange);border-color:var(--orange)} .sq .s{background:var(--lilac);border-color:var(--lilac)} .sq .a{background:var(--yellow);border-color:var(--yellow)}
+.sq .g{background:var(--navy);border-color:var(--navy);color:var(--ink-neg)} .sq .g:hover{color:var(--ink-neg)} .sq .n{background:var(--orange);border-color:var(--orange)} .sq .s{background:var(--lilac);border-color:var(--lilac)} .sq .a{background:var(--yellow);border-color:var(--yellow)}
 .sq small{font:500 .66rem var(--fm);letter-spacing:.14em;text-transform:uppercase}
 .sq a:hover{transform:translate(-3px,-3px);box-shadow:3px 3px 0 var(--navy);color:var(--navy)}
 .leg{display:flex;gap:18px;flex-wrap:wrap;font:500 .72rem var(--fm);letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;color:var(--ink2)}
 .leg i{display:inline-block;width:12px;height:12px;border:1px solid var(--navy);margin-right:7px;vertical-align:-1px}
 .org{background:#fff;border:1px solid var(--line);padding:24px;margin-top:32px;position:relative}
-.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.top3{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 @media(max-width:820px){.top3{grid-template-columns:1fr}}
 .top3 div{background:var(--paper2);border-left:4px solid var(--navy);padding:12px 14px}
 .top3 b{display:block;font-family:var(--fh);font-weight:700}
@@ -411,7 +412,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
     </div>
     <svg class="mark" viewBox="-12 -12 122 124" aria-hidden="true"><polygon class="echo" points="13,28.5 41,11 97,46 13,104.5"/><path class="tick" d="M100 -5v10M95 0h10"/><polygon fill="#F8F5F0" points="0,17.5 28,35 28,74 0,93.5"/><polygon class="f-y" fill="#F4BE5A" points="0,17.5 28,0 28,35"/><polygon class="f-o" fill="#EC7042" points="28.8,.5 84,35 58.65,52.66 28.8,34"/><polygon class="f-l" fill="#B292F5" points="28.8,54.5 45.2,44.25 58.65,52.66 28.8,73.44"/></svg>
   </div>
-  <div class="hero-foot mono" role="navigation" aria-label="Propostas por área"><div class="wrap"><span>Propostas por área</span><a href="#p-contas">Contas</a><a href="#p-negocios">Negócios</a><a href="#p-servicos">Serviços</a><a href="#p-apoio">Apoio</a><a href="#p-memoria">Eventos e memória</a><a href="#p-imagem">Imagem</a></div></div>
+  <div class="hero-foot mono" role="navigation" aria-label="Propostas por área"><div class="wrap"><span>Propostas por área</span><a href="#p-contas">Contas</a><a href="#p-rds">Representação</a><a href="#p-academico">Acadêmico</a><a href="#p-engenharia">Engenharia na Prática</a><a href="#p-social">Social</a><a href="#p-negocios">Negócios</a><a href="#p-portal">Portal</a><a href="#p-eventos">Eventos e memória</a><a href="#p-imagem">Imagem</a></div></div>
 </section>
 
 <section id="muda">
@@ -428,7 +429,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
 <section id="propostas">
   <div class="wrap">
     <h2>Propostas</h2>
-    <p>São <span id="np">36</span> propostas em seis áreas, cada uma em uma linha, com o essencial. O que está aqui pode ser ajustado a partir das conversas com os alunos. Escolha uma área e marque com a estrela <b>☆</b> o que importa para você.</p>
+    <p>São <span id="np">78</span> propostas nos nove capítulos da carta, cada uma em uma linha, com o essencial e a prioridade. O que está aqui pode ser ajustado a partir das conversas com os alunos. Escolha uma área e marque com a estrela <b>☆</b> o que importa para você.</p>
     <div class="tools">
       <label class="sr" for="q">Buscar nas propostas</label>
       <input id="q" class="search" type="search" placeholder="Buscar: triedro, salas, AEX, estágio…">
@@ -459,7 +460,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
       <div><h3>Reunião aberta</h3><p>Pelo menos uma por mês, aberta a todos os alunos. Nelas, qualquer aluno propõe e vota, e cada pessoa tem um voto.</p></div>
     </div>
     <h3>Clique em um quadrado para ver as propostas de cada frente</h3>
-    <div class="leg"><span><i style="background:var(--orange)"></i>Negócios</span><span><i style="background:var(--lilac)"></i>Serviços</span><span><i style="background:var(--yellow)"></i>Apoio</span></div>
+    <div class="leg"><span><i style="background:var(--navy)"></i>Gabinete</span><span><i style="background:var(--orange)"></i>Negócios</span><span><i style="background:var(--lilac)"></i>Serviços</span><span><i style="background:var(--yellow)"></i>Transversal</span></div>
     <div class="sq" id="sq"></div>
     <div class="org">
       <h3>Organização da equipe</h3>
@@ -469,6 +470,7 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
         <div><b>Presidente</b>Representa o Grêmio e conduz as decisões</div>
         <div><b>Vice-presidente</b>Acompanha metas, prazos e a rotina da gestão</div>
         <div><b>Tesoureiro</b>Dívida, orçamento, contas e jurídico</div>
+        <div><b>Coordenação da Representação</b>Organiza o trabalho dos RDs nos colegiados</div>
       </div>
       <div class="secs">
         <div class="sec n"><h4><small>Secretaria</small>Negócios</h4><ul>
@@ -481,8 +483,9 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
           <li><span><small>Diretor</small><b>Acadêmica</b></span><i>+ equipe</i></li>
           <li><span><small>Diretor</small><b>Social</b></span><i>+ equipe</i></li>
           <li><span><small>Diretor</small><b>Eventos e Cultura</b></span><i>+ equipe</i></li>
+          <li><span><small>Diretor</small><b>Engenharia na Prática</b></span><i>+ equipe</i></li>
         </ul></div>
-        <div class="sec a"><h4><small>Secretaria</small>Transversal</h4><ul>
+        <div class="sec a"><h4><small>Áreas</small>Transversais</h4><ul>
           <li><span><small>Diretor</small><b>Comunicação</b></span><i>+ equipe</i></li>
           <li><span><small>Diretor</small><b>Tecnologia</b></span><i>+ equipe</i></li>
           <li><span><small>Diretor</small><b>Patrimônio</b></span><i>+ equipe</i></li>
@@ -587,101 +590,232 @@ body.cv-open>header.top,body.cv-open>main,body.cv-open>footer{transform:translat
 //    O site localiza cada título sozinho no texto do PDF (o trecho de letra maior que casa com `busca`), então
 //    mudar a paginação não quebra nada: só se mexe aqui quando um título muda, entra ou sai.
 //    Ao trocar o PDF por uma versão nova, aumente o número em ?v= para ninguém ver a versão antiga guardada pelo navegador.
+//    Tópicos com o:1 não aparecem no índice: são as propostas (P1.1, P1.2…), destino das caixas; s = a seção do índice que fica marcada.
 // 2) P: campo c:"id-do-tópico" em cada proposta (ou na área, valendo para todas as dela).
 // 3) SQ (mais abaixo): cada quadrado das frentes → área e títulos das propostas que tratam dela.
 // O console do navegador (F12) avisa quando um título, tópico ou proposta citado nesses mapas não é encontrado.
-const CARTA={url:"carta-proposta.pdf?v=5",topicos:[
-{id:"contas",n:"1",t:"Contas e transparência"},
-{id:"contas-raiox",n:"1.1",t:"Raio-X das Contas"},
-{id:"contas-orcamento",n:"1.2",t:"Orçamento do zero e estudar antes de gastar"},
-{id:"contas-abertas",n:"1.3",t:"Contas abertas"},
-{id:"contas-parcerias",n:"1.4",t:"Parcerias com regras públicas"},
-{id:"contas-destino",n:"1.5",t:"Para onde vai o dinheiro"},
-{id:"rds",n:"2",t:"Representação discente"},
-{id:"rds-colegiados",n:"2.1",t:"RDs em 7 colegiados"},
-{id:"rds-organizacao",n:"2.2",t:"Organização e formação"},
-{id:"rds-consulta",n:"2.3",t:"Consulta antes do voto"},
-{id:"rds-memoria",n:"2.4",t:"Memória da Representação"},
-{id:"rds-contas",n:"2.5",t:"Prestação de contas"},
-{id:"rds-participacao",n:"2.6",t:"Permanência, pós e instâncias de participação"},
-{id:"academico",n:"3",t:"Apoio acadêmico"},
-{id:"fuja",n:"3.1",t:"Fuja do Nabo"},
-{id:"estudos",n:"3.2",t:"Estudos num só lugar"},
-{id:"precalculo",n:"3.3",t:"Pré-cálculo"},
-{id:"manuais",n:"3.4",t:"Manuais e FAQ"},
-{id:"poliverso",n:"3.5",t:"Poliverso e Politique"},
-{id:"engenharia",n:"4",t:"Engenharia na Prática"},
-{id:"ep-programa",n:"4.1",t:"O programa"},
-{id:"ep-projetos",n:"4.2",t:"Projetos do primeiro ano"},
-{id:"ep-parcerias",n:"4.3",t:"Orientação, parcerias e AEX"},
-{id:"social",n:"5",t:"Social, permanência e coletivos"},
-{id:"acoes-sociais",n:"5.1",t:"Ações sociais mantidas e ampliadas"},
-{id:"cco",n:"5.2",t:"Comissão Contra Opressão estruturada"},
-{id:"permanencia",n:"5.3",t:"Permanência no dia a dia"},
-{id:"escritorio",n:"5.4",t:"Escritório Piloto"},
-{id:"negocios",n:"6",t:"Negócios"},
-{id:"triedro",n:"6.1",t:"Triedro com menos fila"},
-{id:"triedro-ferias",n:"6.2",t:"Triedro o ano inteiro"},
-{id:"copiadora",n:"6.3",t:"Copiadora e Poliglota"},
-{id:"empresas",n:"6.4",t:"Cada empresa com responsável e resultado público"},
-{id:"portal",n:"7",t:"Portal Politécnico"},
-{id:"portal-hoje",n:"7.1",t:"O que já funciona"},
-{id:"portal-gestao",n:"7.2",t:"O que vem com a gestão"},
-{id:"eventos",n:"8",t:"Eventos, cultura e memória"},
-{id:"festas",n:"8.1",t:"Recepção e festas"},
-{id:"integra",n:"8.2",t:"IntegraPoli, SAPO e grupos culturais"},
-{id:"jornal",n:"8.3",t:"Jornal e memória"},
-{id:"imagem",n:"9",t:"Imagem e relações"},
-{id:"imagem-alunos",n:"9.1",t:"Alunos e entidades"},
-{id:"imagem-empresas",n:"9.2",t:"Empresas e Escola, com liberdade de crítica"},
-{id:"movimento",n:"9.3",t:"Movimento estudantil e financiamento da USP"},
-{id:"cultura",n:"9.4",t:"Cultura interna e trabalhadores"},
-{id:"primeiro-ano",n:"",t:"O primeiro ano"},
-{id:"nota-final",n:"",t:"Nota final"}
+const CARTA={url:"carta-proposta.pdf?v=6",topicos:[
+{"id":"manifesto","n":"","t":"Manifesto","busca":"Lembra do dia em que você entrou na Poli"},
+{"id":"missao","n":"","t":"Missão, visão e valores"},
+{"id":"gremio-hoje","n":"","t":"O Grêmio hoje"},
+{"id":"como-trabalhar","n":"","t":"Como vamos trabalhar"},
+{"id":"prioridades","n":"","t":"O que vem primeiro"},
+{"id":"ja-fizemos","n":"","t":"O que já fizemos"},
+{"id":"contas","n":"1","t":"Contas e transparência"},
+{"id":"contas-1","n":"1.1","t":"Raio-X e rotina financeira","busca":"1.1 Raio-X e rotina financeira"},
+{"id":"p1-1","n":"P1.1","t":"Raio-X das Contas","busca":"P1.1 Raio-X das Contas","o":1,"s":"contas-1"},
+{"id":"p1-2","n":"P1.2","t":"Rotina financeira e orçamento do zero","busca":"P1.2 Rotina financeira e orçamento do zero","o":1,"s":"contas-1"},
+{"id":"p1-3","n":"P1.3","t":"Estudar antes de gastar","busca":"P1.3 Estudar antes de gastar","o":1,"s":"contas-1"},
+{"id":"contas-2","n":"1.2","t":"Contas abertas","busca":"1.2 Contas abertas"},
+{"id":"p1-4","n":"P1.4","t":"Balanço Mensal Público","busca":"P1.4 Balanço Mensal Público","o":1,"s":"contas-2"},
+{"id":"contas-3","n":"1.3","t":"Arrecadação e parcerias","busca":"1.3 Arrecadação e parcerias"},
+{"id":"p1-5","n":"P1.5","t":"Parcerias com regras públicas","busca":"P1.5 Parcerias com regras públicas","o":1,"s":"contas-3"},
+{"id":"p1-6","n":"P1.6","t":"Vagas de estágio no Portal","busca":"P1.6 Vagas de estágio no Portal","o":1,"s":"contas-3"},
+{"id":"contas-4","n":"1.4","t":"Para onde vai o dinheiro","busca":"1.4 Para onde vai o dinheiro"},
+{"id":"p1-7","n":"P1.7","t":"Plano público da dívida","busca":"P1.7 Plano público da dívida","o":1,"s":"contas-4"},
+{"id":"p1-8","n":"P1.8","t":"Uma parte cada vez maior para o estudante","busca":"P1.8 Uma parte cada vez maior para o estudante","o":1,"s":"contas-4"},
+{"id":"rds","n":"2","t":"Representação discente"},
+{"id":"rds-1","n":"2.1","t":"O que é a representação discente","busca":"2.1 O que é a representação discente"},
+{"id":"rds-2","n":"2.2","t":"Nossos RDs e o que vão defender","busca":"2.2 Nossos RDs e o que vão defender"},
+{"id":"rds-3","n":"2.3","t":"Organização e formação","busca":"2.3 Organização e formação"},
+{"id":"p2-1","n":"P2.1","t":"Coordenação da Representação","busca":"P2.1 Coordenação da Representação","o":1,"s":"rds-3"},
+{"id":"p2-2","n":"P2.2","t":"Rede com os CAs e os representantes de sala","busca":"P2.2 Rede com os CAs e os representantes de sala","o":1,"s":"rds-3"},
+{"id":"p2-3","n":"P2.3","t":"Formação de novos RDs","busca":"P2.3 Formação de novos RDs","o":1,"s":"rds-3"},
+{"id":"p2-4","n":"P2.4","t":"Passagem de bastão","busca":"P2.4 Passagem de bastão","o":1,"s":"rds-3"},
+{"id":"rds-4","n":"2.4","t":"Consulta antes do voto","busca":"2.4 Consulta antes do voto"},
+{"id":"p2-5","n":"P2.5","t":"Pautas e consultas no Portal","busca":"P2.5 Pautas e consultas no Portal","o":1,"s":"rds-4"},
+{"id":"p2-6","n":"P2.6","t":"Plantão do RD nos prédios","busca":"P2.6 Plantão do RD nos prédios","o":1,"s":"rds-4"},
+{"id":"p2-7","n":"P2.7","t":"Raio-X da Graduação","busca":"P2.7 Raio-X da Graduação","o":1,"s":"rds-4"},
+{"id":"p2-8","n":"P2.8","t":"Canal de problemas em disciplinas e Mapa de problemas","busca":"P2.8 Canal de problemas em disciplinas e Mapa de problemas","o":1,"s":"rds-4"},
+{"id":"rds-5","n":"2.5","t":"Memória da Representação","busca":"2.5 Memória da Representação"},
+{"id":"p2-9","n":"P2.9","t":"Memória da Representação","busca":"P2.9 Memória da Representação","o":1,"s":"rds-5"},
+{"id":"p2-10","n":"P2.10","t":"Dossiê de pauta e diálogo antes do voto","busca":"P2.10 Dossiê de pauta e diálogo antes do voto","o":1,"s":"rds-5"},
+{"id":"rds-6","n":"2.6","t":"Prestação de contas","busca":"2.6 Prestação de contas"},
+{"id":"p2-11","n":"P2.11","t":"Calendário público e resumo de cada reunião em até sete dias","busca":"P2.11 Calendário público e resumo de cada reunião em até sete dias","o":1,"s":"rds-6"},
+{"id":"p2-12","n":"P2.12","t":"Rastreador de demandas","busca":"P2.12 Rastreador de demandas","o":1,"s":"rds-6"},
+{"id":"p2-13","n":"P2.13","t":"Relatório semestral da representação","busca":"P2.13 Relatório semestral da representação","o":1,"s":"rds-6"},
+{"id":"rds-7","n":"2.7","t":"Permanência e pós-graduação","busca":"2.7 Permanência e pós-graduação"},
+{"id":"p2-14","n":"P2.14","t":"Pauta de permanência nos colegiados","busca":"P2.14 Pauta de permanência nos colegiados","o":1,"s":"rds-7"},
+{"id":"p2-15","n":"P2.15","t":"Representação da pós-graduação","busca":"P2.15 Representação da pós-graduação","o":1,"s":"rds-7"},
+{"id":"rds-8","n":"2.8","t":"Assembleia, plebiscitos e reuniões abertas","busca":"2.8 Assembleia, plebiscitos e reuniões abertas"},
+{"id":"p2-16","n":"P2.16","t":"Cada instância com o seu papel","busca":"P2.16 Cada instância com o seu papel","o":1,"s":"rds-8"},
+{"id":"p2-17","n":"P2.17","t":"Canal de ideias permanente","busca":"P2.17 Canal de ideias permanente","o":1,"s":"rds-8"},
+{"id":"academico","n":"3","t":"Apoio acadêmico"},
+{"id":"academico-1","n":"3.1","t":"Estudos num só lugar","busca":"3.1 Estudos num só lugar"},
+{"id":"p3-1","n":"P3.1","t":"Fuja do Nabo","busca":"P3.1 Fuja do Nabo","o":1,"s":"academico-1"},
+{"id":"p3-2","n":"P3.2","t":"Área acadêmica do Portal","busca":"P3.2 Área acadêmica do Portal","o":1,"s":"academico-1"},
+{"id":"p3-3","n":"P3.3","t":"Revisões e grupos de estudo","busca":"P3.3 Revisões e grupos de estudo","o":1,"s":"academico-1"},
+{"id":"academico-2","n":"3.2","t":"Base para quem chega","busca":"3.2 Base para quem chega"},
+{"id":"p3-4","n":"P3.4","t":"Pré-cálculo","busca":"P3.4 Pré-cálculo","o":1,"s":"academico-2"},
+{"id":"p3-5","n":"P3.5","t":"Manuais atualizados e FAQ do Grêmio","busca":"P3.5 Manuais atualizados e FAQ do Grêmio","o":1,"s":"academico-2"},
+{"id":"academico-3","n":"3.3","t":"Pós-graduação e Aulas Magnas","busca":"3.3 Pós-graduação e Aulas Magnas"},
+{"id":"p3-6","n":"P3.6","t":"Pós-graduação mais perto da graduação","busca":"P3.6 Pós-graduação mais perto da graduação","o":1,"s":"academico-3"},
+{"id":"p3-7","n":"P3.7","t":"Poliverso","busca":"P3.7 Poliverso","o":1,"s":"academico-3"},
+{"id":"p3-8","n":"P3.8","t":"Politique","busca":"P3.8 Politique","o":1,"s":"academico-3"},
+{"id":"engenharia","n":"4","t":"Engenharia na Prática"},
+{"id":"engenharia-1","n":"4.1","t":"O programa","busca":"4.1 O programa"},
+{"id":"p4-1","n":"P4.1","t":"Banco de problemas e chamada semestral","busca":"P4.1 Banco de problemas e chamada semestral","o":1,"s":"engenharia-1"},
+{"id":"engenharia-2","n":"4.2","t":"Projetos do primeiro ano","busca":"4.2 Projetos do primeiro ano"},
+{"id":"p4-2","n":"P4.2","t":"Mostra de Projetos","busca":"P4.2 Mostra de Projetos","o":1,"s":"engenharia-2"},
+{"id":"engenharia-3","n":"4.3","t":"Orientação, parcerias e AEX","busca":"4.3 Orientação, parcerias e AEX"},
+{"id":"p4-3","n":"P4.3","t":"Rede de professores orientadores","busca":"P4.3 Rede de professores orientadores","o":1,"s":"engenharia-3"},
+{"id":"p4-4","n":"P4.4","t":"Parcerias e regras para cada projeto","busca":"P4.4 Parcerias e regras para cada projeto","o":1,"s":"engenharia-3"},
+{"id":"p4-5","n":"P4.5","t":"Credenciamento do Engenharia na Prática como atividade de extensão","busca":"P4.5 Credenciamento do Engenharia na Prática como atividade de extensão","o":1,"s":"engenharia-3"},
+{"id":"p4-6","n":"P4.6","t":"Grupos de extensão mais perto do Grêmio","busca":"P4.6 Grupos de extensão mais perto do Grêmio","o":1,"s":"engenharia-3"},
+{"id":"p4-7","n":"P4.7","t":"Um lugar para construir","busca":"P4.7 Um lugar para construir","o":1,"s":"engenharia-3"},
+{"id":"social","n":"5","t":"Social, permanência e coletivos"},
+{"id":"social-1","n":"5.1","t":"Projetos sociais","busca":"5.1 Projetos sociais"},
+{"id":"p5-1","n":"P5.1","t":"Ações sociais mantidas e ampliadas","busca":"P5.1 Ações sociais mantidas e ampliadas","o":1,"s":"social-1"},
+{"id":"p5-2","n":"P5.2","t":"Comissão Contra Opressão estruturada","busca":"P5.2 Comissão Contra Opressão estruturada","o":1,"s":"social-1"},
+{"id":"p5-3","n":"P5.3","t":"Projetos sociais com os CAs e as entidades","busca":"P5.3 Projetos sociais com os CAs e as entidades","o":1,"s":"social-1"},
+{"id":"p5-4","n":"P5.4","t":"Balanço e patrocínio para cada projeto social","busca":"P5.4 Balanço e patrocínio para cada projeto social","o":1,"s":"social-1"},
+{"id":"social-2","n":"5.2","t":"Permanência no dia a dia","busca":"5.2 Permanência no dia a dia"},
+{"id":"p5-5","n":"P5.5","t":"Guia de bolsas e auxílios","busca":"P5.5 Guia de bolsas e auxílios","o":1,"s":"social-2"},
+{"id":"p5-6","n":"P5.6","t":"Saúde mental","busca":"P5.6 Saúde mental","o":1,"s":"social-2"},
+{"id":"p5-7","n":"P5.7","t":"Mapa das necessidades e espaços equipados","busca":"P5.7 Mapa das necessidades e espaços equipados","o":1,"s":"social-2"},
+{"id":"p5-8","n":"P5.8","t":"Casa do Politécnico","busca":"P5.8 Casa do Politécnico","o":1,"s":"social-2"},
+{"id":"social-3","n":"5.3","t":"Escritório Piloto","busca":"5.3 Escritório Piloto"},
+{"id":"p5-9","n":"P5.9","t":"Autonomia dos coletivos no Escritório Piloto","busca":"P5.9 Autonomia dos coletivos no Escritório Piloto","o":1,"s":"social-3"},
+{"id":"p5-10","n":"P5.10","t":"EP garantido em caso de reforma","busca":"P5.10 EP garantido em caso de reforma","o":1,"s":"social-3"},
+{"id":"p5-11","n":"P5.11","t":"Apoio às atividades dos coletivos","busca":"P5.11 Apoio às atividades dos coletivos","o":1,"s":"social-3"},
+{"id":"negocios","n":"6","t":"Negócios"},
+{"id":"negocios-1","n":"6.1","t":"Triedro","busca":"6.1 Triedro"},
+{"id":"p6-1","n":"P6.1","t":"Triedro com menos fila","busca":"P6.1 Triedro com menos fila","o":1,"s":"negocios-1"},
+{"id":"p6-2","n":"P6.2","t":"Triedro o ano inteiro","busca":"P6.2 Triedro o ano inteiro","o":1,"s":"negocios-1"},
+{"id":"negocios-2","n":"6.2","t":"Copiadora e Poliglota","busca":"6.2 Copiadora e Poliglota"},
+{"id":"p6-3","n":"P6.3","t":"Copiadora ampliada","busca":"P6.3 Copiadora ampliada","o":1,"s":"negocios-2"},
+{"id":"p6-4","n":"P6.4","t":"Poliglota renovada","busca":"P6.4 Poliglota renovada","o":1,"s":"negocios-2"},
+{"id":"negocios-3","n":"6.3","t":"Gestão das empresas","busca":"6.3 Gestão das empresas"},
+{"id":"p6-5","n":"P6.5","t":"Cada empresa com responsável e resultado público","busca":"P6.5 Cada empresa com responsável e resultado público","o":1,"s":"negocios-3"},
+{"id":"p6-6","n":"P6.6","t":"Novas frentes de receita","busca":"P6.6 Novas frentes de receita","o":1,"s":"negocios-3"},
+{"id":"portal","n":"7","t":"Portal Politécnico"},
+{"id":"portal-1","n":"7.1","t":"O que já funciona","busca":"7.1 O que já funciona"},
+{"id":"portal-2","n":"7.2","t":"O que vem com a gestão","busca":"7.2 O que vem com a gestão"},
+{"id":"p7-1","n":"P7.1","t":"Portal oficial do Grêmio na Semana de Recepção","busca":"P7.1 Portal oficial do Grêmio na Semana de Recepção","o":1,"s":"portal-2"},
+{"id":"p7-2","n":"P7.2","t":"Aplicativo no celular","busca":"P7.2 Aplicativo no celular","o":1,"s":"portal-2"},
+{"id":"p7-3","n":"P7.3","t":"Tecnologia feita com os grupos da Poli","busca":"P7.3 Tecnologia feita com os grupos da Poli","o":1,"s":"portal-2"},
+{"id":"p7-4","n":"P7.4","t":"Espaço para a arte no Portal","busca":"P7.4 Espaço para a arte no Portal","o":1,"s":"portal-2"},
+{"id":"p7-5","n":"P7.5","t":"Canais organizados e dados com responsabilidade","busca":"P7.5 Canais organizados e dados com responsabilidade","o":1,"s":"portal-2"},
+{"id":"eventos","n":"8","t":"Eventos, cultura e memória"},
+{"id":"esgotar","n":"","t":"Esgotar o domínio do possível"},
+{"id":"eventos-1","n":"8.1","t":"Recepção e festas","busca":"8.1 Recepção e festas"},
+{"id":"p8-1","n":"P8.1","t":"Semana de Recepção","busca":"P8.1 Semana de Recepção","o":1,"s":"eventos-1"},
+{"id":"p8-2","n":"P8.2","t":"Bixopp de volta, como calourada da Poli","busca":"P8.2 Bixopp de volta, como calourada da Poli","o":1,"s":"eventos-1"},
+{"id":"p8-3","n":"P8.3","t":"Festas em parceria","busca":"P8.3 Festas em parceria","o":1,"s":"eventos-1"},
+{"id":"eventos-2","n":"8.2","t":"Tradições e cultura","busca":"8.2 Tradições e cultura"},
+{"id":"p8-4","n":"P8.4","t":"IntegraPoli e as tradições da Poli","busca":"P8.4 IntegraPoli e as tradições da Poli","o":1,"s":"eventos-2"},
+{"id":"p8-5","n":"P8.5","t":"SAPO e os grupos culturais","busca":"P8.5 SAPO e os grupos culturais","o":1,"s":"eventos-2"},
+{"id":"eventos-3","n":"8.3","t":"Jornal e memória","busca":"8.3 Jornal e memória"},
+{"id":"p8-6","n":"P8.6","t":"O Politécnico digital","busca":"P8.6 O Politécnico digital","o":1,"s":"eventos-3"},
+{"id":"p8-7","n":"P8.7","t":"Memorial do Grêmio e Acervo da Resistência","busca":"P8.7 Memorial do Grêmio e Acervo da Resistência","o":1,"s":"eventos-3"},
+{"id":"p8-8","n":"P8.8","t":"Um diploma à altura","busca":"P8.8 Um diploma à altura","o":1,"s":"eventos-3"},
+{"id":"imagem","n":"9","t":"Imagem e relações"},
+{"id":"imagem-1","n":"9.1","t":"Alunos e entidades","busca":"9.1 Alunos e entidades"},
+{"id":"p9-1","n":"P9.1","t":"Recuperar a confiança dos alunos","busca":"P9.1 Recuperar a confiança dos alunos","o":1,"s":"imagem-1"},
+{"id":"p9-2","n":"P9.2","t":"Articulação e colaboração com as entidades da Poli","busca":"P9.2 Articulação e colaboração com as entidades da Poli","o":1,"s":"imagem-1"},
+{"id":"imagem-2","n":"9.2","t":"Empresas, Escola e sociedade","busca":"9.2 Empresas, Escola e sociedade"},
+{"id":"p9-3","n":"P9.3","t":"Boas relações, com liberdade de crítica","busca":"P9.3 Boas relações, com liberdade de crítica","o":1,"s":"imagem-2"},
+{"id":"p9-4","n":"P9.4","t":"Diálogo com a Diretoria e a Universidade","busca":"P9.4 Diálogo com a Diretoria e a Universidade","o":1,"s":"imagem-2"},
+{"id":"imagem-3","n":"9.3","t":"Movimento estudantil e financiamento da USP","busca":"9.3 Movimento estudantil e financiamento da USP"},
+{"id":"p9-5","n":"P9.5","t":"Relação com o DCE, a UEE e a UNE","busca":"P9.5 Relação com o DCE, a UEE e a UNE","o":1,"s":"imagem-3"},
+{"id":"p9-6","n":"P9.6","t":"Financiamento da USP","busca":"P9.6 Financiamento da USP","o":1,"s":"imagem-3"},
+{"id":"imagem-4","n":"9.4","t":"Cultura interna","busca":"9.4 Cultura interna"},
+{"id":"p9-7","n":"P9.7","t":"Como a gestão recebe quem quer ajudar","busca":"P9.7 Como a gestão recebe quem quer ajudar","o":1,"s":"imagem-4"},
+{"id":"p9-8","n":"P9.8","t":"Respeito aos trabalhadores do Grêmio","busca":"P9.8 Respeito aos trabalhadores do Grêmio","o":1,"s":"imagem-4"},
+{"id":"primeiro-ano","n":"","t":"O primeiro ano"},
+{"id":"nota-final","n":"","t":"Nota final","busca":"Boa para nós. Melhor para quem vem depois"},
+{"id":"como-votar","n":"","t":"Como votar"}
 ]};
 
-// Propostas: resumo da carta-proposta, na mesma ordem e numeração dela. lp = prazo mais longo (os trechos em itálico da carta).
+// Propostas: resumo da carta-proposta, na mesma ordem e numeração dela (n = código, pr = prioridade; prioridade 3 = longo prazo, em itálico na carta).
 const P=[
-{id:"contas",n:"1",g:"Financeiro e contas",c:"contas",b:[
- {t:"Raio-x das contas",c:"contas-raiox",d:"Levantar dívidas (há indícios de um valor na casa dos sete dígitos), compromissos e saldo disponível."},
- {t:"Gestão organizada",c:"contas-orcamento",d:"Responsabilidades claras e acompanhamento das decisões."},
- {t:"Gastar melhor, arrecadar mais",c:"contas-destino",d:"Novas receitas e melhor aproveitamento dos negócios do Grêmio, com prioridade para as ações sociais."},
- {t:"Balanço mensal público",c:"contas-abertas",d:"Volta da divulgação mensal das contas, junto com os projetos, negócios e parcerias em andamento."},
- {t:"Vagas de estágio no app do Grêmio",c:"contas-parcerias",d:"Empresas anunciam para a maioria dos politécnicos em troca de uma taxa ou da doação de equipamentos."},
- {t:"Preferência para quem apoia",c:"contas-parcerias",d:"Empresas que mais contribuírem ganham prioridade na divulgação. Também buscaremos projetos em conjunto com empresas."}]},
-{id:"negocios",n:"2",g:"Negócios",c:"negocios",b:[
- {t:"Triedro sem fila",c:"triedro",d:"Pegue e Pague para café e itens rápidos, pedidos antecipados pela internet e estudo de marmitas e entrega."},
- {t:"Triedro mais conhecido e confortável",c:"triedro-ferias",d:"Divulgação pela USP e melhoria das mesas e do espaço de convivência."},
- {t:"Copiadora ampliada",c:"copiadora",d:"Operada por alunos remunerados, com impressão de PDFs, apostilas, cadernetas de provas antigas e simulados."},
- {t:"Sublimação na copiadora",c:"copiadora",d:"Confecção de artigos.",lp:1},
- {t:"Poliglota renovada",c:"copiadora",d:"Site e estrutura atualizados e melhor comunicação, para levar a escola de línguas do Grêmio além da Poli e da USP."}]},
-{id:"servicos",n:"3",g:"Serviços",c:"academico",b:[
- {t:"Novo Fuja do Nabo",c:"fuja",d:"No site e no aplicativo do Grêmio: provas antigas, exercícios resolvidos, videoaulas, guias e resumos num só lugar, começando pelo ciclo básico."},
- {t:"Grupos de estudo",c:"estudos",d:"Criação de grupos de estudo para apoiar os alunos nas disciplinas."},
- {t:"FAQ do Grêmio",c:"manuais",d:"Respostas para as dúvidas do dia a dia, sobre a Poli e sobre as matérias."},
- {t:"Salas para os grupos de extensão",c:"ep-parcerias",d:"Negociar com a diretoria o uso de salas fora do horário de aula, com um sistema de reservas."},
- {t:"Grupos de extensão mais perto do Grêmio",c:"ep-parcerias",d:"Projetos em conjunto, mais visibilidade para os grupos e parcerias com empresas que resolvam problemas do dia a dia da Poli."},
- {t:"Poliverso",c:"poliverso",d:"Aulas Magnas com engenheiros de destaque e carreiras diversas, abertas a toda a Poli e feitas em parceria com os grupos de extensão."},
- {t:"Politique",c:"poliverso",d:"Aulas Magnas com nomes do poder público (ministros, secretários, governador e parlamentares), dando espaço a todos os espectros democráticos."},
- {t:"Recursos para a Poli",c:"poliverso",d:"A partir do Politique, aproximar a Escola do poder público e, com o Amigos da Poli e o Poli Alumni, abrir caminho para novas parcerias."}]},
-{id:"apoio",n:"4",g:"Apoio",c:"social",b:[
- {t:"Espaços equipados",c:"permanencia",d:"Micro-ondas novos, geladeiras, reforma de salas e novos equipamentos, por meio de parcerias com empresas."},
- {t:"Novo site do Grêmio",c:"portal-gestao",d:"Ferramentas, perguntas frequentes, mapa dos bandejões, consulta e reserva de salas, orientações para ingressantes e o memorial num só lugar.",l:"https://chapaprisma.github.io/Site_gremio_poli/",lt:"Ver um exemplo de como pode ficar"},
- {t:"Tecnologia feita com os grupos da Poli",c:"portal-gestao",d:"Sistemas digitais com Poli AI, Poli Quant, Poli Finance e Poli Júnior, e Pegue e Pague construído por alunos de eletrônica e design, por exemplo."},
- {t:"AEX que valem a pena",c:"ep-parcerias",d:"Projetos reais de engenharia, propostos também pelos alunos, e horas de AEX nos grupos de extensão, em vez de mera burocracia."},
- {t:"Casa do Politécnico",c:"permanencia",d:"Continuar o estudo de viabilidade da reconstrução da CADOPÔ, a moradia estudantil dos politécnicos, com parceiros externos e grupos de extensão."},
- {t:"Ações sociais mantidas e ampliadas",c:"acoes-sociais",d:"Poli Vai à Escola, Meninas na Poli e as demais continuam e crescem, com apoio das novas AEX."},
- {t:"Manuais em dia",c:"manuais",d:"Tutoriais atualizados sobre transferência interna, trancamento de matérias, bolsas e outras burocracias da Escola."}]},
-{id:"memoria",n:"5",g:"Eventos e memória",c:"eventos",b:[
- {t:"Cervejada/Calourada com a AAAP",c:"festas",d:"Logo no começo do ano que vem, além de outras festas com a AAAP e os CAs."},
- {t:"Bixopp de volta",c:"festas",d:"Estudo de viabilidade e retorno do Bixopp."},
- {t:"Jornal Politécnico digital",c:"jornal",d:"O jornal chega ao celular por e-mail e newsletter, ganha novas seções e tem o acervo digitalizado. A versão impressa continua."},
- {t:"Memorial dos 123 anos",c:"jornal",d:"Arquivo histórico do Grêmio, com documentos, fotos e notícias, aberto a todos no site."},
- {t:"Acervo da Resistência",c:"jornal",d:"Memorial digital permanente dos estudantes da Poli assassinados pela ditadura militar e dos que resistiram ao regime."},
- {t:"Diploma à altura",c:"jornal",d:"Remodelar o diploma físico do politécnico, para que ele faça jus à conquista."}]},
-{id:"imagem",n:"6",g:"Imagem",c:"imagem",b:[
- {t:"Imagem que atrai parceiros",c:"imagem-empresas",d:"Redes sociais que não afastem empresas e patrocínios, abrindo caminho para parcerias como a do Espaço ON."},
- {t:"Recuperar a confiança dos alunos",c:"imagem-alunos",d:"Mais transparência e eficiência: gestão mais hierarquizada, melhor delegação de tarefas e projetos temporários abertos a alunos de fora do Grêmio."}]}
+{id:"contas",n:"1",g:"Contas e transparência",c:"contas",b:[
+ {"n":"P1.1","pr":1,"t":"Raio-X das Contas","c":"p1-1","d":"Levantar dívidas, compromissos e patrimônio do Grêmio, com relatório público até o fim do primeiro bimestre."},
+ {"n":"P1.2","pr":1,"t":"Rotina financeira e orçamento do zero","c":"p1-2","d":"Cada área justifica os seus gastos do zero, o caixa é acompanhado todo mês e os pagamentos críticos ficam em destaque."},
+ {"n":"P1.3","pr":1,"t":"Estudar antes de gastar","c":"p1-3","d":"Projeto com custo relevante só começa depois de um estudo de viabilidade de uma página, apresentado na reunião aberta."},
+ {"n":"P1.4","pr":1,"t":"Balanço Mensal Público","c":"p1-4","d":"Receitas, despesas, dívida e resultado de cada empresa no Portal, todo mês, para qualquer aluno conferir."},
+ {"n":"P1.5","pr":1,"t":"Parcerias com regras públicas","c":"p1-5","d":"Todo dinheiro no balanço, contrapartidas por escrito e nenhum acordo que limite as posições do Grêmio."},
+ {"n":"P1.6","pr":2,"t":"Vagas de estágio no Portal","c":"p1-6","d":"Empresas pagam ou doam equipamentos para divulgar vagas, e só entram vagas que respeitem a Lei do Estágio."},
+ {"n":"P1.7","pr":2,"t":"Plano público da dívida","c":"p1-7","d":"O calendário de pagamento, quanto falta e quando a dívida termina, com uma reserva para os meses ruins."},
+ {"n":"P1.8","pr":3,"t":"Uma parte cada vez maior para o estudante","c":"p1-8","d":"Conforme a dívida diminui, mais da arrecadação vai para permanência e para projetos sociais e acadêmicos.","lp":1}]},
+{id:"rds",n:"2",g:"Representação discente",c:"rds",b:[
+ {"n":"P2.1","pr":1,"t":"Coordenação da Representação","c":"p2-1","d":"Uma coordenação no Gabinete organiza o trabalho dos RDs, para nenhuma reunião de colegiado ficar sem RD preparado."},
+ {"n":"P2.2","pr":2,"t":"Rede com os CAs e os representantes de sala","c":"p2-2","d":"Encontro mensal com os RDs dos cursos e os representantes de sala, para levar aos colegiados as demandas comuns."},
+ {"n":"P2.3","pr":1,"t":"Formação de novos RDs","c":"p2-3","d":"Manual do RD e formação curta antes da primeira reunião, com o mesmo apoio para RDs de qualquer grupo."},
+ {"n":"P2.4","pr":2,"t":"Passagem de bastão","c":"p2-4","d":"Um dossiê de transição de cada RD e uma reunião entre quem sai e quem entra, comissão por comissão."},
+ {"n":"P2.5","pr":1,"t":"Pautas e consultas no Portal","c":"p2-5","d":"Cada colegiado com uma página: a pauta explicada, a consulta antes do voto e como os RDs votaram."},
+ {"n":"P2.6","pr":2,"t":"Plantão do RD nos prédios","c":"p2-6","d":"Uma vez por mês, os RDs montam uma mesa num conjunto de prédios, junto com o CA do lugar."},
+ {"n":"P2.7","pr":2,"t":"Raio-X da Graduação","c":"p2-7","d":"Uma pesquisa semestral sobre o que mais pesa na graduação, com os resultados públicos."},
+ {"n":"P2.8","pr":2,"t":"Canal de problemas em disciplinas e Mapa de problemas","c":"p2-8","d":"Relatos sobre disciplinas, inclusive anônimos, e um mapa do campus para marcar o que está quebrado."},
+ {"n":"P2.9","pr":1,"t":"Memória da Representação","c":"p2-9","d":"Casos, atas, votos e contatos guardados num sistema, para cada turma de RDs continuar o trabalho da anterior."},
+ {"n":"P2.10","pr":1,"t":"Dossiê de pauta e diálogo antes do voto","c":"p2-10","d":"Para cada assunto importante, um dossiê curto e a conversa com docentes e Diretoria antes da reunião."},
+ {"n":"P2.11","pr":1,"t":"Calendário público e resumo de cada reunião em até sete dias","c":"p2-11","d":"As datas de todas as reuniões no Portal e, em até sete dias, o voto, a justificativa e o efeito de cada decisão."},
+ {"n":"P2.12","pr":2,"t":"Rastreador de demandas","c":"p2-12","d":"Cada demanda ganha um número para acompanhar no Portal até ser resolvida ou negada, com o motivo."},
+ {"n":"P2.13","pr":2,"t":"Relatório semestral da representação","c":"p2-13","d":"Presença, pautas, conquistas e derrotas de cada semestre, debatidas em reunião aberta."},
+ {"n":"P2.14","pr":1,"t":"Pauta de permanência nos colegiados","c":"p2-14","d":"Levar à CIP e à CG as regras que atrapalham quem precisa trabalhar ou manter uma bolsa."},
+ {"n":"P2.15","pr":2,"t":"Representação da pós-graduação","c":"p2-15","d":"Os RDs da pós usam a mesma estrutura da graduação, com um encontro por semestre."},
+ {"n":"P2.16","pr":1,"t":"Cada instância com o seu papel","c":"p2-16","d":"Regras claras para Assembleia, plebiscitos e reuniões abertas, publicadas no primeiro mês."},
+ {"n":"P2.17","pr":2,"t":"Canal de ideias permanente","c":"p2-17","d":"Toda ideia enviada recebe resposta por escrito, e quem propôs pode tocar o projeto."}]},
+{id:"academico",n:"3",g:"Apoio acadêmico",c:"academico",b:[
+ {"n":"P3.1","pr":1,"t":"Fuja do Nabo","c":"p3-1","d":"Ampliar o Fuja das P2 para P1, P2 e P3 de mais disciplinas da Poli, começando pelo ciclo básico.","l":"https://chapaprisma.github.io/fuja-das-p2/","lt":"Ver o Fuja das P2"},
+ {"n":"P3.2","pr":2,"t":"Área acadêmica do Portal","c":"p3-2","d":"O material de estudo de cada disciplina num só lugar: provas, listas, videoaulas e resumos."},
+ {"n":"P3.3","pr":2,"t":"Revisões e grupos de estudo","c":"p3-3","d":"Revisões em todas as semanas de prova e o Portal ajudando a formar grupos de estudo."},
+ {"n":"P3.4","pr":2,"t":"Pré-cálculo","c":"p3-4","d":"Curso de nivelamento feito com os CAs, pronto antes das aulas dos ingressantes de 2028."},
+ {"n":"P3.5","pr":2,"t":"Manuais atualizados e FAQ do Grêmio","c":"p3-5","d":"Manuais com a data da última revisão, corrigidos na mesma semana em que uma regra muda."},
+ {"n":"P3.6","pr":2,"t":"Pós-graduação mais perto da graduação","c":"p3-6","d":"Pós-graduandos apresentando as suas pesquisas e contando como é a vida na pós."},
+ {"n":"P3.7","pr":2,"t":"Poliverso","c":"p3-7","d":"Aulas Magnas com engenheiras e engenheiros de destaque, feitas com os grupos de extensão."},
+ {"n":"P3.8","pr":3,"t":"Politique","c":"p3-8","d":"Aulas Magnas com pessoas do poder público, abertas a todos os espectros democráticos.","lp":1}]},
+{id:"engenharia",n:"4",g:"Engenharia na Prática",c:"engenharia",b:[
+ {"n":"P4.1","pr":1,"t":"Banco de problemas e chamada semestral","c":"p4-1","d":"Desafios reais da Poli viram projetos de times de cursos diferentes, com prioridade para quem nunca participou."},
+ {"n":"P4.2","pr":2,"t":"Mostra de Projetos","c":"p4-2","d":"No fim de cada semestre, os times apresentam o que fizeram a alunos, professores e empresas."},
+ {"n":"P4.3","pr":1,"t":"Rede de professores orientadores","c":"p4-3","d":"Todo projeto com um professor orientador definido antes de começar."},
+ {"n":"P4.4","pr":2,"t":"Parcerias e regras para cada projeto","c":"p4-4","d":"Apoio de empresas com a propriedade definida por escrito, e o que é feito para a comunidade fica aberto a ela."},
+ {"n":"P4.5","pr":2,"t":"Credenciamento do Engenharia na Prática como atividade de extensão","c":"p4-5","d":"Pedir às instâncias da Escola que a participação conte como horas de AEX."},
+ {"n":"P4.6","pr":2,"t":"Grupos de extensão mais perto do Grêmio","c":"p4-6","d":"Salas fora do horário de aula com reserva pelo Portal, projetos em conjunto e divulgação dos grupos."},
+ {"n":"P4.7","pr":3,"t":"Um lugar para construir","c":"p4-7","d":"Um espaço de prototipagem para o programa, sem ocupar o Escritório Piloto nem os espaços de outras entidades.","lp":1}]},
+{id:"social",n:"5",g:"Social, permanência e coletivos",c:"social",b:[
+ {"n":"P5.1","pr":1,"t":"Ações sociais mantidas e ampliadas","c":"p5-1","d":"Poli Vai à Escola, Meninas na Poli, Semana da Mulher Politécnica e auxílios da Poliglota continuam e chegam mais longe."},
+ {"n":"P5.2","pr":1,"t":"Comissão Contra Opressão estruturada","c":"p5-2","d":"Equipe de três pessoas e procedimentos de acolhimento antes da divulgação do canal."},
+ {"n":"P5.3","pr":2,"t":"Projetos sociais com os CAs e as entidades","c":"p5-3","d":"Um calendário social único e transporte, materiais e divulgação negociados em conjunto."},
+ {"n":"P5.4","pr":2,"t":"Balanço e patrocínio para cada projeto social","c":"p5-4","d":"Cada projeto publica o que entregou e busca patrocínio próprio, guardado numa conta separada."},
+ {"n":"P5.5","pr":1,"t":"Guia de bolsas e auxílios","c":"p5-5","d":"Quem pode pedir, os documentos, os prazos e onde se inscrever, pronto para a Semana de Recepção."},
+ {"n":"P5.6","pr":2,"t":"Saúde mental","c":"p5-6","d":"Guia de apoio no Portal, pauta na CIP por mais atendimento e calendário de provas sem semanas sobrecarregadas."},
+ {"n":"P5.7","pr":2,"t":"Mapa das necessidades e espaços equipados","c":"p5-7","d":"Levantar o que falta em cada prédio e trazer micro-ondas, geladeiras e reforma de salas por meio de parcerias."},
+ {"n":"P5.8","pr":3,"t":"Casa do Politécnico","c":"p5-8","d":"Continuar o estudo de viabilidade da moradia estudantil, com grupos de extensão e parceiros.","lp":1},
+ {"n":"P5.9","pr":1,"t":"Autonomia dos coletivos no Escritório Piloto","c":"p5-9","d":"O EP continua com os coletivos, que definem as regras do espaço, e o Grêmio o defende."},
+ {"n":"P5.10","pr":2,"t":"EP garantido em caso de reforma","c":"p5-10","d":"Se uma obra atingir o EP, as atividades continuam e o espaço entra no projeto definitivo."},
+ {"n":"P5.11","pr":2,"t":"Apoio às atividades dos coletivos","c":"p5-11","d":"Manutenção, divulgação e equipamentos do Grêmio à disposição, na prioridade que os coletivos definirem."}]},
+{id:"negocios",n:"6",g:"Negócios",c:"negocios",b:[
+ {"n":"P6.1","pr":1,"t":"Triedro com menos fila","c":"p6-1","d":"Pedido antecipado pelo Portal, estudo de autoatendimento e uma operação mais eficiente."},
+ {"n":"P6.2","pr":2,"t":"Triedro o ano inteiro","c":"p6-2","d":"Marmitas e entregas para quem fica no campus nas férias, com um teste em julho."},
+ {"n":"P6.3","pr":2,"t":"Copiadora ampliada","c":"p6-3","d":"Impressão rápida de PDFs, apostilas e cadernos de provas, e o estudo da operação por alunos remunerados."},
+ {"n":"P6.4","pr":2,"t":"Poliglota renovada","c":"p6-4","d":"Site e divulgação novos para levar a escola de línguas além da Poli e manter os auxílios."},
+ {"n":"P6.5","pr":1,"t":"Cada empresa com responsável e resultado público","c":"p6-5","d":"Um diretor e metas mensais por empresa, com faturamento, custo e margem no balanço."},
+ {"n":"P6.6","pr":3,"t":"Novas frentes de receita","c":"p6-6","d":"Estudar a Loja do Grêmio online e serviços de engenharia feitos por alunos.","lp":1}]},
+{id:"portal",n:"7",g:"Portal Politécnico",c:"portal",b:[
+ {"n":"P7.1","pr":1,"t":"Portal oficial do Grêmio na Semana de Recepção","c":"p7-1","d":"O Portal vira o site oficial e recebe os ingressantes de 2027 com bandejões, salas, grade e o manual do bixo.","l":"https://chapaprisma.github.io/Site_gremio_poli/","lt":"Ver um exemplo de como pode ficar"},
+ {"n":"P7.2","pr":2,"t":"Aplicativo no celular","c":"p7-2","d":"Depois do Portal oficial, a Área do aluno vira um aplicativo para iOS e Android."},
+ {"n":"P7.3","pr":2,"t":"Tecnologia feita com os grupos da Poli","c":"p7-3","d":"Sistemas e melhorias feitos com grupos como a Poli AI, a Poli Quant, a Poli Finance e a Poli Júnior, com escopo e crédito definidos."},
+ {"n":"P7.4","pr":3,"t":"Espaço para a arte no Portal","c":"p7-4","d":"Um lugar para os politécnicos publicarem o que produzem e os grupos culturais divulgarem as suas atividades.","lp":1},
+ {"n":"P7.5","pr":2,"t":"Canais organizados e dados com responsabilidade","c":"p7-5","d":"As redes divulgam, o Portal resolve e o Jornal aprofunda, seguindo a LGPD."}]},
+{id:"eventos",n:"8",g:"Eventos, cultura e memória",c:"eventos",b:[
+ {"n":"P8.1","pr":1,"t":"Semana de Recepção","c":"p8-1","d":"Menos palestras e mais atividades para o ingressante conhecer a turma, feitas com a Poli, os CAs e a Atlética."},
+ {"n":"P8.2","pr":1,"t":"Bixopp de volta, como calourada da Poli","c":"p8-2","d":"A calourada com a Atlética e os CAs, que só acontece se ingressos e patrocínios cobrirem todos os custos."},
+ {"n":"P8.3","pr":2,"t":"Festas em parceria","c":"p8-3","d":"Festas com empresas especializadas e com outras entidades, sem prejuízo para o caixa do Grêmio."},
+ {"n":"P8.4","pr":2,"t":"IntegraPoli e as tradições da Poli","c":"p8-4","d":"Apoio à comissão organizadora e aos CAs para o Integra voltar a reunir a Escola."},
+ {"n":"P8.5","pr":2,"t":"SAPO e os grupos culturais","c":"p8-5","d":"A Semana de Arte continua, e os grupos culturais ganham acesso mais fácil aos espaços."},
+ {"n":"P8.6","pr":2,"t":"O Politécnico digital","c":"p8-6","d":"O jornal chega ao celular, ganha novas seções e tem o acervo digitalizado."},
+ {"n":"P8.7","pr":2,"t":"Memorial do Grêmio e Acervo da Resistência","c":"p8-7","d":"Abrir no Portal o arquivo de 123 anos do Grêmio, começando pelo Acervo da Resistência."},
+ {"n":"P8.8","pr":3,"t":"Um diploma à altura","c":"p8-8","d":"Propor à Escola um novo visual para o diploma físico.","lp":1}]},
+{id:"imagem",n:"9",g:"Imagem e relações",c:"imagem",b:[
+ {"n":"P9.1","pr":2,"t":"Recuperar a confiança dos alunos","c":"p9-1","d":"Contas abertas, projetos com andamento público e serviços que funcionam, com uma comunicação nova."},
+ {"n":"P9.2","pr":2,"t":"Articulação e colaboração com as entidades da Poli","c":"p9-2","d":"Juntar os CAs e as entidades nas pautas da Poli inteira, cada uma com a sua autonomia."},
+ {"n":"P9.3","pr":2,"t":"Boas relações, com liberdade de crítica","c":"p9-3","d":"Parcerias com empresas sem nunca limitar a manifestação dos alunos."},
+ {"n":"P9.4","pr":2,"t":"Diálogo com a Diretoria e a Universidade","c":"p9-4","d":"Cada pedido à Escola com um responsável, registrado do começo ao fim."},
+ {"n":"P9.5","pr":2,"t":"Relação com o DCE, a UEE e a UNE","c":"p9-5","d":"Presença nos fóruns do DCE, com cada posição explicada aos alunos e autonomia diante de partidos."},
+ {"n":"P9.6","pr":2,"t":"Financiamento da USP","c":"p9-6","d":"Acompanhar e explicar o que muda no financiamento da USP com a reforma tributária."},
+ {"n":"P9.7","pr":2,"t":"Como a gestão recebe quem quer ajudar","c":"p9-7","d":"Guia da área, as primeiras semanas como trainee e crédito para quem contribui."},
+ {"n":"P9.8","pr":1,"t":"Respeito aos trabalhadores do Grêmio","c":"p9-8","d":"Salários e direitos em dia e um canal fixo para ouvir os funcionários."}]}
 ];
 // cada proposta tem um id estável, derivado do título (as estrelas marcadas pelos visitantes dependem dele)
 const slug=s=>s.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
@@ -702,11 +836,11 @@ const hl=s=>{if(!termo)return fmt(s);const i=s.toLowerCase().indexOf(termo);retu
 function renderCards(){
   let n=0,tot=0,h="";
   P.forEach(a=>{
-    const items=a.b.filter(x=>(!termo||(x.t+" "+x.d+" "+a.g).toLowerCase().includes(termo))&&(!so||so.has(x.id)));
+    const items=a.b.filter(x=>(!termo||(x.t+" "+x.d+" "+a.g+" "+(x.n||"")).toLowerCase().includes(termo))&&(!so||so.has(x.id)));
     if((filtro!=="Todas"&&a.id!==filtro)||!items.length)return;
     n++;tot+=items.length;
-    h+='<div class="pgroup" data-a="'+a.id+'" id="p-'+a.id+'"><div class="ph"><span class="tri" aria-hidden="true"></span><div><small>Área '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></div></div>'+
-      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(c?' data-c="'+c+'"':'')+'><div><b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-proposta</a>':'')+'</div>'+
+    h+='<div class="pgroup" data-a="'+a.id+'" id="p-'+a.id+'"><div class="ph"><span class="tri" aria-hidden="true"></span><div><small>Capítulo '+a.n+' · '+a.b.length+' propostas</small><h3>'+esc(a.g)+'</h3></div></div>'+
+      '<ul class="props">'+items.map(x=>{const c=topico(a,x);return '<li'+(c?' data-c="'+c+'"':'')+'><div>'+(x.n?'<small class="pm">'+x.n+' · Prioridade '+x.pr+'</small>':'')+'<b>'+hl(x.t)+'</b>'+(x.lp?'<span class="lp">Longo prazo</span>':'')+'<p>'+hl(x.d)+'</p>'+(x.l?'<a class="plink" href="'+x.l+'" target="_blank" rel="noopener">'+esc(x.lt)+' ↗</a>':'')+(c?'<a class="plink" href="#carta/'+c+'">Ver na carta-proposta</a>':'')+'</div>'+
       '<button class="fav" data-id="'+x.id+'" aria-pressed="'+fav.has(x.id)+'" aria-label="Isso importa para mim: '+esc(x.t)+'" title="Isso importa para mim">'+(fav.has(x.id)?"★":"☆")+'</button></li>'}).join("")+'</ul></div>';
   });
   $("#grid").innerHTML=h;
@@ -744,20 +878,23 @@ function updFav(){
 // Expansão = toda ação que liga a Poli a agentes de fora (empresas, poder público, pessoas).
 // Uma proposta pode estar em mais de uma frente. Rever quando as propostas mudarem.
 const SQ=[
-["Triedro","n",["Triedro sem fila","Triedro mais conhecido e confortável"]],
-["Copiadora","n",["Copiadora ampliada","Sublimação na copiadora"]],
+["Tesouraria","g",["Raio-X das Contas","Rotina financeira e orçamento do zero","Estudar antes de gastar","Balanço Mensal Público","Plano público da dívida","Uma parte cada vez maior para o estudante","Bixopp de volta, como calourada da Poli","Respeito aos trabalhadores do Grêmio"]],
+["Coordenação da Representação","g",["Coordenação da Representação","Rede com os CAs e os representantes de sala","Formação de novos RDs","Passagem de bastão","Pautas e consultas no Portal","Plantão do RD nos prédios","Memória da Representação","Dossiê de pauta e diálogo antes do voto","Calendário público e resumo de cada reunião em até sete dias","Rastreador de demandas","Relatório semestral da representação","Representação da pós-graduação"]],
+["Triedro","n",["Triedro com menos fila","Triedro o ano inteiro"]],
+["Copiadora","n",["Copiadora ampliada"]],
 ["Poliglota","n",["Poliglota renovada"]],
-["Expansão","n",["Vagas de estágio no app do Grêmio","Preferência para quem apoia","Poliverso","Politique","Recursos para a Poli","Espaços equipados","Casa do Politécnico","Imagem que atrai parceiros"]],
-["Acadêmico","s",["Novo Fuja do Nabo","Grupos de estudo","FAQ do Grêmio","Manuais em dia"]],
-["Sociocultural","s",["Jornal Politécnico digital","Memorial dos 123 anos","Acervo da Resistência","Ações sociais mantidas e ampliadas"]],
-["Extensão","s",["Salas para os grupos de extensão","Grupos de extensão mais perto do Grêmio","AEX que valem a pena"]],
-["Eventos","s",["Cervejada/Calourada com a AAAP","Bixopp de volta"]],
-["Tecnologia","a",["Novo site do Grêmio","Tecnologia feita com os grupos da Poli"]],
-["Espaços do Grêmio","a",["Espaços equipados"]],
-["Comunicação","a",["Imagem que atrai parceiros","Recuperar a confiança dos alunos"]]];
+["Expansão","n",["Parcerias com regras públicas","Vagas de estágio no Portal","Parcerias e regras para cada projeto","Balanço e patrocínio para cada projeto social","Novas frentes de receita","Boas relações, com liberdade de crítica"]],
+["Acadêmica","s",["Raio-X da Graduação","Fuja do Nabo","Área acadêmica do Portal","Revisões e grupos de estudo","Pré-cálculo","Manuais atualizados e FAQ do Grêmio","Pós-graduação mais perto da graduação","Poliverso"]],
+["Social","s",["Pauta de permanência nos colegiados","Ações sociais mantidas e ampliadas","Comissão Contra Opressão estruturada","Projetos sociais com os CAs e as entidades","Balanço e patrocínio para cada projeto social","Guia de bolsas e auxílios","Saúde mental","Mapa das necessidades e espaços equipados","Autonomia dos coletivos no Escritório Piloto"]],
+["Eventos e Cultura","s",["Poliverso","Mostra de Projetos","Espaço para a arte no Portal","Semana de Recepção","Bixopp de volta, como calourada da Poli","Festas em parceria","IntegraPoli e as tradições da Poli","SAPO e os grupos culturais"]],
+["Engenharia na Prática","s",["Banco de problemas e chamada semestral","Mostra de Projetos","Rede de professores orientadores","Parcerias e regras para cada projeto","Credenciamento do Engenharia na Prática como atividade de extensão","Grupos de extensão mais perto do Grêmio","Casa do Politécnico"]],
+["Comunicação","a",["Calendário público e resumo de cada reunião em até sete dias","Canal de ideias permanente","Apoio às atividades dos coletivos","Poliglota renovada","Canais organizados e dados com responsabilidade","O Politécnico digital","Memorial do Grêmio e Acervo da Resistência","Recuperar a confiança dos alunos"]],
+["Tecnologia","a",["Balanço Mensal Público","Vagas de estágio no Portal","Canal de problemas em disciplinas e Mapa de problemas","Memória da Representação","Rastreador de demandas","Portal oficial do Grêmio na Semana de Recepção","Aplicativo no celular","Tecnologia feita com os grupos da Poli","Espaço para a arte no Portal","Canais organizados e dados com responsabilidade"]],
+["Patrimônio","a",["Canal de problemas em disciplinas e Mapa de problemas","Um lugar para construir","Mapa das necessidades e espaços equipados","Apoio às atividades dos coletivos","Memorial do Grêmio e Acervo da Resistência"]],
+["Relações Institucionais","a",["Politique","Articulação e colaboração com as entidades da Poli","Diálogo com a Diretoria e a Universidade","Relação com o DCE, a UEE e a UNE"]]];
 const porTitulo=new Map(P.flatMap(a=>a.b).map(x=>[x.t,x.id]));
 SQ.forEach(([n,,tit])=>tit.forEach(t=>{if(!porTitulo.has(t))console.warn("Mapa dos quadrados: a proposta “"+t+"” não existe mais (quadrado "+n+")")}));
-const tg={n:"Negócios",s:"Serviços",a:"Apoio"};
+const tg={g:"Gabinete",n:"Negócios",s:"Serviços",a:"Transversal"};
 $("#sq").innerHTML=SQ.map(([n,c],i)=>'<a href="#frente-'+slug(n)+'" class="'+c+'" data-i="'+i+'">'+n+'<small>'+tg[c]+'</small></a>').join("");
 // abre uma área das propostas (atalhos do início e links #p-area)
 function goArea(id){const b=$('.ptab[data-f="'+id+'"]');if(!b)return;pick(b);$(".pview").scrollIntoView();$("#grid").focus({preventScroll:true})}
@@ -819,11 +956,11 @@ const cv={el:$("#cv"),doc:null,pages:[],pos:{},from:null,orig:null,ready:null,lo
 const norm=s=>s.normalize("NFKD").replace(/\p{M}/gu,"").toLowerCase().replace(/\s+/g,"");
 // liga ou desliga tudo conforme exista o PDF: chamada, índice e links nos cartões
 function cartaSync(){const on=!!CARTA.url;$("#cartaCta").hidden=!on;$("#cvDl").href=CARTA.url||"#";
-  $("#cvList").innerHTML=CARTA.topicos.map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n&&t.n.includes(".")?' class="n2"':'')+'>'+(t.n?'<span class="num">'+t.n+'</span>':'')+'<span>'+esc(t.t)+'</span></button></li>').join("");
+  $("#cvList").innerHTML=CARTA.topicos.filter(t=>!t.o).map(t=>'<li><button type="button" data-t="'+t.id+'"'+(t.n&&t.n.includes(".")?' class="n2"':'')+'>'+(t.n?'<span class="num">'+t.n+'</span>':'')+'<span>'+esc(t.t)+'</span></button></li>').join("");
   $$("#cvList button").forEach(b=>b.onclick=()=>{cvTopics(false);cartaGo(b.dataset.t)});
   if(on)P.forEach(a=>[a,...a.b].forEach(x=>{if(x.c&&!CARTA.topicos.some(t=>t.id===x.c))console.warn("Carta-proposta: o tópico “"+x.c+"” não existe no índice ("+(x.g||x.t)+")")}));
   // ajuda na revisão: subtópicos da carta que nenhuma proposta do resumo cita
-  if(on){const usados=new Set(P.flatMap(a=>a.b.map(x=>x.c)));const livres=CARTA.topicos.filter(t=>t.n&&t.n.includes(".")&&!usados.has(t.id)).map(t=>t.n+" "+t.t);
+  if(on){const usados=new Set(P.flatMap(a=>a.b.map(x=>x.c)));const livres=CARTA.topicos.filter(t=>t.o&&!usados.has(t.id)).map(t=>t.n+" "+t.t);
     if(livres.length)console.info("Carta-proposta: subtópicos sem proposta no resumo → "+livres.join("; "))}
   $("#np").textContent=ids.size;
   renderCards()}
@@ -872,9 +1009,9 @@ async function cartaGo(id,pulo){await cartaLoad();const o=cv.pos[id];if(!o)retur
   if(o.w){const m=document.createElement("i");m.className="cv-mark";m.style.cssText="left:"+o.x*100+"%;top:"+o.y*100+"%;width:"+o.w*100+"%";o.p.el.appendChild(m)}
   cv.lock=Date.now()+900;d.scrollTo({top:y,behavior:longe?"instant":"smooth"});
   if(longe&&cvMs(1))o.p.el.animate([{opacity:.2,transform:"translateY(16px)"},{opacity:1,transform:"none"}],{duration:420,easing:EASE});
-  cvCur(id)}
+  const tt=CARTA.topicos.find(x=>x.id===id);cvCur(tt&&tt.o?tt.s:id)}
 $("#cvDoc").addEventListener("scroll",()=>{if(Date.now()<cv.lock)return;const y=$("#cvDoc").scrollTop+90;let cur=null;
-  CARTA.topicos.forEach(t=>{const o=cv.pos[t.id];if(o&&cvTop(o)<=y)cur=t.id});cvCur(cur)},{passive:true});
+  CARTA.topicos.forEach(t=>{const o=cv.pos[t.id];if(o&&cvTop(o)<=y)cur=t.o?t.s:t.id});cvCur(cur)},{passive:true});
 const cvTopics=o=>{$("#cvSide").classList.toggle("open",o);$("#cvTog").setAttribute("aria-expanded",o)};
 $("#cvTog").onclick=()=>cvTopics(!$("#cvSide").classList.contains("open"));
 // de onde a carta cresce: o cartão ou a chamada em que a pessoa clicou (sem isso, ela entra pela direita)
