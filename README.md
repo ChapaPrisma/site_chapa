@@ -39,9 +39,9 @@ O botão "Como votar", no menu, abre um pop-up com datas, horários, locais e o 
 
 ## Carta-proposta
 
-O arquivo é `carta-proposta.pdf`, na raiz. A versão publicada é a v6 (15 páginas), de 26/10/2026: a "vf 2" de 13/10 sem o tópico 2.4 Escritório Piloto e com o nome carta-proposta.
+O arquivo é `carta-proposta.pdf`, na raiz. A versão publicada é a versão do site (20 páginas), de 24/11/2026: uma versão direta da carta completa de 64 páginas, com os 9 capítulos dela (contas, representação discente, apoio acadêmico, Engenharia na Prática, social, negócios, Portal, eventos e imagem) e o resultado esperado de cada proposta. A carta completa fica no linktree (`chapaprisma.github.io/links/carta-programa.pdf`).
 
-O PDF é gerado a partir de HTML, na pasta `Carta programa/fonte` do computador do Guilherme: `carta-v6.html` é a fonte desta versão e `gerar.py` faz o PDF (`python gerar.py carta-v6.html saida.pdf`; precisa de `pypdf` e do Chrome). O gerador preenche sozinho os números de página do sumário. Para mudar o texto da carta, edite o HTML e gere de novo, em vez de editar o PDF.
+O PDF é gerado a partir da pasta `carta-fonte/`: `conteudo.txt` (o texto), `build.py` e `carta.css` (`cd carta-fonte && python3 build.py ../carta-proposta.pdf`; precisa de Python com Playwright e do poppler-utils, e a variável `CHROME` pode apontar para outro navegador). O gerador preenche sozinho os números de página do sumário e manda para a página seguinte o capítulo cuja faixa cairia no pé da página. Para mudar o texto, edite `carta-fonte/conteudo.txt` e gere de novo. Ao trocar o PDF, atualize o mapa `CARTA` quando um título mudar e aumente o `?v=`.
 
 Como funciona:
 
